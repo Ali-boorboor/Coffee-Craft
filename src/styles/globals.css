@@ -24,13 +24,23 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans text-base;
+    @apply text-foreground font-sans md:text-base text-sm;
   }
 }
 
-@layer components {
+@layer utilities {
   .coffee-background {
     background: linear-gradient(rgba(51, 33, 29, 0.9), rgba(51, 33, 29, 0.9)),
-      url("/image/background.jpg") center no-repeat;
+      url("/image/coffee-background.jpg") center no-repeat;
+
+    background-size: cover;
+  }
+
+  .paper-torn-piece-bottom::after {
+    background: url("/image/paper-torn-piece-bottom.png");
+  }
+
+  .paper-torn-piece-top::before {
+    background: url("/image/paper-torn-piece-top.png");
   }
 }

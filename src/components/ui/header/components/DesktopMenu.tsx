@@ -1,87 +1,64 @@
 import React from "react";
-import { useInputStore } from "@/components/ui/header/stores/HeaderStores";
-import { IoSearchOutline } from "react-icons/io5";
+import useDesktopMenuAnimation from "@/components/ui/header/animations/useDesktopMenuAnimation";
+import { desktopMenuItems } from "@/components/ui/header/constants/menuItems";
+import { IoIosArrowDown } from "react-icons/io";
+
+const DATA_ANIMATE = "desktop-menu-items";
 
 const DesktopMenu = () => {
-  const { isSearchInputAvailable, setIsSearchInputAvailable } = useInputStore();
-
-  const searchInputToggler = () => {
-    setIsSearchInputAvailable(!isSearchInputAvailable);
-  };
+  useDesktopMenuAnimation({ itemsDataAnimate: DATA_ANIMATE });
 
   return (
-    <>
-      <nav className="hidden md:flex justify-center items-center gap-6 capitalize font-semibold">
-        <li>
-          <a
-            className="transition-all duration-300 ease-linear hover:text-primary"
-            href="#"
-          >
-            home
-          </a>
-        </li>
-        <li>
-          <a
-            className="transition-all duration-300 ease-linear hover:text-primary"
-            href="#"
-          >
-            about
-          </a>
-        </li>
-        <li>
-          <a
-            className="transition-all duration-300 ease-linear hover:text-primary"
-            href="#"
-          >
-            service
-          </a>
-        </li>
-        <li>
-          <a
-            className="transition-all duration-300 ease-linear hover:text-primary"
-            href="#"
-          >
-            menu
-          </a>
-        </li>
-        <li className="relative group">
-          <span className="cursor-pointer">pages</span>
-          <ul className="absolute -translate-x-1/2 left-1/2 top-6 w-36 bg-secondary text-secondary-foreground/50 border-2 border-secondary-foreground/50 py-2 rounded-md text-center shadow-sm shadow-secondary/60 opacity-0 translate-y-10 pointer-events-none transition-all duration-300 ease-linear delay-100 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto">
-            <li className="border-b border-b-secondary-foreground/50 last:border-0">
-              <a
-                className="inline-block w-full py-2 px-4 transition-all duration-300 ease-linear hover:bg-primary hover:text-primary-foreground"
-                href="#"
+    <nav className="hidden md:block">
+      <ul className="flex justify-center items-center gap-6 capitalize font-semibold">
+        {desktopMenuItems.map((menuItem) => {
+          if (menuItem.children) {
+            return (
+              <li
+                className="relative group -translate-y-20 transform-gpu will-change-transform"
+                data-animate={DATA_ANIMATE}
+                key={menuItem.id}
               >
-                reservation
-              </a>
-            </li>
-            <li className="border-b border-b-secondary-foreground/50 last:border-0">
-              <a
-                className="inline-block w-full py-2 px-4 transition-all duration-300 ease-linear hover:bg-primary hover:text-primary-foreground"
-                href="#"
+                <span className="cursor-pointer flex items-center gap-1 transition-all duration-300 ease-linear group-hover:text-primary">
+                  {menuItem.title}
+                  <IoIosArrowDown className="size-4 transition-all duration-300 ease-linear group-hover:rotate-180" />
+                </span>
+                <ul className="absolute -translate-x-1/2 left-1/2 top-6 w-36 bg-secondary text-secondary-foreground/50 border-2 border-secondary-foreground/50 py-2 rounded-md text-center shadow-sm shadow-secondary/60 opacity-0 translate-y-10 pointer-events-none transition-all duration-300 ease-linear delay-100 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto">
+                  {menuItem.children.map((menuItemChild) => (
+                    <li
+                      className="border-b border-b-secondary-foreground/50 last:border-0"
+                      key={menuItemChild.id}
+                    >
+                      <a
+                        className="inline-block w-full py-2 px-4 transition-all duration-300 ease-linear hover:bg-primary hover:text-primary-foreground"
+                        href={menuItemChild.href}
+                      >
+                        {menuItemChild.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            );
+          } else {
+            return (
+              <li
+                className="-translate-y-20 transform-gpu will-change-transform"
+                data-animate={DATA_ANIMATE}
+                key={menuItem.id}
               >
-                testimonial
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a
-            className="transition-all duration-300 ease-linear hover:text-primary"
-            href="#"
-          >
-            contact
-          </a>
-        </li>
-      </nav>
-
-      <button
-        className="cursor-pointer bg-primary text-primary-foreground p-1.5 rounded-md border-2 border-primary-foreground shadow-sm shadow-primary/60 hidden md:block transition-all duration-300 ease-linear hover:text-primary hover:bg-primary-foreground hover:border-primary"
-        onClick={searchInputToggler}
-      >
-        <IoSearchOutline className="size-6" />
-      </button>
-    </>
+                <a
+                  className="transition-all duration-300 ease-linear hover:text-primary"
+                  href={menuItem.href}
+                >
+                  {menuItem.title}
+                </a>
+              </li>
+            );
+          }
+        })}
+      </ul>
+    </nav>
   );
 };
 

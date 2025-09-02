@@ -1,26 +1,12 @@
 import { create } from "zustand";
 
-type UseInputStore = {
-  isSearchInputAvailable: boolean;
-
-  setIsSearchInputAvailable: (isSearchInputAvailable: boolean) => void;
-};
-
-const useInputStore = create<UseInputStore>((set) => ({
-  isSearchInputAvailable: false,
-
-  setIsSearchInputAvailable: (isSearchInputAvailable) => {
-    set({ isSearchInputAvailable });
-  },
-}));
-
-type UseMenuStore = {
+type UseMobileMenuStore = {
   isMenuAvailable: boolean;
 
   setIsMenuAvailable: (isMenuAvailable: boolean) => void;
 };
 
-const useMenuStore = create<UseMenuStore>((set) => ({
+const useMobileMenuStore = create<UseMobileMenuStore>((set) => ({
   isMenuAvailable: false,
 
   setIsMenuAvailable: (isMenuAvailable) => {
@@ -28,4 +14,4 @@ const useMenuStore = create<UseMenuStore>((set) => ({
   },
 }));
 
-export { useInputStore, useMenuStore };
+export { useMobileMenuStore };

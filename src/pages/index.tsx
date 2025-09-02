@@ -1,7 +1,8 @@
+import Intro from "@/components/templates/index/Intro";
 import React from "react";
 
 const Index = () => {
-  return <div>Index</div>;
+  return <Intro />;
 };
 
 export default Index;
