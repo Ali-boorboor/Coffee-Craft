@@ -1,5 +1,6 @@
 import Intro from "@/components/templates/index/Intro";
 import About from "@/components/templates/index/About";
+import Services from "@/components/templates/index/Services";
 import React from "react";
 
 const Index = () => {
@@ -8,6 +9,10 @@ const Index = () => {
       <Intro />
 
       <About />
+
+      <Services />
+
+      <div className="h-svh"></div>
     </main>
   );
 };

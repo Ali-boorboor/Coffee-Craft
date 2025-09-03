@@ -29,6 +29,13 @@
 }
 
 @layer utilities {
+  .coffee-background {
+    background: linear-gradient(rgba(51, 33, 29, 0.9), rgba(51, 33, 29, 0.9)),
+      url("/image/coffee-background.jpg") center no-repeat;
+
+    background-size: cover;
+  }
+
   .paper-torn-piece-bottom::after {
     @apply absolute left-0 bottom-0 w-full h-3 z-1;
     background: url("/image/paper-torn-piece-bottom.png") center repeat-x;

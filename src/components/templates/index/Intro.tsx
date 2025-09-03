@@ -41,7 +41,7 @@ const Intro = () => {
                 coffee
               </h2>
               <p className="text-2xl md:text-4xl font-semibold uppercase">
-                since 1950
+                since 2004
               </p>
             </div>
           </SwiperSlide>

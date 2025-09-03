@@ -27,7 +27,7 @@ const SearchPanel = () => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex flex-col justify-center items-center gap-4 px-4 text-white bg-[linear-gradient(rgba(51,33,29,0.9),rgba(51,33,29,0.9)),url('/image/coffee-background.jpg')] bg-cover bg-center"
+      className="fixed inset-0 z-50 flex flex-col justify-center items-center gap-4 px-4 text-white coffee-background"
       ref={containerRef}
     >
       <Button

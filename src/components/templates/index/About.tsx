@@ -1,4 +1,5 @@
 import useAboutAnimations from "@/components/templates/index/animations/useAboutAnimations";
+import SectionHeader from "@/components/ui/section-header";
 import Button from "@/components/ui/button";
 import React from "react";
 
@@ -11,23 +12,15 @@ const About = () => {
 
   return (
     <section
-      className="flex justify-center items-center px-4 overflow-hidden relative"
+      className="flex justify-center items-center px-4"
       ref={containerRef}
     >
       <div className="flex flex-col justify-center items-center gap-2 md:gap-6 container">
-        <h3
-          className="capitalize text-2xl md:text-4xl font-semibold text-primary text-shadow-xs text-shadow-white transform-gpu will-change-transform"
-          data-animate={LINES_DATA_ANIMATE}
-        >
-          about us
-        </h3>
-
-        <p
-          className="text-3xl md:text-5xl font-bold capitalize transform-gpu will-change-transform"
-          data-animate={LINES_DATA_ANIMATE}
-        >
-          Serving Since 1950
-        </p>
+        <SectionHeader
+          title="about us"
+          text="serving since 2004"
+          linesDataAnimate={LINES_DATA_ANIMATE}
+        />
 
         <p
           className="md:max-w-96 w-full m-auto md:leading-6 text-center md:text-justify font-normal transform-gpu will-change-transform"

@@ -1,7 +1,6 @@
 import gsap from "gsap";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
-import { SplitText } from "gsap/SplitText";
 
 type useAboutAnimationsProps = { linesDataAnimate: string };
 
@@ -15,17 +14,14 @@ const useAboutAnimations = ({ linesDataAnimate }: useAboutAnimationsProps) => {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top center",
+          end: 99999,
           toggleActions: "play reverse play reverse",
         },
         defaults: { ease: "power4.inOut", duration: 1 },
       });
 
-      const splitText = new SplitText(`[data-animate='${linesDataAnimate}']`, {
-        type: "lines",
-      });
-
       gsapTimeline.fromTo(
-        splitText.lines,
+        `[data-animate='${linesDataAnimate}']`,
         {
           y: 20,
           opacity: 0,
