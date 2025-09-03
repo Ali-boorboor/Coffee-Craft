@@ -23,7 +23,7 @@ const DesktopMenu = () => {
                   {menuItem.title}
                   <IoIosArrowDown className="size-4 transition-all duration-300 ease-linear group-hover:rotate-180" />
                 </span>
-                <ul className="absolute -translate-x-1/2 left-1/2 top-6 w-36 bg-secondary text-secondary-foreground/50 border-2 border-secondary-foreground/50 py-2 rounded-md text-center shadow-sm shadow-secondary/60 opacity-0 translate-y-10 pointer-events-none transition-all duration-300 ease-linear delay-100 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto">
+                <ul className="absolute -translate-x-1/2 left-1/2 top-6 w-36 bg-secondary text-secondary-foreground border border-secondary-foreground/50 py-2 rounded-md text-center shadow-xs shadow-secondary opacity-0 translate-y-10 pointer-events-none transition-all duration-300 ease-linear delay-100 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto">
                   {menuItem.children.map((menuItemChild) => (
                     <li
                       className="border-b border-b-secondary-foreground/50 last:border-0"

@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "@/components/ui/button";
 import { useMobileMenuStore } from "@/components/ui/header/stores/headerStores";
 import { IoMdClose } from "react-icons/io";
 import { HiMenu } from "react-icons/hi";
@@ -9,12 +10,13 @@ const ToggleMobileMenu = () => {
   const toggleMobileMenu = () => setIsMenuAvailable(!isMenuAvailable);
 
   return (
-    <button
-      className="overflow-hidden bg-primary text-primary-foreground rounded-md p-1 border-2 border-primary-foreground shadow-sm shadow-primary/60 block md:hidden"
+    <Button
+      className="inline-block md:hidden"
       onClick={toggleMobileMenu}
+      size="icon"
     >
       <IoMdClose
-        className={`size-4 transition-all duration-300 ease-linear ${
+        className={`size-4 md:size-6 transition-transform duration-300 ease-linear ${
           isMenuAvailable
             ? "opacity-100 rotate-0 relative"
             : "opacity-0 rotate-45 absolute inset-0"
@@ -22,13 +24,13 @@ const ToggleMobileMenu = () => {
       />
 
       <HiMenu
-        className={`size-4 transition-all duration-300 ease-linear ${
+        className={`size-4 md:size-6 transition-transform duration-300 ease-linear ${
           isMenuAvailable
             ? "opacity-0 rotate-45 absolute inset-0"
             : "opacity-100 rotate-0 relative"
         }`}
       />
-    </button>
+    </Button>
   );
 };
 

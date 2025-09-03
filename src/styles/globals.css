@@ -13,7 +13,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-foreground: var(--foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
 }
@@ -24,23 +24,20 @@
   }
 
   body {
-    @apply text-foreground font-sans md:text-base text-sm;
+    @apply bg-background text-foreground font-sans md:text-base text-sm;
   }
 }
 
 @layer utilities {
-  .coffee-background {
-    background: linear-gradient(rgba(51, 33, 29, 0.9), rgba(51, 33, 29, 0.9)),
-      url("/image/coffee-background.jpg") center no-repeat;
-
-    background-size: cover;
-  }
-
   .paper-torn-piece-bottom::after {
-    background: url("/image/paper-torn-piece-bottom.png");
+    @apply absolute left-0 bottom-0 w-full h-3 z-1;
+    background: url("/image/paper-torn-piece-bottom.png") center repeat-x;
+    content: "";
   }
 
   .paper-torn-piece-top::before {
-    background: url("/image/paper-torn-piece-top.png");
+    @apply absolute left-0 top-0 w-full h-3 z-1;
+    background: url("/image/paper-torn-piece-top.png") center repeat-x;
+    content: "";
   }
 }

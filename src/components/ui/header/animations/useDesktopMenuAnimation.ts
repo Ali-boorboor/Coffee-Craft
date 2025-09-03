@@ -11,7 +11,7 @@ const useDesktopMenuAnimation = ({
       y: 0,
       opacity: 1,
       stagger: 0.1,
-      duration: 1.2,
+      duration: 1,
       ease: "bounce.out",
     });
   }, []);

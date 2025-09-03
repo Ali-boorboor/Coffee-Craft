@@ -14,17 +14,28 @@ const useSearchPanelAnimation = ({
 
   const containerRef = useRef<HTMLDivElement>(null);
   const gsapTimelineRef = useRef<gsap.core.Timeline>(
-    gsap.timeline({ defaults: { ease: "power4.inOut", duration: 1.2 } })
+    gsap.timeline({ defaults: { ease: "power4.inOut", duration: 1 } })
   );
 
   useGSAP(() => {
     gsapTimelineRef.current
-      .to(containerRef.current, {
-        clipPath: "polygon(0% 0%,100% 0%,100% 100%,0% 100%)",
-        pointerEvents: "auto",
-      })
-      .to(
+      .fromTo(
+        containerRef.current,
+        {
+          clipPath: "polygon(0% 0%,0% 0%,0% 100%,0% 100%)",
+          pointerEvents: "none",
+        },
+        {
+          clipPath: "polygon(0% 0%,100% 0%,100% 100%,0% 100%)",
+          pointerEvents: "auto",
+        }
+      )
+      .fromTo(
         `[data-animate='${itemsDataAnimate}']`,
+        {
+          y: -20,
+          opacity: 0,
+        },
         {
           y: 0,
           opacity: 1,
