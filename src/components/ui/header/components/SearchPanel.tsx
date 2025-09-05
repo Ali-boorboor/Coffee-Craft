@@ -47,7 +47,7 @@ const SearchPanel = () => {
       </p>
 
       <div
-        className="flex items-center gap-1 justify-between bg-primary/50 border-2 border-primary rounded-md px-2.5 max-w-lg w-full shadow-sm shadow-white/60 focus-within:ring-white focus-within:ring-2 transition-colors duration-300 ease-linear"
+        className="flex items-center gap-1 justify-between bg-primary/50 border-2 border-primary rounded-md px-2.5 max-w-lg w-full shadow-xs shadow-white focus-within:ring-white focus-within:ring-2 transition-colors duration-300 ease-linear transform-gpu will-change-transform"
         data-animate={DATA_ANIMATE}
       >
         <Input

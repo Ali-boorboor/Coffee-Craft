@@ -3,6 +3,7 @@ import "swiper/css/autoplay";
 import React from "react";
 import iconLoader from "@/utils/dynamicIconLoader";
 import SectionHeader from "@/components/ui/section-header";
+import ServiceCard from "@/components/ui/service-card/ServiceCard";
 import useServicesAnimations from "@/components/templates/index/animations/useServicesAnimations";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -63,23 +64,7 @@ const Services = ({ services }: ServicesProps) => {
 
             return (
               <SwiperSlide data-animate={SLIDES_DATA_ANIMATE} key={service.id}>
-                <div className="flex justify-between items-center w-full aspect-video bg-primary text-primary-foreground border-2 border-white/60 rounded-md overflow-hidden">
-                  <img
-                    className="w-1/2 h-full object-cover object-center border-r-2 border-white/60"
-                    src={service.image}
-                    alt="service-image"
-                  />
-                  <div className="flex flex-col justify-center items-start gap-2 h-full px-3 py-2">
-                    <Icon className="size-6 hidden xl:block" />
-
-                    <h4 className="text-base md:text-lg font-bold capitalize transform-gpu will-change-transform">
-                      {service.title}
-                    </h4>
-                    <p className="leading-5 text-sm md:text-base line-clamp-3 sm:line-clamp-4 xl:line-clamp-5 transform-gpu will-change-transform">
-                      {service.description}
-                    </p>
-                  </div>
-                </div>
+                <ServiceCard Icon={Icon} {...service} />
               </SwiperSlide>
             );
           })}

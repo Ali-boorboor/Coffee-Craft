@@ -13,7 +13,7 @@ const Input = ({ variant = "default", className, ...props }: InputProps) => {
 
   const variants = {
     default:
-      "bg-primary/50 border-2 border-primary text-primary-foreground placeholder:text-primary-foreground/50 shadow-primary/60 focus-within:inset-ring-2 focus-within:inset-ring-primary-foreground",
+      "bg-primary/50 border-2 border-primary text-primary-foreground placeholder:text-primary-foreground/50 shadow-primary focus-within:inset-ring-2 focus-within:inset-ring-primary-foreground",
     ghost: "bg-transparent px-0",
   };
 

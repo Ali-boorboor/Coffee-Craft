@@ -30,12 +30,7 @@ const About = () => {
           there isn't anything embarrassing hidden in the middle of text. All
         </p>
 
-        <Button
-          className="transform-gpu will-change-transform"
-          data-animate={FADE_UP_DATA_ANIMATE}
-        >
-          learn more
-        </Button>
+        <Button data-animate={FADE_UP_DATA_ANIMATE}>learn more</Button>
 
         <img
           className="w-60 h-60 md:w-80 md:h-80 object-cover object-center"

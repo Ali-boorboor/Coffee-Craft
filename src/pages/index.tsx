@@ -2,6 +2,7 @@ import Intro from "@/components/templates/index/Intro";
 import About from "@/components/templates/index/About";
 import Services from "@/components/templates/index/Services";
 import Newsletter from "@/components/templates/index/Newsletter";
+import Menu from "@/components/templates/index/Menu";
 import React from "react";
 
 const services = [
@@ -53,6 +54,8 @@ const Index = () => {
       <Services services={services} />
 
       <Newsletter />
+
+      <Menu />
 
       <div className="h-svh"></div>
     </main>
