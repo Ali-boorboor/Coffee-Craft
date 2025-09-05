@@ -44,6 +44,41 @@ const services = [
   },
 ];
 
+const menuItems = [
+  {
+    id: 1,
+    type: "hot",
+    title: "black coffee",
+    image: "/image/black-coffee.png",
+    description:
+      "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
+  },
+  {
+    id: 2,
+    type: "hot",
+    title: "cappuccino",
+    image: "/image/cappuccino.png",
+    description:
+      "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
+  },
+  {
+    id: 3,
+    type: "cold",
+    title: "banana milk",
+    image: "/image/cappuccino.png",
+    description:
+      "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
+  },
+  {
+    id: 4,
+    type: "cold",
+    title: "milk",
+    image: "/image/cappuccino.png",
+    description:
+      "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
+  },
+];
+
 const Index = () => {
   return (
     <main className="space-y-40 md:space-y-80">
@@ -55,7 +90,7 @@ const Index = () => {
 
       <Newsletter />
 
-      <Menu />
+      <Menu menuItems={menuItems} />
 
       <div className="h-svh"></div>
     </main>
