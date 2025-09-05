@@ -1,65 +1,44 @@
 import "swiper/css";
 import "swiper/css/autoplay";
-import gsap from "gsap";
+import React from "react";
+import iconLoader from "@/utils/dynamicIconLoader";
 import SectionHeader from "@/components/ui/section-header";
-import React, { useRef } from "react";
+import useServicesAnimations from "@/components/templates/index/animations/useServicesAnimations";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import { useGSAP } from "@gsap/react";
+
+type ServicesProps = {
+  services: {
+    id: number;
+    image: string;
+    title: string;
+    description: string;
+    iconName: string;
+    iconPack: string;
+  }[];
+};
 
 const LINES_DATA_ANIMATE = "services-lines";
 const SLIDES_DATA_ANIMATE = "services-slides";
 
-const Services = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(
-    () => {
-      const gsapTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top center",
-          end: 99999,
-          toggleActions: "play reverse play reverse",
-        },
-        defaults: { ease: "power4.inOut", duration: 1 },
-      });
-
-      gsapTimeline.fromTo(
-        `[data-animate='${LINES_DATA_ANIMATE}']`,
-        {
-          y: 20,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          stagger: 0.1,
-        }
-      );
-
-      gsapTimeline.fromTo(
-        `[data-animate='${SLIDES_DATA_ANIMATE}']`,
-        { clipPath: "polygon(0% 100%,100% 100%,100% 100%,0% 100%)" },
-        { clipPath: "polygon(0% 0%,100% 0%,100% 100%,0% 100%)" },
-        "-=1"
-      );
-    },
-    { scope: containerRef, dependencies: [] }
-  );
+const Services = ({ services }: ServicesProps) => {
+  const { containerRef } = useServicesAnimations({
+    linesDataAnimate: LINES_DATA_ANIMATE,
+    slidesDataAnimate: SLIDES_DATA_ANIMATE,
+  });
 
   return (
     <section
-      className="flex flex-col justify-center items-center gap-10 md:gap-20 py-10 md:py-20 px-4 md:px-0 text-white relative paper-torn-piece-bottom paper-torn-piece-top coffee-background"
+      className="py-10 md:py-20 px-4 md:px-0 text-white relative paper-torn-piece-bottom paper-torn-piece-top coffee-background"
       ref={containerRef}
     >
-      <SectionHeader
-        title="Our Services"
-        text="Fresh & Organic Beans"
-        linesDataAnimate={LINES_DATA_ANIMATE}
-      />
+      <div className="container m-auto space-y-10 md:space-y-20">
+        <SectionHeader
+          title="Our Services"
+          text="Fresh & Organic Beans"
+          linesDataAnimate={LINES_DATA_ANIMATE}
+        />
 
-      <div className="container">
         <Swiper
           autoplay={{ delay: 3000 }}
           modules={[Autoplay]}
@@ -79,31 +58,31 @@ const Services = () => {
           grabCursor
           loop
         >
-          <SwiperSlide className="w-96" data-animate={SLIDES_DATA_ANIMATE}>
-            <div className="flex justify-center items-center w-full aspect-video bg-primary drop-shadow-sm drop-shadow-white text-primary-foreground border-2 border-white/60 rounded-md">
-              test
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="w-96" data-animate={SLIDES_DATA_ANIMATE}>
-            <div className="flex justify-center items-center w-full aspect-video bg-primary drop-shadow-sm drop-shadow-white text-primary-foreground border-2 border-white/60 rounded-md">
-              test
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="w-96" data-animate={SLIDES_DATA_ANIMATE}>
-            <div className="flex justify-center items-center w-full aspect-video bg-primary drop-shadow-sm drop-shadow-white text-primary-foreground border-2 border-white/60 rounded-md">
-              test
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="w-96" data-animate={SLIDES_DATA_ANIMATE}>
-            <div className="flex justify-center items-center w-full aspect-video bg-primary drop-shadow-sm drop-shadow-white text-primary-foreground border-2 border-white/60 rounded-md">
-              test
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="w-96" data-animate={SLIDES_DATA_ANIMATE}>
-            <div className="flex justify-center items-center w-full aspect-video bg-primary drop-shadow-sm drop-shadow-white text-primary-foreground border-2 border-white/60 rounded-md">
-              test
-            </div>
-          </SwiperSlide>
+          {services.map((service) => {
+            const Icon = iconLoader(service.iconPack, service.iconName);
+
+            return (
+              <SwiperSlide data-animate={SLIDES_DATA_ANIMATE} key={service.id}>
+                <div className="flex justify-between items-center w-full aspect-video bg-primary text-primary-foreground border-2 border-white/60 rounded-md overflow-hidden">
+                  <img
+                    className="w-1/2 h-full object-cover object-center border-r-2 border-white/60"
+                    src={service.image}
+                    alt="service-image"
+                  />
+                  <div className="flex flex-col justify-center items-start gap-2 h-full px-3 py-2">
+                    <Icon className="size-6 hidden xl:block" />
+
+                    <h4 className="text-base md:text-lg font-bold capitalize transform-gpu will-change-transform">
+                      {service.title}
+                    </h4>
+                    <p className="leading-5 text-sm md:text-base line-clamp-3 sm:line-clamp-4 xl:line-clamp-5 transform-gpu will-change-transform">
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </div>
     </section>

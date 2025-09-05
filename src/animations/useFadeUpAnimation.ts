@@ -1,10 +1,10 @@
 import gsap from "gsap";
-import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
 
-type useAboutAnimationsProps = { linesDataAnimate: string };
+type useFadeUpAnimationProps = { fadeUpDataAnimate: string };
 
-const useAboutAnimations = ({ linesDataAnimate }: useAboutAnimationsProps) => {
+const useFadeUpAnimation = ({ fadeUpDataAnimate }: useFadeUpAnimationProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
 
@@ -21,7 +21,7 @@ const useAboutAnimations = ({ linesDataAnimate }: useAboutAnimationsProps) => {
       });
 
       gsapTimeline.fromTo(
-        `[data-animate='${linesDataAnimate}']`,
+        `[data-animate='${fadeUpDataAnimate}']`,
         {
           y: 20,
           opacity: 0,
@@ -52,4 +52,4 @@ const useAboutAnimations = ({ linesDataAnimate }: useAboutAnimationsProps) => {
   return { containerRef, imageRef };
 };
 
-export default useAboutAnimations;
+export default useFadeUpAnimation;
