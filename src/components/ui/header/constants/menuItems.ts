@@ -1,6 +1,6 @@
 const desktopMenuItems = [
   { id: 1, href: "#", title: "home" },
-  { id: 2, href: "#", title: "about" },
+  { id: 2, href: "/about", title: "about" },
   { id: 3, href: "#", title: "service" },
   { id: 4, href: "#", title: "menu" },
   {
@@ -16,7 +16,7 @@ const desktopMenuItems = [
 
 const mobileMenuItems = [
   { id: 1, href: "#", title: "home" },
-  { id: 2, href: "#", title: "about" },
+  { id: 2, href: "/about", title: "about" },
   { id: 3, href: "#", title: "service" },
   { id: 4, href: "#", title: "menu" },
   { id: 5, href: "#", title: "reservation" },

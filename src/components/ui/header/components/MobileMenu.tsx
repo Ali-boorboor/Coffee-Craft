@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import useMobileMenuAnimation from "@/components/ui/header/animations/useMobileMenuAnimation";
 import { useMobileMenuStore } from "@/components/ui/header/stores/headerStores";
 import { mobileMenuItems } from "@/components/ui/header/constants/menuItems";
@@ -25,7 +26,7 @@ const MobileMenu = () => {
             data-animate={DATA_ANIMATE}
             key={menuItem.id}
           >
-            <a href={menuItem.href}>{menuItem.title}</a>
+            <Link href={menuItem.href}>{menuItem.title}</Link>
           </li>
         ))}
       </ul>

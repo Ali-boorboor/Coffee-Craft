@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import useDesktopMenuAnimation from "@/components/ui/header/animations/useDesktopMenuAnimation";
 import { desktopMenuItems } from "@/components/ui/header/constants/menuItems";
 import { IoIosArrowDown } from "react-icons/io";
@@ -29,12 +30,12 @@ const DesktopMenu = () => {
                       className="border-b border-b-secondary-foreground/50 last:border-0"
                       key={menuItemChild.id}
                     >
-                      <a
+                      <Link
                         className="inline-block w-full py-2 px-4 transition-all duration-300 ease-linear hover:bg-primary hover:text-primary-foreground"
                         href={menuItemChild.href}
                       >
                         {menuItemChild.title}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -47,12 +48,12 @@ const DesktopMenu = () => {
                 data-animate={DATA_ANIMATE}
                 key={menuItem.id}
               >
-                <a
+                <Link
                   className="transition-all duration-300 ease-linear hover:text-primary"
                   href={menuItem.href}
                 >
                   {menuItem.title}
-                </a>
+                </Link>
               </li>
             );
           }

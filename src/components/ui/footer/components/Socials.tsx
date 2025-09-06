@@ -18,19 +18,19 @@ const Socials = () => {
       </p>
 
       <div className="flex items-center gap-3">
-        <span className="size-9 inline-block bg-secondary-foreground text-secondary rounded-md transition-colors duration-300 ease-linear hover:bg-secondary hover:text-secondary-foreground">
+        <span className="cursor-pointer size-9 inline-block bg-secondary-foreground text-secondary rounded-md transition-colors duration-300 ease-linear hover:bg-secondary hover:text-secondary-foreground">
           <FaSquareXTwitter className="size-full" />
         </span>
 
-        <span className="size-9 inline-block bg-secondary-foreground text-secondary rounded-md transition-colors duration-300 ease-linear hover:bg-secondary hover:text-secondary-foreground">
+        <span className="cursor-pointer size-9 inline-block bg-secondary-foreground text-secondary rounded-md transition-colors duration-300 ease-linear hover:bg-secondary hover:text-secondary-foreground">
           <FaSquareFacebook className="size-full" />
         </span>
 
-        <span className="size-9 inline-block bg-secondary-foreground text-secondary rounded-md transition-colors duration-300 ease-linear hover:bg-secondary hover:text-secondary-foreground">
+        <span className="cursor-pointer size-9 inline-block bg-secondary-foreground text-secondary rounded-md transition-colors duration-300 ease-linear hover:bg-secondary hover:text-secondary-foreground">
           <FaLinkedin className="size-full" />
         </span>
 
-        <span className="size-9 inline-block bg-secondary-foreground text-secondary rounded-md transition-colors duration-300 ease-linear hover:bg-secondary hover:text-secondary-foreground">
+        <span className="cursor-pointer size-9 inline-block bg-secondary-foreground text-secondary rounded-md transition-colors duration-300 ease-linear hover:bg-secondary hover:text-secondary-foreground">
           <FaSquareInstagram className="size-full" />
         </span>
       </div>
