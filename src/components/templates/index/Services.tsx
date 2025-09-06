@@ -3,8 +3,8 @@ import "swiper/css/autoplay";
 import React from "react";
 import iconLoader from "@/utils/dynamicIconLoader";
 import SectionHeader from "@/components/ui/section-header";
+import useSliderAnimation from "@/animations/useSliderAnimation";
 import ServiceCard from "@/components/ui/service-card/ServiceCard";
-import useServicesAnimations from "@/components/templates/index/animations/useServicesAnimations";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
@@ -23,7 +23,7 @@ const LINES_DATA_ANIMATE = "services-lines";
 const SLIDES_DATA_ANIMATE = "services-slides";
 
 const Services = ({ services }: ServicesProps) => {
-  const { containerRef } = useServicesAnimations({
+  const { containerRef } = useSliderAnimation({
     linesDataAnimate: LINES_DATA_ANIMATE,
     slidesDataAnimate: SLIDES_DATA_ANIMATE,
   });

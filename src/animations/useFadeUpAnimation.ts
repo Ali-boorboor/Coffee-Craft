@@ -14,8 +14,6 @@ const useFadeUpAnimation = ({ fadeUpDataAnimate }: useFadeUpAnimationProps) => {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top center",
-          end: 99999,
-          toggleActions: "play reverse play reverse",
         },
         defaults: { ease: "power4.inOut", duration: 1 },
       });

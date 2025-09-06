@@ -1,16 +1,18 @@
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
 
-type useServicesAnimationsProps = {
+type useSliderAnimationProps = {
   linesDataAnimate: string;
   slidesDataAnimate: string;
+  start?: string;
 };
 
-const useServicesAnimations = ({
+const useSliderAnimation = ({
   linesDataAnimate,
   slidesDataAnimate,
-}: useServicesAnimationsProps) => {
+  start = "top center",
+}: useSliderAnimationProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -18,9 +20,7 @@ const useServicesAnimations = ({
       const gsapTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top center",
-          end: 99999,
-          toggleActions: "play reverse play reverse",
+          start,
         },
         defaults: { ease: "power4.inOut", duration: 1 },
       });
@@ -51,4 +51,4 @@ const useServicesAnimations = ({
   return { containerRef };
 };
 
-export default useServicesAnimations;
+export default useSliderAnimation;

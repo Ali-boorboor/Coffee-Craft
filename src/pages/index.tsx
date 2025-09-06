@@ -3,6 +3,7 @@ import About from "@/components/templates/index/About";
 import Services from "@/components/templates/index/Services";
 import Newsletter from "@/components/templates/index/Newsletter";
 import Menu from "@/components/templates/index/Menu";
+import Testimonial from "@/components/templates/index/Testimonial";
 import React from "react";
 
 const services = [
@@ -79,6 +80,44 @@ const menuItems = [
   },
 ];
 
+const comments = [
+  {
+    id: 1,
+    commenter: "sara",
+    commentBody:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio facilis error culpa tenetur fugit facere adipisci, laudantium numquam ullam dicta?",
+    image: "/image/testimonial-1.jpg",
+  },
+  {
+    id: 2,
+    commenter: "ali",
+    commentBody:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio facilis error culpa tenetur fugit facere adipisci, laudantium numquam ullam dicta?",
+    image: "/image/testimonial-2.jpg",
+  },
+  {
+    id: 3,
+    commenter: "reza",
+    commentBody:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio facilis error culpa tenetur fugit facere adipisci, laudantium numquam ullam dicta?",
+    image: "/image/testimonial-3.jpg",
+  },
+  {
+    id: 4,
+    commenter: "ali",
+    commentBody:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio facilis error culpa tenetur fugit facere adipisci, laudantium numquam ullam dicta?",
+    image: "/image/testimonial-2.jpg",
+  },
+  {
+    id: 5,
+    commenter: "reza",
+    commentBody:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio facilis error culpa tenetur fugit facere adipisci, laudantium numquam ullam dicta?",
+    image: "/image/testimonial-3.jpg",
+  },
+];
+
 const Index = () => {
   return (
     <main className="space-y-40 md:space-y-80">
@@ -92,7 +131,7 @@ const Index = () => {
 
       <Menu menuItems={menuItems} />
 
-      <div className="h-svh"></div>
+      <Testimonial comments={comments} />
     </main>
   );
 };

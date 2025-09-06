@@ -26,6 +26,14 @@
   body {
     @apply bg-background text-foreground font-sans md:text-base text-sm;
   }
+
+  .swiper-pagination-bullet-active {
+    @apply transition-colors duration-300 ease-linear;
+  }
+
+  .swiper-pagination-bullet-active {
+    @apply !bg-primary;
+  }
 }
 
 @layer utilities {
