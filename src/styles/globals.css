@@ -25,6 +25,7 @@
 
   body {
     @apply bg-background text-foreground font-sans md:text-base text-sm;
+    @apply selection:bg-primary selection:text-primary-foreground;
   }
 
   .swiper-pagination-bullet-active {

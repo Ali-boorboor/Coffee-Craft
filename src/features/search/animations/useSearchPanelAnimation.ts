@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { useSearchStore } from "@/components/ui/header/stores/searchStores";
+import { useSearchStore } from "@/features/search/stores/searchStores";
 import { useEffect, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 

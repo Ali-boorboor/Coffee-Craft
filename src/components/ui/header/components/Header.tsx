@@ -1,9 +1,9 @@
-import ToggleSearchPanel from "@/components/ui/header/components/ToggleSearchPanel";
-import ToggleMobileMenu from "@/components/ui/header/components/ToggleMobileMenu";
-import DesktopMenu from "@/components/ui/header/components/DesktopMenu";
-import SearchPanel from "@/components/ui/header/components/SearchPanel";
-import MobileMenu from "@/components/ui/header/components/MobileMenu";
 import React from "react";
+import SearchPanel from "@/features/search";
+import MobileMenu from "@/components/ui/header/components/MobileMenu";
+import DesktopMenu from "@/components/ui/header/components/DesktopMenu";
+import ToggleMobileMenu from "@/components/ui/header/components/ToggleMobileMenu";
+import { ToggleSearchPanel } from "@/features/search";
 
 const Header = () => {
   return (

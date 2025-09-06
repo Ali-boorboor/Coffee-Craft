@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@/components/ui/button";
-import { useSearchStore } from "@/components/ui/header/stores/searchStores";
+import { useSearchStore } from "@/features/search/stores/searchStores";
 import { IoSearchOutline } from "react-icons/io5";
 
 const ToggleSearchPanel = () => {

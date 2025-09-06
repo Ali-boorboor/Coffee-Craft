@@ -34,7 +34,7 @@ const Testimonial = ({ comments }: TestimonialProps) => {
   });
 
   return (
-    <section className="py-10 md:py-20 px-4 md:px-0" ref={containerRef}>
+    <section className="px-4 md:px-0" ref={containerRef}>
       <div className="container m-auto">
         <SectionHeader
           linesDataAnimate={LINES_DATA_ANIMATE}

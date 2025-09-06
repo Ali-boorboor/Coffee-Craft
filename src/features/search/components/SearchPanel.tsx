@@ -1,13 +1,13 @@
 import React from "react";
 import Input from "@/components/ui/input";
 import Button from "@/components/ui/button";
-import useSearchPanel from "@/components/ui/header/hooks/useSearchPanel";
-import useSearchPanelAnimation from "@/components/ui/header/animations/useSearchPanelAnimation";
-import { useSearchStore } from "@/components/ui/header/stores/searchStores";
+import useSearchPanel from "@/features/search/hooks/useSearchPanel";
+import useSearchPanelAnimation from "@/features/search/animations/useSearchPanelAnimation";
+import { useSearchStore } from "@/features/search/stores/searchStores";
 import { IoSearchOutline } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 
-const DATA_ANIMATE = "search-bar-items";
+const DATA_ANIMATE = "search-panel-items";
 
 const SearchPanel = () => {
   const { setIsSearchInputAvailable } = useSearchStore();
