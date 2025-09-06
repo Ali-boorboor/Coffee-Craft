@@ -11,6 +11,7 @@ type menuProps = {
     type: string;
     title: string;
     image: string;
+    price: number;
     description: string;
   }[];
 };

@@ -1,7 +1,6 @@
-import "swiper/css";
-import "swiper/css/autoplay";
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import Slider from "@/features/slider";
+import { SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
 const slides = [
@@ -19,9 +18,9 @@ const slides = [
 
 const Intro = () => {
   return (
-    <section>
-      <Swiper
-        className="w-full h-svh text-white relative paper-torn-piece-bottom"
+    <section className="w-full h-svh text-white relative paper-torn-piece-bottom">
+      <Slider
+        className="w-full h-full"
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         allowTouchMove={false}
         simulateTouch={false}
@@ -46,7 +45,7 @@ const Intro = () => {
             </div>
           </SwiperSlide>
         ))}
-      </Swiper>
+      </Slider>
     </section>
   );
 };

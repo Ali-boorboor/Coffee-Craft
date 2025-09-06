@@ -4,7 +4,7 @@ const ShopDetails = () => {
   return (
     <div className="flex flex-col gap-3 items-center">
       <h5 className="text-lg md:text-2xl font-semibold uppercase tracking-widest">
-        Follow Us
+        Open Hours
       </h5>
 
       <div className="text-sm md:text-lg font-normal text-center">

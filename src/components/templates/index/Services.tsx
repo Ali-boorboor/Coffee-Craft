@@ -1,11 +1,10 @@
-import "swiper/css";
-import "swiper/css/autoplay";
 import React from "react";
+import Slider from "@/features/slider";
 import iconLoader from "@/utils/dynamicIconLoader";
 import SectionHeader from "@/components/ui/section-header";
-import useSliderAnimation from "@/animations/useSliderAnimation";
 import ServiceCard from "@/components/ui/service-card/ServiceCard";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useSliderAnimation } from "@/features/slider";
+import { SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
 type ServicesProps = {
@@ -40,7 +39,7 @@ const Services = ({ services }: ServicesProps) => {
           linesDataAnimate={LINES_DATA_ANIMATE}
         />
 
-        <Swiper
+        <Slider
           autoplay={{ delay: 3000 }}
           modules={[Autoplay]}
           slidesPerView={1}
@@ -68,7 +67,7 @@ const Services = ({ services }: ServicesProps) => {
               </SwiperSlide>
             );
           })}
-        </Swiper>
+        </Slider>
       </div>
     </section>
   );

@@ -1,12 +1,14 @@
-import "swiper/css";
-import "swiper/css/autoplay";
-import "swiper/css/pagination";
 import React from "react";
+import Slider from "@/features/slider";
 import SectionHeader from "@/components/ui/section-header";
-import useSliderAnimation from "@/animations/useSliderAnimation";
 import CommentCard from "@/components/ui/comment-card/CommentCard";
 import { Autoplay, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
+import {
+  renderBullet,
+  PaginationBullet,
+  useSliderAnimation,
+} from "@/features/slider";
 
 type TestimonialProps = {
   comments: {
@@ -19,12 +21,6 @@ type TestimonialProps = {
 
 const LINES_DATA_ANIMATE = "testimonial-lines";
 const SLIDES_DATA_ANIMATE = "testimonial-slides";
-
-const renderBullet = (_: number, className: string) => {
-  return `
-    <span class="!w-4 !h-4 !inline-block !rounded-full !bg-primary-foreground !opacity-100 ${className}"></span>
-  `;
-};
 
 const Testimonial = ({ comments }: TestimonialProps) => {
   const { containerRef } = useSliderAnimation({
@@ -43,7 +39,7 @@ const Testimonial = ({ comments }: TestimonialProps) => {
         />
 
         <div className="mt-10 md:mt-20">
-          <Swiper
+          <Slider
             pagination={{
               el: "#swiper-custom-pagination",
               clickable: true,
@@ -72,12 +68,9 @@ const Testimonial = ({ comments }: TestimonialProps) => {
                 <CommentCard {...comment} />
               </SwiperSlide>
             ))}
-          </Swiper>
+          </Slider>
 
-          <div
-            className="m-auto block text-center mt-4 space-x-2"
-            id="swiper-custom-pagination"
-          />
+          <PaginationBullet />
         </div>
       </div>
     </section>

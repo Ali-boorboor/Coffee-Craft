@@ -1,5 +1,4 @@
 import React from "react";
-import SearchPanel from "@/features/search";
 import MobileMenu from "@/components/ui/header/components/MobileMenu";
 import DesktopMenu from "@/components/ui/header/components/DesktopMenu";
 import ToggleMobileMenu from "@/components/ui/header/components/ToggleMobileMenu";
@@ -28,8 +27,6 @@ const Header = () => {
           <ToggleMobileMenu />
         </div>
       </div>
-
-      <SearchPanel />
     </header>
   );
 };

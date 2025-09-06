@@ -51,14 +51,16 @@ const menuItems = [
     type: "hot",
     title: "black coffee",
     image: "/image/black-coffee.png",
+    price: 10,
     description:
       "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
   },
   {
-    id: 2,
+    id: 1,
     type: "hot",
     title: "cappuccino",
     image: "/image/cappuccino.png",
+    price: 15,
     description:
       "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
   },
@@ -67,6 +69,7 @@ const menuItems = [
     type: "cold",
     title: "banana milk",
     image: "/image/cappuccino.png",
+    price: 5,
     description:
       "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
   },
@@ -75,6 +78,7 @@ const menuItems = [
     type: "cold",
     title: "milk",
     image: "/image/cappuccino.png",
+    price: 2,
     description:
       "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
   },
@@ -104,14 +108,14 @@ const comments = [
   },
   {
     id: 4,
-    commenter: "ali",
+    commenter: "amir",
     commentBody:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio facilis error culpa tenetur fugit facere adipisci, laudantium numquam ullam dicta?",
     image: "/image/testimonial-2.jpg",
   },
   {
     id: 5,
-    commenter: "reza",
+    commenter: "amirhossein",
     commentBody:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio facilis error culpa tenetur fugit facere adipisci, laudantium numquam ullam dicta?",
     image: "/image/testimonial-3.jpg",
