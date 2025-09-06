@@ -56,7 +56,7 @@ const menuItems = [
       "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
   },
   {
-    id: 1,
+    id: 2,
     type: "hot",
     title: "cappuccino",
     image: "/image/cappuccino.png",

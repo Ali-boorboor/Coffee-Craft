@@ -1,11 +1,10 @@
 import React from "react";
-import Button from "@/components/ui/button";
+import FilterButtons from "@/features/menu-filter";
 import MenuCard from "@/components/ui/menu-card/MenuCard";
 import SectionHeader from "@/components/ui/section-header";
-import useMenuAnimations from "@/components/templates/index/animations/useMenuAnimations";
-import { useMenuFilterStore } from "@/features/menu-filter";
+import { useMenuFilterStore, useMenuAnimations } from "@/features/menu-filter";
 
-type menuProps = {
+type MenuProps = {
   menuItems: {
     id: number;
     type: string;
@@ -18,8 +17,8 @@ type menuProps = {
 
 const ITEMS_DATA_ANIMATE = "menu-zoom-in";
 
-const Menu = ({ menuItems }: menuProps) => {
-  const { menuFilterType, setMenuFilterType } = useMenuFilterStore();
+const Menu = ({ menuItems }: MenuProps) => {
+  const { menuFilterType } = useMenuFilterStore();
   const { containerRef } = useMenuAnimations({
     itemsDataAnimate: ITEMS_DATA_ANIMATE,
     menuFilterType,
@@ -33,11 +32,7 @@ const Menu = ({ menuItems }: menuProps) => {
       <div className="container m-auto flex flex-col gap-4">
         <SectionHeader title="Menu & Pricing" text="Competitive Pricing" />
 
-        <div className="mt-16 flex justify-center items-center gap-4">
-          <Button onClick={() => setMenuFilterType("all")}>all</Button>
-          <Button onClick={() => setMenuFilterType("hot")}>hot drinks</Button>
-          <Button onClick={() => setMenuFilterType("cold")}>cold drinks</Button>
-        </div>
+        <FilterButtons />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
           {menuFilterType === "all" &&

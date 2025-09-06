@@ -1,5 +1,5 @@
-import PageBreadcrumb from "@/components/ui/page-breadcrumb/components/PageBreadcrumb";
 import ServicesDetails from "@/components/templates/services/ServicesDetails";
+import PageBreadcrumb from "@/components/ui/page-breadcrumb";
 import React from "react";
 
 const services = [
