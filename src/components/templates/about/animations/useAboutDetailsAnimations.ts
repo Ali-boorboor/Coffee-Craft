@@ -1,5 +1,4 @@
 import gsap from "gsap";
-import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 
@@ -11,16 +10,12 @@ const useAboutDetailsAnimations = ({
   const imageRef = useRef<HTMLImageElement>(null);
 
   useGSAP(() => {
-    const splitText = new SplitText(`[data-animate='${linesDataAnimate}']`, {
-      type: "lines",
-    });
-
     const timeLine = gsap.timeline({
       defaults: { direction: 1, ease: "power4.inOut" },
     });
 
     timeLine.fromTo(
-      splitText.lines,
+      `[data-animate='${linesDataAnimate}']`,
       {
         y: 20,
         opacity: 0,

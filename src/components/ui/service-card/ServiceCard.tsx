@@ -11,11 +11,11 @@ type ServiceCardProps = {
 
 const ServiceCard = ({ image, title, description, Icon }: ServiceCardProps) => {
   return (
-    <div className="flex justify-between items-center w-full aspect-video bg-primary text-primary-foreground border-2 border-white/60 rounded-md overflow-hidden drop-shadow-xs drop-shadow-white">
+    <div className="flex justify-between items-center w-full bg-primary text-primary-foreground border-2 border-white/60 rounded-md overflow-hidden drop-shadow-xs drop-shadow-white">
       <img
         className="w-1/2 h-full object-cover object-center border-r-2 border-white/60 transform-gpu will-change-transform"
-        src={image}
         alt="service-image"
+        src={image}
       />
       <div className="flex flex-col justify-center items-start gap-2 h-full px-3 py-2">
         <Icon className="size-6 hidden xl:block" />

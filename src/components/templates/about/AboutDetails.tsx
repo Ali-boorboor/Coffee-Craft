@@ -10,7 +10,7 @@ const AboutDetails = () => {
   });
 
   return (
-    <div className="flex flex-col justify-center items-center gap-2 md:gap-6 container m-auto">
+    <section className="flex flex-col justify-center items-center gap-2 md:gap-6 container m-auto md:px-0 px-4">
       <SectionHeader
         title="about us"
         text="serving since 2004"
@@ -34,7 +34,7 @@ const AboutDetails = () => {
         alt="flying-coffee-cup"
         ref={imageRef}
       />
-    </div>
+    </section>
   );
 };
 
