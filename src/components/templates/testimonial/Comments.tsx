@@ -1,4 +1,14 @@
 import React from "react";
+import Slider from "@/features/slider";
+import SectionHeader from "@/components/ui/section-header";
+import CommentCard from "@/components/ui/comment-card/CommentCard";
+import { Autoplay, Pagination } from "swiper/modules";
+import { SwiperSlide } from "swiper/react";
+import {
+  renderBullet,
+  PaginationBullet,
+  useSliderAnimation,
+} from "@/features/slider";
 
 type CommentsProps = {
   comments: {
@@ -9,7 +19,16 @@ type CommentsProps = {
   }[];
 };
 
+const LINES_DATA_ANIMATE = "#testimonial_lines";
+const SLIDES_DATA_ANIMATE = "#testimonial_slides";
+
 const Comments = ({ comments }: CommentsProps) => {
+  const { containerRef } = useSliderAnimation({
+    linesDataAnimate: LINES_DATA_ANIMATE,
+    slidesDataAnimate: SLIDES_DATA_ANIMATE,
+    start: "top 70%",
+  });
+
   return (
     <section
       className="container m-auto space-y-10 md:space-y-20 md:px-0 px-4"
