@@ -1,20 +1,20 @@
 import React from "react";
+import Input from "@/components/ui/input";
 import Button from "@/components/ui/button";
-import { Input, Textarea } from "@/components/ui/input";
 
 const Form = () => {
   return (
     <form className="space-y-2 md:space-y-4 basis-full md:basis-1/2 transform-gpu will-change-transform">
-      <Input placeholder="your name..." type="text" />
+      <Input placeholder="name..." type="text" />
 
-      <Input placeholder="your email..." type="email" />
+      <Input placeholder="email..." type="email" />
 
-      <Input placeholder="subject..." type="text" />
+      <Input type="date" />
 
-      <Textarea placeholder="message..." />
+      <Input type="time" />
 
       <Button className="w-full" variant="ghost" type="submit">
-        send message
+        book now
       </Button>
     </form>
   );

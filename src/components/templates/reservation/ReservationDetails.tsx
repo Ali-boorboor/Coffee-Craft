@@ -1,13 +1,12 @@
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
-import Contacts from "@/components/templates/contact/Contacts";
 import SectionHeader from "@/components/ui/section-header";
-import Form from "@/components/templates/contact/Form";
-import Map from "@/components/templates/contact/Map";
+import Form from "@/components/templates/reservation/Form";
+import Off from "@/components/templates/reservation/Off";
 import React from "react";
 
-const FADE_UP_DATA_ANIMATE = "#contact_items";
+const FADE_UP_DATA_ANIMATE = "#reservation_items";
 
-const ContactDetails = () => {
+const ReservationDetails = () => {
   const { containerRef } = useFadeUpAnimation({
     fadeUpDataAnimate: FADE_UP_DATA_ANIMATE,
   });
@@ -18,18 +17,16 @@ const ContactDetails = () => {
       ref={containerRef}
     >
       <SectionHeader
-        title="Contact Us"
-        text="Feel Free To Contact"
+        title="Reservation"
+        text="Book Your Table"
         linesDataAnimate={FADE_UP_DATA_ANIMATE}
       />
 
-      <Contacts />
-
       <div
-        className="flex flex-wrap-reverse md:flex-nowrap gap-4 justify-center md:justify-between items-stretch px-4 md:px-0"
+        className="flex flex-wrap-reverse md:flex-nowrap justify-center items-stretch gap-4 px-4 md:px-0"
         data-animate={FADE_UP_DATA_ANIMATE}
       >
-        <Map />
+        <Off />
 
         <Form />
       </div>
@@ -37,4 +34,4 @@ const ContactDetails = () => {
   );
 };
 
-export default ContactDetails;
+export default ReservationDetails;
