@@ -56,4 +56,13 @@
     background: url("/image/paper-torn-piece-top.png") center repeat-x;
     content: "";
   }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }

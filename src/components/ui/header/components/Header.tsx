@@ -1,6 +1,7 @@
 import React from "react";
 import MobileMenu from "@/components/ui/header/components/MobileMenu";
 import DesktopMenu from "@/components/ui/header/components/DesktopMenu";
+import ToggleCartPanel from "@/features/cart/components/ToggleCartPanel";
 import ToggleMobileMenu from "@/components/ui/header/components/ToggleMobileMenu";
 import { ToggleSearchPanel } from "@/features/search";
 
@@ -23,6 +24,8 @@ const Header = () => {
 
         <div className="flex items-center gap-2">
           <ToggleSearchPanel />
+
+          <ToggleCartPanel />
 
           <ToggleMobileMenu />
         </div>

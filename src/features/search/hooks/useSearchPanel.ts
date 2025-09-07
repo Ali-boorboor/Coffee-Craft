@@ -4,7 +4,8 @@ import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { useRouter } from "next/router";
 
 const useSearchPanel = () => {
-  const { setIsSearchInputAvailable } = useSearchStore();
+  const { isSearchInputAvailable, setIsSearchInputAvailable } =
+    useSearchStore();
 
   const [searchValue, setSearchValue] = useState("");
 
@@ -39,6 +40,7 @@ const useSearchPanel = () => {
   return {
     searchValue,
     closeSearchPanel,
+    isSearchInputAvailable,
     redirectToSearchPage,
     handleInputChange,
     handleInputOnEnterPressed,

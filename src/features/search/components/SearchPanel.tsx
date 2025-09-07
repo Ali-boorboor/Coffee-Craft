@@ -1,8 +1,8 @@
 import React from "react";
 import Input from "@/components/ui/input";
 import Button from "@/components/ui/button";
+import usePanelAnimation from "@/animations/usePanelAnimation";
 import useSearchPanel from "@/features/search/hooks/useSearchPanel";
-import useSearchPanelAnimation from "@/features/search/animations/useSearchPanelAnimation";
 import { IoSearchOutline } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 
@@ -12,17 +12,19 @@ const SearchPanel = () => {
   const {
     searchValue,
     closeSearchPanel,
+    isSearchInputAvailable,
     handleInputOnEnterPressed,
     handleInputChange,
     redirectToSearchPage,
   } = useSearchPanel();
 
-  const { containerRef } = useSearchPanelAnimation({
+  const { containerRef } = usePanelAnimation({
     itemsDataAnimate: DATA_ANIMATE,
+    isPanelAvailable: isSearchInputAvailable,
   });
 
   return (
-    <div
+    <section
       className="fixed inset-0 z-50 flex flex-col justify-center items-center gap-4 px-4 text-white coffee-background"
       ref={containerRef}
     >
@@ -60,7 +62,7 @@ const SearchPanel = () => {
           onClick={redirectToSearchPage}
         />
       </div>
-    </div>
+    </section>
   );
 };
 

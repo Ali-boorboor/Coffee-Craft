@@ -1,17 +1,20 @@
 import gsap from "gsap";
-import { useSearchStore } from "@/features/search/stores/searchStores";
 import { useEffect, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 
-type useSearchPanelAnimationProps = {
+type usePanelAnimationProps = {
   itemsDataAnimate: string;
+  isPanelAvailable: boolean;
+  fromClipPath?: string;
+  toClipPath?: string;
 };
 
-const useSearchPanelAnimation = ({
+const usePanelAnimation = ({
   itemsDataAnimate,
-}: useSearchPanelAnimationProps) => {
-  const { isSearchInputAvailable } = useSearchStore();
-
+  isPanelAvailable,
+  fromClipPath = "polygon(0% 0%,0% 0%,0% 100%,0% 100%)",
+  toClipPath = "polygon(0% 0%,100% 0%,100% 100%,0% 100%)",
+}: usePanelAnimationProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const gsapTimelineRef = useRef<gsap.core.Timeline>(
     gsap.timeline({ defaults: { ease: "power4.inOut", duration: 1 } })
@@ -22,11 +25,11 @@ const useSearchPanelAnimation = ({
       .fromTo(
         containerRef.current,
         {
-          clipPath: "polygon(0% 0%,0% 0%,0% 100%,0% 100%)",
+          clipPath: fromClipPath,
           pointerEvents: "none",
         },
         {
-          clipPath: "polygon(0% 0%,100% 0%,100% 100%,0% 100%)",
+          clipPath: toClipPath,
           pointerEvents: "auto",
         }
       )
@@ -46,14 +49,14 @@ const useSearchPanelAnimation = ({
   }, []);
 
   useEffect(() => {
-    if (isSearchInputAvailable) {
+    if (isPanelAvailable) {
       gsapTimelineRef.current.play();
     } else {
       gsapTimelineRef.current.reverse();
     }
-  }, [isSearchInputAvailable]);
+  }, [isPanelAvailable]);
 
   return { containerRef };
 };
 
-export default useSearchPanelAnimation;
+export default usePanelAnimation;

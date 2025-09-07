@@ -4,7 +4,7 @@ import MenuItems from "@/components/templates/menu/MenuItems";
 
 const menuItems = [
   {
-    id: 1,
+    id: "1",
     type: "hot",
     title: "black coffee",
     image: "/image/black-coffee.png",
@@ -13,7 +13,7 @@ const menuItems = [
       "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
   },
   {
-    id: 2,
+    id: "2",
     type: "hot",
     title: "cappuccino",
     image: "/image/cappuccino.png",
@@ -22,7 +22,7 @@ const menuItems = [
       "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
   },
   {
-    id: 3,
+    id: "3",
     type: "cold",
     title: "banana milk",
     image: "/image/cappuccino.png",
@@ -31,7 +31,7 @@ const menuItems = [
       "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
   },
   {
-    id: 4,
+    id: "4",
     type: "cold",
     title: "milk",
     image: "/image/cappuccino.png",
