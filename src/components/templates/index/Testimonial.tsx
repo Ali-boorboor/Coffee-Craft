@@ -12,7 +12,7 @@ import {
 
 type TestimonialProps = {
   comments: {
-    id: number;
+    id: string;
     commenter: string;
     commentBody: string;
     image: string;

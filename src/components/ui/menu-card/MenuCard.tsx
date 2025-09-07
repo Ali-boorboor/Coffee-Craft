@@ -1,8 +1,10 @@
 import React from "react";
 import Button from "@/components/ui/button";
 import { FaCartShopping } from "react-icons/fa6";
+import Link from "next/link";
 
 type MenuCardProps = {
+  id: string;
   title: string;
   image: string;
   price: number;
@@ -11,6 +13,7 @@ type MenuCardProps = {
 };
 
 const MenuCard = ({
+  id,
   title,
   image,
   price,
@@ -23,11 +26,13 @@ const MenuCard = ({
       data-animate={dataAnimate}
     >
       <div className="h-52 md:h-72 bg-primary-foreground overflow-hidden rounded-b-3xl">
-        <img
-          className="w-full h-full object-cover object-center scale-95 transition-transform duration-300 ease-linear group-hover:scale-105 transform-gpu will-change-transform"
-          alt="menu-card-image"
-          src={image}
-        />
+        <Link href={`/product/${id}`}>
+          <img
+            className="w-full h-full object-cover object-center scale-95 transition-transform duration-300 ease-linear group-hover:scale-105 transform-gpu will-change-transform"
+            alt="menu-card-image"
+            src={image}
+          />
+        </Link>
       </div>
 
       <div className="absolute -right-6 top-1 rotate-45 inline-block w-20 bg-primary text-center text-lg font-bold transform-gpu will-change-transform">
@@ -37,7 +42,12 @@ const MenuCard = ({
       <div className="p-4 flex flex-col gap-4 justify-between">
         <div className="space-y-2">
           <h4 className="text-xl font-bold transform-gpu will-change-transform">
-            {title}
+            <Link
+              href={`/product/${id}`}
+              className="relative after:absolute after:bg-primary-foreground after:-bottom-1 after:left-0 after:right-0 after:m-auto after:w-0 after:h-0.5 after:opacity-0 after:transition-all after:duration-300 after:ease-linear hover:after:w-full hover:after:opacity-100"
+            >
+              {title}
+            </Link>
           </h4>
 
           <p className="line-clamp-3 leading-6 font-normal transform-gpu will-change-transform">

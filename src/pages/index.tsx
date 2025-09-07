@@ -8,7 +8,7 @@ import React from "react";
 
 const services = [
   {
-    id: 1,
+    id: "1",
     image: "/image/service-img-1.jpg",
     title: "Fastest Door Delivery",
     description:
@@ -17,7 +17,7 @@ const services = [
     iconPack: "tb",
   },
   {
-    id: 2,
+    id: "2",
     image: "/image/service-img-2.jpg",
     title: "Fresh Coffee Beans",
     description:
@@ -26,7 +26,7 @@ const services = [
     iconPack: "pi",
   },
   {
-    id: 3,
+    id: "3",
     image: "/image/service-img-3.jpg",
     title: "Best Quality Coffee",
     description:
@@ -35,7 +35,7 @@ const services = [
     iconPack: "fa",
   },
   {
-    id: 4,
+    id: "4",
     image: "/image/service-img-4.jpg",
     title: "Online Table Booking",
     description:
@@ -47,7 +47,7 @@ const services = [
 
 const menuItems = [
   {
-    id: 1,
+    id: "1",
     type: "hot",
     title: "black coffee",
     image: "/image/black-coffee.png",
@@ -56,7 +56,7 @@ const menuItems = [
       "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
   },
   {
-    id: 2,
+    id: "2",
     type: "hot",
     title: "cappuccino",
     image: "/image/cappuccino.png",
@@ -65,7 +65,7 @@ const menuItems = [
       "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
   },
   {
-    id: 3,
+    id: "3",
     type: "cold",
     title: "banana milk",
     image: "/image/cappuccino.png",
@@ -74,7 +74,7 @@ const menuItems = [
       "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
   },
   {
-    id: 4,
+    id: "4",
     type: "cold",
     title: "milk",
     image: "/image/cappuccino.png",
@@ -86,35 +86,35 @@ const menuItems = [
 
 const comments = [
   {
-    id: 1,
+    id: "1",
     commenter: "sara",
     commentBody:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio facilis error culpa tenetur fugit facere adipisci, laudantium numquam ullam dicta?",
     image: "/image/testimonial-1.jpg",
   },
   {
-    id: 2,
+    id: "2",
     commenter: "ali",
     commentBody:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio facilis error culpa tenetur fugit facere adipisci, laudantium numquam ullam dicta?",
     image: "/image/testimonial-2.jpg",
   },
   {
-    id: 3,
+    id: "3",
     commenter: "reza",
     commentBody:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio facilis error culpa tenetur fugit facere adipisci, laudantium numquam ullam dicta?",
     image: "/image/testimonial-3.jpg",
   },
   {
-    id: 4,
+    id: "4",
     commenter: "amir",
     commentBody:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio facilis error culpa tenetur fugit facere adipisci, laudantium numquam ullam dicta?",
     image: "/image/testimonial-2.jpg",
   },
   {
-    id: 5,
+    id: "5",
     commenter: "amirhossein",
     commentBody:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio facilis error culpa tenetur fugit facere adipisci, laudantium numquam ullam dicta?",

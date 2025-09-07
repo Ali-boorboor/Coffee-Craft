@@ -9,7 +9,7 @@ import { Autoplay } from "swiper/modules";
 
 type ServicesProps = {
   services: {
-    id: number;
+    id: string;
     image: string;
     title: string;
     description: string;

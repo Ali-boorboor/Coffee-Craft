@@ -12,7 +12,7 @@ import {
 
 type CommentsProps = {
   comments: {
-    id: number;
+    id: string;
     commenter: string;
     commentBody: string;
     image: string;

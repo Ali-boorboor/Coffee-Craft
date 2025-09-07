@@ -5,7 +5,7 @@ import React from "react";
 
 type ServicesDetailsProps = {
   services: {
-    id: number;
+    id: string;
     image: string;
     title: string;
     description: string;

@@ -6,7 +6,7 @@ import { useMenuFilterStore, useMenuAnimations } from "@/features/menu-filter";
 
 type MenuItemsProps = {
   menuItems: {
-    id: number;
+    id: string;
     type: string;
     title: string;
     image: string;
