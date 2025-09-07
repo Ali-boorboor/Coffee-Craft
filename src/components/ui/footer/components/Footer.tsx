@@ -5,8 +5,8 @@ import ShopDetails from "@/components/ui/footer/components/ShopDetails";
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary text-secondary-foreground pt-10 md:pt-20 px-4 md:px-0 mt-20 md:mt-40 relative paper-torn-piece-top">
-      <div className="flex flex-wrap gap-8 justify-center md:justify-between items-start container m-auto">
+    <footer className="bg-secondary text-secondary-foreground pt-10 md:pt-20 mt-20 md:mt-40 relative paper-torn-piece-top">
+      <div className="flex flex-wrap gap-8 justify-center md:justify-between items-start container m-auto px-4 md:px-0">
         <Contacts />
 
         <Socials />

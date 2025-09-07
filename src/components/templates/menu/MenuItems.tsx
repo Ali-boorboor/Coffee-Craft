@@ -25,7 +25,10 @@ const MenuItems = ({ menuItems }: MenuItemsProps) => {
   });
 
   return (
-    <div className="container m-auto flex flex-col gap-4" ref={containerRef}>
+    <section
+      className="container m-auto flex flex-col gap-4"
+      ref={containerRef}
+    >
       <SectionHeader title="Menu & Pricing" text="Competitive Pricing" />
 
       <FilterButtons />
@@ -51,7 +54,7 @@ const MenuItems = ({ menuItems }: MenuItemsProps) => {
               />
             ))}
       </div>
-    </div>
+    </section>
   );
 };
 

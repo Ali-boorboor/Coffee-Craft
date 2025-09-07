@@ -31,18 +31,19 @@ const useFadeUpAnimation = ({ fadeUpDataAnimate }: useFadeUpAnimationProps) => {
         }
       );
 
-      gsapTimeline.fromTo(
-        imageRef.current,
-        {
-          clipPath: "circle(0% at 50% 50%)",
-          y: 40,
-        },
-        {
-          clipPath: "circle(60% at 50% 50%)",
-          y: 0,
-        },
-        "-=1"
-      );
+      imageRef.current &&
+        gsapTimeline.fromTo(
+          imageRef.current,
+          {
+            clipPath: "circle(0% at 50% 50%)",
+            y: 40,
+          },
+          {
+            clipPath: "circle(60% at 50% 50%)",
+            y: 0,
+          },
+          "-=1"
+        );
     },
     { scope: containerRef, dependencies: [] }
   );
