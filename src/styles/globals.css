@@ -57,12 +57,27 @@
     content: "";
   }
 
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
+  .cart-panel-table-scrollbar::-webkit-scrollbar {
+    @apply w-3 h-3;
   }
 
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  .cart-panel-table-scrollbar::-webkit-scrollbar-track {
+    @apply bg-secondary-foreground;
+  }
+
+  .cart-panel-table-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-secondary/80 hover:bg-secondary/60;
+  }
+
+  .body-scrollbar::-webkit-scrollbar {
+    @apply w-3 h-3;
+  }
+
+  .body-scrollbar::-webkit-scrollbar-track {
+    @apply bg-secondary/40;
+  }
+
+  .body-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-primary hover:bg-primary/60;
   }
 }

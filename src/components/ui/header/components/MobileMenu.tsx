@@ -7,12 +7,14 @@ import { mobileMenuItems } from "@/components/ui/header/constants/menuItems";
 const DATA_ANIMATE = "mobile-menu-items";
 
 const MobileMenu = () => {
-  const { isMenuAvailable } = useMobileMenuStore();
+  const { setIsMenuAvailable, isMenuAvailable } = useMobileMenuStore();
 
   const { containerRef } = useMobileMenuAnimation({
     isMenuAvailable,
     itemsDataAnimate: DATA_ANIMATE,
   });
+
+  const closeMenuOnItemsClick = () => setIsMenuAvailable(false);
 
   return (
     <nav
@@ -23,6 +25,7 @@ const MobileMenu = () => {
         {mobileMenuItems.map((menuItem) => (
           <li
             className="transform-gpu will-change-transform"
+            onClick={closeMenuOnItemsClick}
             data-animate={DATA_ANIMATE}
             key={menuItem.id}
           >

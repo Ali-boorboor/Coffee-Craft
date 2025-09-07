@@ -23,7 +23,7 @@ const ServicesDetails = ({ services }: ServicesDetailsProps) => {
         {services.map((service) => {
           const Icon = iconLoader(service.iconPack, service.iconName);
 
-          return <ServiceCard Icon={Icon} {...service} />;
+          return <ServiceCard Icon={Icon} {...service} key={service.id} />;
         })}
       </div>
     </section>

@@ -26,7 +26,7 @@ const Button = ({
     secondary:
       "bg-secondary text-secondary-foreground border-secondary-foreground shadow-secondary-foreground hover:bg-secondary-foreground hover:text-secondary hover:border-secondary",
     danger:
-      "bg-red-500/20 text-red-500 border-red-500 hover:bg-red-500/40 hover:border-red-500",
+      "bg-red-400/66 text-black border-black shadow-black hover:border-red-400/66 hover:text-red-400/66 hover:bg-black",
   };
 
   const sizes = {

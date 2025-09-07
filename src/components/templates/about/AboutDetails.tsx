@@ -1,25 +1,28 @@
-import useAboutDetailsAnimations from "@/components/templates/about/animations/useAboutDetailsAnimations";
+import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
 import SectionHeader from "@/components/ui/section-header";
 import React from "react";
 
-const LINES_DATA_ANIMATE = "#about_lines";
+const FADE_UP_DATA_ANIMATE = "#about_lines";
 
 const AboutDetails = () => {
-  const { imageRef } = useAboutDetailsAnimations({
-    linesDataAnimate: LINES_DATA_ANIMATE,
+  const { containerRef, imageRef } = useFadeUpAnimation({
+    fadeUpDataAnimate: FADE_UP_DATA_ANIMATE,
   });
 
   return (
-    <section className="flex flex-col justify-center items-center gap-2 md:gap-6 container m-auto md:px-0 px-4">
+    <section
+      className="flex flex-col justify-center items-center gap-2 md:gap-6 container m-auto md:px-0 px-4"
+      ref={containerRef}
+    >
       <SectionHeader
         title="about us"
         text="serving since 2004"
-        linesDataAnimate={LINES_DATA_ANIMATE}
+        linesDataAnimate={FADE_UP_DATA_ANIMATE}
       />
 
       <p
         className="md:max-w-96 w-full m-auto md:leading-6 text-center font-normal transform-gpu will-change-transform"
-        data-animate={LINES_DATA_ANIMATE}
+        data-animate={FADE_UP_DATA_ANIMATE}
       >
         There are many variations of passages of Lorem Ipsum available, but the
         majority have suffered alteration in some form, by injected humour, or

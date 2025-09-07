@@ -26,7 +26,7 @@ const MenuItems = ({ menuItems }: MenuItemsProps) => {
 
   return (
     <section
-      className="container m-auto flex flex-col gap-4"
+      className="container m-auto flex flex-col gap-4 px-4 md:px-0"
       ref={containerRef}
     >
       <SectionHeader title="Menu & Pricing" text="Competitive Pricing" />

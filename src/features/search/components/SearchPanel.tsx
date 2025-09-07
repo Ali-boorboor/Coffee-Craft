@@ -25,7 +25,7 @@ const SearchPanel = () => {
 
   return (
     <section
-      className="fixed inset-0 z-50 flex flex-col justify-center items-center gap-4 px-4 text-white coffee-background"
+      className="fixed inset-0 z-50 flex flex-col justify-center items-center gap-4 p-4 text-white coffee-background"
       ref={containerRef}
     >
       <Button
