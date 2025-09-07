@@ -1,17 +1,26 @@
+import { useSearchStore } from "@/features/search/stores/searchStores";
 import { isTextInputValueValid } from "@/utils/inputValidations";
 import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { useRouter } from "next/router";
 
 const useSearchPanel = () => {
+  const { setIsSearchInputAvailable } = useSearchStore();
+
   const [searchValue, setSearchValue] = useState("");
 
   const router = useRouter();
+
+  const closeSearchPanel = () => setIsSearchInputAvailable(false);
 
   const redirectToSearchPage = () => {
     if (isTextInputValueValid({ inputValue: searchValue })) {
       const searchQuery = encodeURIComponent(searchValue);
 
       router.push(`/search?q=${searchQuery}`);
+
+      setSearchValue("");
+
+      closeSearchPanel();
     }
   };
 
@@ -29,6 +38,7 @@ const useSearchPanel = () => {
 
   return {
     searchValue,
+    closeSearchPanel,
     redirectToSearchPage,
     handleInputChange,
     handleInputOnEnterPressed,

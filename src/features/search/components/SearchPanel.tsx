@@ -3,17 +3,15 @@ import Input from "@/components/ui/input";
 import Button from "@/components/ui/button";
 import useSearchPanel from "@/features/search/hooks/useSearchPanel";
 import useSearchPanelAnimation from "@/features/search/animations/useSearchPanelAnimation";
-import { useSearchStore } from "@/features/search/stores/searchStores";
 import { IoSearchOutline } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 
 const DATA_ANIMATE = "search-panel-items";
 
 const SearchPanel = () => {
-  const { setIsSearchInputAvailable } = useSearchStore();
-
   const {
     searchValue,
+    closeSearchPanel,
     handleInputOnEnterPressed,
     handleInputChange,
     redirectToSearchPage,
@@ -23,15 +21,13 @@ const SearchPanel = () => {
     itemsDataAnimate: DATA_ANIMATE,
   });
 
-  const closeSearchInputPanel = () => setIsSearchInputAvailable(false);
-
   return (
     <div
       className="fixed inset-0 z-50 flex flex-col justify-center items-center gap-4 px-4 text-white coffee-background"
       ref={containerRef}
     >
       <Button
-        onClick={closeSearchInputPanel}
+        onClick={closeSearchPanel}
         data-animate={DATA_ANIMATE}
         variant="danger"
         size="icon"

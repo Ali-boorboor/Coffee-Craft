@@ -4,7 +4,7 @@ import React from "react";
 
 const services = [
   {
-    id: 1,
+    id: "1",
     image: "/image/service-img-1.jpg",
     title: "Fastest Door Delivery",
     description:
@@ -13,7 +13,7 @@ const services = [
     iconPack: "tb",
   },
   {
-    id: 2,
+    id: "2",
     image: "/image/service-img-2.jpg",
     title: "Fresh Coffee Beans",
     description:
@@ -22,7 +22,7 @@ const services = [
     iconPack: "pi",
   },
   {
-    id: 3,
+    id: "3",
     image: "/image/service-img-3.jpg",
     title: "Best Quality Coffee",
     description:
@@ -31,7 +31,7 @@ const services = [
     iconPack: "fa",
   },
   {
-    id: 4,
+    id: "4",
     image: "/image/service-img-4.jpg",
     title: "Online Table Booking",
     description:

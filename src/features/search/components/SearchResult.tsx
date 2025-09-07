@@ -1,0 +1,62 @@
+import React from "react";
+import MenuCard from "@/components/ui/menu-card/MenuCard";
+import SectionHeader from "@/components/ui/section-header";
+import FilterButtons, {
+  useMenuAnimations,
+  useMenuFilterStore,
+} from "@/features/menu-filter";
+
+type SearchResultProps = {
+  menuItems: {
+    id: string;
+    type: string;
+    title: string;
+    image: string;
+    price: number;
+    description: string;
+  }[];
+};
+
+const ITEMS_DATA_ANIMATE = "test";
+
+const SearchResult = ({ menuItems }: SearchResultProps) => {
+  const { menuFilterType } = useMenuFilterStore();
+  const { containerRef } = useMenuAnimations({
+    itemsDataAnimate: ITEMS_DATA_ANIMATE,
+    menuFilterType,
+  });
+
+  return (
+    <section className="px-4 md:px-0" ref={containerRef}>
+      <div className="container m-auto flex flex-col gap-4">
+        <SectionHeader title="search result" text="found products" />
+
+        <FilterButtons />
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+          {menuFilterType === "all" &&
+            menuItems.map((item) => (
+              <MenuCard
+                dataAnimate={ITEMS_DATA_ANIMATE}
+                key={item.id}
+                {...item}
+              />
+            ))}
+
+          {menuFilterType !== "all" &&
+            menuItems
+              .filter((item) => item.type === menuFilterType)
+              .map((item) => (
+                <MenuCard
+                  dataAnimate={ITEMS_DATA_ANIMATE}
+                  key={item.id}
+                  {...item}
+                />
+              ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default SearchResult;

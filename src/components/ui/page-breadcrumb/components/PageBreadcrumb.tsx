@@ -2,7 +2,7 @@ import usePageBreadcrumbAnimation from "@/components/ui/page-breadcrumb/animatio
 import Link from "next/link";
 import React from "react";
 
-type PageBreadcrumbProps = { title: string; href: string };
+type PageBreadcrumbProps = { title: string; href?: string };
 
 const PageBreadcrumb = ({ title, href }: PageBreadcrumbProps) => {
   const { containerRef } = usePageBreadcrumbAnimation();
@@ -25,14 +25,18 @@ const PageBreadcrumb = ({ title, href }: PageBreadcrumbProps) => {
             home
           </Link>
 
-          <span>/</span>
+          {href ? (
+            <>
+              <span>/</span>
 
-          <Link
-            className="relative after:absolute after:w-0 after:h-0.5 after:bg-primary after:-bottom-0.5 after:left-0 after:right-0 after:m-auto after:transition-all after:duration-300 after:ease-linear hover:after:w-full transform-gpu will-change-transform"
-            href={href}
-          >
-            {title}
-          </Link>
+              <Link
+                className="relative after:absolute after:w-0 after:h-0.5 after:bg-primary after:-bottom-0.5 after:left-0 after:right-0 after:m-auto after:transition-all after:duration-300 after:ease-linear hover:after:w-full transform-gpu will-change-transform"
+                href={href}
+              >
+                {title}
+              </Link>
+            </>
+          ) : null}
         </div>
       </div>
     </section>

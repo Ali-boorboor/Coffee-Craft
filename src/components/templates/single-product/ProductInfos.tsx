@@ -1,17 +1,24 @@
-import React from "react";
+import useProductInfosAniamtion from "@/components/templates/single-product/animations/useProductInfosAniamtion";
 import Button from "@/components/ui/button";
+import React from "react";
 import { FaCartShopping } from "react-icons/fa6";
 
 type ProductInfosProps = {
   name: string;
-  price: string;
+  price: number;
   image: string;
   id: string;
 };
 
 const ProductInfos = ({ name, price, image, id }: ProductInfosProps) => {
+  const { containerRef, productImageRef, coffeeBeanImageRef } =
+    useProductInfosAniamtion();
+
   return (
-    <div className="coffee-background py-10 md:py-20 text-white relative paper-torn-piece-bottom">
+    <div
+      className="coffee-background py-10 md:py-20 text-white relative paper-torn-piece-bottom"
+      ref={containerRef}
+    >
       <div className="container m-auto flex flex-col gap-2 md:gap-4 justify-center items-center">
         <h2 className="text-2xl md:text-5xl font-bold text-primary capitalize text-shadow-xs text-shadow-white z-20">
           {name}
@@ -23,6 +30,7 @@ const ProductInfos = ({ name, price, image, id }: ProductInfosProps) => {
 
         <img
           className="w-60 h-60 md:w-96 md:h-96 object-cover object-center z-20"
+          ref={productImageRef}
           alt="product-image"
           src={image}
         />
@@ -33,14 +41,9 @@ const ProductInfos = ({ name, price, image, id }: ProductInfosProps) => {
         </Button>
 
         <img
-          className="w-40 h-40 md:w-72 md:h-72 object-cover object-center absolute left-0 bottom-0 rotate-180 z-10"
+          className="w-40 h-40 md:w-72 md:h-72 object-cover object-center absolute right-0 top-0 z-10 transform-gpu will-change-transform"
           src="/image/coffee-beans.png"
-          alt="product-image"
-        />
-
-        <img
-          className="w-40 h-40 md:w-72 md:h-72 object-cover object-center absolute right-0 top-0 z-10"
-          src="/image/coffee-beans.png"
+          ref={coffeeBeanImageRef}
           alt="product-image"
         />
       </div>
