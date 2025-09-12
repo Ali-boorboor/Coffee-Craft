@@ -6,16 +6,10 @@ import ServiceCard from "@/components/ui/service-card/ServiceCard";
 import { useSliderAnimation } from "@/features/slider";
 import { SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
+import { Service } from "@/types";
 
 type ServicesProps = {
-  services: {
-    id: string;
-    image: string;
-    title: string;
-    description: string;
-    iconName: string;
-    iconPack: string;
-  }[];
+  services: Service[];
 };
 
 const LINES_DATA_ANIMATE = "services-lines";
@@ -62,7 +56,7 @@ const Services = ({ services }: ServicesProps) => {
             const Icon = iconLoader(service.iconPack, service.iconName);
 
             return (
-              <SwiperSlide data-animate={SLIDES_DATA_ANIMATE} key={service.id}>
+              <SwiperSlide data-animate={SLIDES_DATA_ANIMATE} key={service._id}>
                 <ServiceCard Icon={Icon} {...service} />
               </SwiperSlide>
             );

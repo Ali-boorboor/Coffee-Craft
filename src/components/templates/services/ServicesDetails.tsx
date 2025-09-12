@@ -2,16 +2,10 @@ import ServiceCard from "@/components/ui/service-card/ServiceCard";
 import SectionHeader from "@/components/ui/section-header";
 import iconLoader from "@/utils/dynamicIconLoader";
 import React from "react";
+import { Service } from "@/types";
 
 type ServicesDetailsProps = {
-  services: {
-    id: string;
-    image: string;
-    title: string;
-    description: string;
-    iconName: string;
-    iconPack: string;
-  }[];
+  services: Service[];
 };
 
 const ServicesDetails = ({ services }: ServicesDetailsProps) => {
@@ -23,7 +17,7 @@ const ServicesDetails = ({ services }: ServicesDetailsProps) => {
         {services.map((service) => {
           const Icon = iconLoader(service.iconPack, service.iconName);
 
-          return <ServiceCard Icon={Icon} {...service} key={service.id} />;
+          return <ServiceCard Icon={Icon} {...service} key={service._id} />;
         })}
       </div>
     </section>

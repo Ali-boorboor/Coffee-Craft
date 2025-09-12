@@ -3,7 +3,7 @@ import Button from "@/components/ui/button";
 import { FaCartShopping } from "react-icons/fa6";
 import Link from "next/link";
 
-type MenuCardProps = {
+type ProductCardProps = {
   id: string;
   title: string;
   image: string;
@@ -12,14 +12,14 @@ type MenuCardProps = {
   dataAnimate?: string;
 };
 
-const MenuCard = ({
+const ProductCard = ({
   id,
   title,
   image,
   price,
   description,
   dataAnimate,
-}: MenuCardProps) => {
+}: ProductCardProps) => {
   return (
     <div
       className="bg-primary text-primary-foreground flex flex-col rounded-md overflow-hidden border-2 border-primary drop-shadow-xs shadow-xs drop-shadow-white shadow-white relative group"
@@ -64,4 +64,4 @@ const MenuCard = ({
   );
 };
 
-export default MenuCard;
+export default ProductCard;

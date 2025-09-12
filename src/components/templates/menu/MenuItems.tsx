@@ -1,6 +1,6 @@
 import React from "react";
 import FilterButtons from "@/features/menu-filter";
-import MenuCard from "@/components/ui/menu-card/MenuCard";
+import ProductCard from "@/components/ui/product-card/ProductCard";
 import SectionHeader from "@/components/ui/section-header";
 import { useMenuFilterStore, useMenuAnimations } from "@/features/menu-filter";
 
@@ -36,7 +36,7 @@ const MenuItems = ({ menuItems }: MenuItemsProps) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
         {menuFilterType === "all" &&
           menuItems.map((item) => (
-            <MenuCard
+            <ProductCard
               dataAnimate={ITEMS_DATA_ANIMATE}
               key={item.id}
               {...item}
@@ -47,7 +47,7 @@ const MenuItems = ({ menuItems }: MenuItemsProps) => {
           menuItems
             .filter((item) => item.type === menuFilterType)
             .map((item) => (
-              <MenuCard
+              <ProductCard
                 dataAnimate={ITEMS_DATA_ANIMATE}
                 key={item.id}
                 {...item}
