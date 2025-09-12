@@ -1,42 +1,32 @@
-import Product from "@/components/templates/single-product/Product";
 import React from "react";
+import ProductModel from "@/models/Product";
+import connectToDB from "@/database/dbConnection";
+import jsonDataParser from "@/utils/jsonDataParser";
+import Product from "@/components/templates/single-product/Product";
+import { NextPageContext } from "next";
+import { Product as ProductType } from "@/types";
 
-const productComments = [
-  {
-    id: "1",
-    commenter: "sara",
-    commentBody:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio facilis error culpa tenetur fugit facere adipisci, laudantium numquam ullam dicta?",
-    image: "/image/testimonial-1.jpg",
-  },
-  {
-    id: "2",
-    commenter: "ali",
-    commentBody:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio facilis error culpa tenetur fugit facere adipisci, laudantium numquam ullam dicta?",
-    image: "/image/testimonial-2.jpg",
-  },
-  {
-    id: "3",
-    commenter: "amir",
-    commentBody:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio facilis error culpa tenetur fugit facere adipisci, laudantium numquam ullam dicta?",
-    image: "/image/testimonial-3.jpg",
-  },
-];
+type SingleProductProps = { product: ProductType };
 
-const SingleProduct = () => {
+const SingleProduct = ({ product }: SingleProductProps) => {
   return (
-    <main className="space-y-20 md:space-y-40">
-      <Product
-        comments={productComments}
-        image="/image/black-coffee.png"
-        name="black coffee"
-        price={10}
-        id="1"
-      />
+    <main>
+      <Product product={product} />
     </main>
   );
+};
+
+export const getServerSideProps = async (context: NextPageContext) => {
+  connectToDB();
+
+  const { id } = context.query;
+
+  const product = await ProductModel.findById(id, "-__v")
+    .populate("comments")
+    .lean();
+  const parsedProduct = jsonDataParser(product);
+
+  return { props: { product: parsedProduct } };
 };
 
 export default SingleProduct;

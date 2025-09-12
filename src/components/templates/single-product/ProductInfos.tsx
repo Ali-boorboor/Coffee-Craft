@@ -1,16 +1,10 @@
-import useProductInfosAniamtion from "@/components/templates/single-product/animations/useProductInfosAniamtion";
-import Button from "@/components/ui/button";
 import React from "react";
+import Button from "@/components/ui/button";
+import useProductInfosAniamtion from "@/components/templates/single-product/animations/useProductInfosAniamtion";
 import { FaCartShopping } from "react-icons/fa6";
+import { Product } from "@/types";
 
-type ProductInfosProps = {
-  name: string;
-  price: number;
-  image: string;
-  id: string;
-};
-
-const ProductInfos = ({ name, price, image, id }: ProductInfosProps) => {
+const ProductInfos = ({ title, price, image }: Product) => {
   const { containerRef, productImageRef, coffeeBeanImageRef } =
     useProductInfosAniamtion();
 
@@ -21,7 +15,7 @@ const ProductInfos = ({ name, price, image, id }: ProductInfosProps) => {
     >
       <div className="container m-auto flex flex-col gap-2 md:gap-4 justify-center items-center">
         <h2 className="text-2xl md:text-5xl font-bold text-primary capitalize text-shadow-xs text-shadow-white z-20">
-          {name}
+          {title}
         </h2>
 
         <p className="text-lg md:text-2xl font-semibold bg-primary text-primary-foreground py-0.5 px-8 rounded-md drop-shadow-sm drop-shadow-white z-20">

@@ -14,6 +14,7 @@ type Product = {
   image: string;
   price: number;
   description: string;
+  comments: Comment[] | [];
 };
 
 type Comment = {

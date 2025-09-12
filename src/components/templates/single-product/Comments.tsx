@@ -9,14 +9,10 @@ import {
   PaginationBullet,
   useSliderAnimation,
 } from "@/features/slider";
+import { Comment } from "@/types";
 
 type CommentsProps = {
-  comments: {
-    id: string;
-    commenter: string;
-    commentBody: string;
-    image: string;
-  }[];
+  comments: Comment[];
   productName: string;
 };
 
@@ -65,7 +61,7 @@ const Comments = ({ comments, productName }: CommentsProps) => {
             loop
           >
             {comments.map((comment) => (
-              <SwiperSlide data-animate={SLIDES_DATA_ANIMATE} key={comment.id}>
+              <SwiperSlide data-animate={SLIDES_DATA_ANIMATE} key={comment._id}>
                 <CommentCard {...comment} />
               </SwiperSlide>
             ))}

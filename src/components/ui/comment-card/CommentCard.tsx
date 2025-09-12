@@ -1,10 +1,7 @@
 import React from "react";
+import { Comment } from "@/types";
 
-type CommentCardProps = {
-  commenter: string;
-  commentBody: string;
-  image: string;
-};
+type CommentCardProps = Comment;
 
 const CommentCard = ({ commenter, commentBody, image }: CommentCardProps) => {
   return (
