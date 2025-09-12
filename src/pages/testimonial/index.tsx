@@ -1,9 +1,9 @@
-import PageBreadcrumb from "@/components/ui/page-breadcrumb/components/PageBreadcrumb";
-import Comments from "@/components/templates/testimonial/Comments";
-import jsonDataParser from "@/utils/jsonDataParser";
-import connectToDB from "@/database/dbConnection";
-import CommentModel from "@/models/Comment";
 import React from "react";
+import CommentModel from "@/models/Comment";
+import connectToDB from "@/database/dbConnection";
+import jsonDataParser from "@/utils/jsonDataParser";
+import PageBreadcrumb from "@/components/ui/page-breadcrumb";
+import Comments from "@/components/templates/testimonial/Comments";
 import { Comment } from "@/types";
 
 type TestimonialProps = { comments: Comment[] };

@@ -1,9 +1,9 @@
-import ServicesDetails from "@/components/templates/services/ServicesDetails";
-import PageBreadcrumb from "@/components/ui/page-breadcrumb";
-import jsonDataParser from "@/utils/jsonDataParser";
-import connectToDB from "@/database/dbConnection";
-import ServiceModel from "@/models/Service";
 import React from "react";
+import ServiceModel from "@/models/Service";
+import connectToDB from "@/database/dbConnection";
+import jsonDataParser from "@/utils/jsonDataParser";
+import PageBreadcrumb from "@/components/ui/page-breadcrumb";
+import ServicesDetails from "@/components/templates/services/ServicesDetails";
 import { Service } from "@/types";
 
 type ServicesProps = { services: Service[] };
