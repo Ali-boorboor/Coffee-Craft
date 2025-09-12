@@ -16,7 +16,7 @@ const DesktopMenu = () => {
           if (menuItem.children) {
             return (
               <li
-                className="relative group -translate-y-20 transform-gpu will-change-transform"
+                className="relative group transform-gpu will-change-transform"
                 data-animate={DATA_ANIMATE}
                 key={menuItem.id}
               >
@@ -44,7 +44,7 @@ const DesktopMenu = () => {
           } else {
             return (
               <li
-                className="-translate-y-20 transform-gpu will-change-transform"
+                className="transform-gpu will-change-transform"
                 data-animate={DATA_ANIMATE}
                 key={menuItem.id}
               >

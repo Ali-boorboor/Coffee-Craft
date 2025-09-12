@@ -7,13 +7,20 @@ const useDesktopMenuAnimation = ({
   itemsDataAnimate,
 }: useDesktopMenuAnimationProps) => {
   useGSAP(() => {
-    gsap.to(`[data-animate='${itemsDataAnimate}']`, {
-      y: 0,
-      opacity: 1,
-      stagger: 0.1,
-      duration: 1,
-      ease: "bounce.out",
-    });
+    gsap.fromTo(
+      `[data-animate='${itemsDataAnimate}']`,
+      {
+        y: -20,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.1,
+        duration: 1,
+        ease: "bounce.out",
+      }
+    );
   }, []);
 };
 

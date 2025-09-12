@@ -16,4 +16,11 @@ type Product = {
   description: string;
 };
 
-export type { Service, Product };
+type Comment = {
+  _id: string;
+  commenter: string;
+  commentBody: string;
+  image: string;
+};
+
+export type { Service, Product, Comment };

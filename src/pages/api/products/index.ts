@@ -1,4 +1,3 @@
-import "@/models/Comment";
 import ProductModel from "@/models/Product";
 import connectToDB from "@/database/dbConnection";
 import { NextApiRequest, NextApiResponse } from "next";

@@ -9,14 +9,10 @@ import {
   PaginationBullet,
   useSliderAnimation,
 } from "@/features/slider";
+import { Comment } from "@/types";
 
 type TestimonialProps = {
-  comments: {
-    id: string;
-    commenter: string;
-    commentBody: string;
-    image: string;
-  }[];
+  comments: Comment[];
 };
 
 const LINES_DATA_ANIMATE = "testimonial-lines";
@@ -63,8 +59,8 @@ const Testimonial = ({ comments }: TestimonialProps) => {
             grabCursor
             loop
           >
-            {comments.map((comment) => (
-              <SwiperSlide data-animate={SLIDES_DATA_ANIMATE} key={comment.id}>
+            {comments.slice(0, 5).map((comment) => (
+              <SwiperSlide data-animate={SLIDES_DATA_ANIMATE} key={comment._id}>
                 <CommentCard {...comment} />
               </SwiperSlide>
             ))}
