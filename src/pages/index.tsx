@@ -7,47 +7,9 @@ import Testimonial from "@/components/templates/index/Testimonial";
 import jsonDataParser from "@/utils/jsonDataParser";
 import connectToDB from "@/database/dbConnection";
 import ServiceModel from "@/models/Service";
+import ProductModel from "@/models/Product";
 import React from "react";
-import { Service } from "@/types";
-
-const menuItems = [
-  {
-    id: "1",
-    type: "hot",
-    title: "black coffee",
-    image: "/image/black-coffee.png",
-    price: 10,
-    description:
-      "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
-  },
-  {
-    id: "2",
-    type: "hot",
-    title: "cappuccino",
-    image: "/image/cappuccino.png",
-    price: 15,
-    description:
-      "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
-  },
-  {
-    id: "3",
-    type: "cold",
-    title: "banana milk",
-    image: "/image/cappuccino.png",
-    price: 5,
-    description:
-      "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
-  },
-  {
-    id: "4",
-    type: "cold",
-    title: "milk",
-    image: "/image/cappuccino.png",
-    price: 2,
-    description:
-      "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
-  },
-];
+import { Product, Service } from "@/types";
 
 const comments = [
   {
@@ -87,9 +49,9 @@ const comments = [
   },
 ];
 
-type IndexProps = { services: Service[] };
+type IndexProps = { services: Service[]; products: Product[] };
 
-const Index = ({ services }: IndexProps) => {
+const Index = ({ services, products }: IndexProps) => {
   return (
     <main className="space-y-40 md:space-y-80">
       <Intro />
@@ -100,7 +62,7 @@ const Index = ({ services }: IndexProps) => {
 
       <Newsletter />
 
-      <Menu menuItems={menuItems} />
+      <Menu menuItems={products} />
 
       <Testimonial comments={comments} />
     </main>
@@ -111,12 +73,15 @@ export const getStaticProps = async () => {
   connectToDB();
 
   const services = await ServiceModel.find({}).lean();
-
   const parsedServices = jsonDataParser(services);
+
+  const products = await ProductModel.find({}).lean();
+  const parsedProducts = jsonDataParser(products);
 
   return {
     props: {
       services: parsedServices,
+      products: parsedProducts,
     },
   };
 };

@@ -11,6 +11,11 @@ const schema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    type: {
+      type: String,
+      enum: ["hot", "cold"],
+      default: "hot",
+    },
     price: {
       type: Number,
       min: 0,

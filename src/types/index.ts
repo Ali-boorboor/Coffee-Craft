@@ -7,4 +7,13 @@ type Service = {
   iconPack: string;
 };
 
-export type { Service };
+type Product = {
+  _id: string;
+  type: "hot" | "cold";
+  title: string;
+  image: string;
+  price: number;
+  description: string;
+};
+
+export type { Service, Product };

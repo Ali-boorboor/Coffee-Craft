@@ -4,7 +4,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import Link from "next/link";
 
 type ProductCardProps = {
-  id: string;
+  _id: string;
   title: string;
   image: string;
   price: number;
@@ -13,7 +13,7 @@ type ProductCardProps = {
 };
 
 const ProductCard = ({
-  id,
+  _id,
   title,
   image,
   price,
@@ -26,7 +26,7 @@ const ProductCard = ({
       data-animate={dataAnimate}
     >
       <div className="h-52 md:h-72 bg-primary-foreground overflow-hidden rounded-b-3xl">
-        <Link href={`/product/${id}`}>
+        <Link href={`/product/${_id}`}>
           <img
             className="w-full h-full object-cover object-center scale-95 transition-transform duration-300 ease-linear group-hover:scale-105 transform-gpu will-change-transform"
             alt="menu-card-image"
@@ -43,7 +43,7 @@ const ProductCard = ({
         <div className="space-y-2">
           <h4 className="text-xl font-bold transform-gpu will-change-transform">
             <Link
-              href={`/product/${id}`}
+              href={`/product/${_id}`}
               className="relative after:absolute after:bg-primary-foreground after:-bottom-1 after:left-0 after:right-0 after:m-auto after:w-0 after:h-0.5 after:opacity-0 after:transition-all after:duration-300 after:ease-linear hover:after:w-full hover:after:opacity-100"
             >
               {title}

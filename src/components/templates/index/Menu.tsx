@@ -3,16 +3,10 @@ import FilterButtons from "@/features/menu-filter";
 import ProductCard from "@/components/ui/product-card/ProductCard";
 import SectionHeader from "@/components/ui/section-header";
 import { useMenuFilterStore, useMenuAnimations } from "@/features/menu-filter";
+import { Product } from "@/types";
 
 type MenuProps = {
-  menuItems: {
-    id: string;
-    type: string;
-    title: string;
-    image: string;
-    price: number;
-    description: string;
-  }[];
+  menuItems: Product[];
 };
 
 const ITEMS_DATA_ANIMATE = "menu-zoom-in";
@@ -41,7 +35,7 @@ const Menu = ({ menuItems }: MenuProps) => {
               .map((item) => (
                 <ProductCard
                   dataAnimate={ITEMS_DATA_ANIMATE}
-                  key={item.id}
+                  key={item._id}
                   {...item}
                 />
               ))}
@@ -53,7 +47,7 @@ const Menu = ({ menuItems }: MenuProps) => {
               .map((item) => (
                 <ProductCard
                   dataAnimate={ITEMS_DATA_ANIMATE}
-                  key={item.id}
+                  key={item._id}
                   {...item}
                 />
               ))}

@@ -20,7 +20,7 @@ const schema = new mongoose.Schema(
     },
     image: {
       type: String,
-      default: "/image/user-icon.png",
+      required: true,
     },
   },
   { timestamps: true }

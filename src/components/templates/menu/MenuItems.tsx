@@ -3,16 +3,10 @@ import FilterButtons from "@/features/menu-filter";
 import ProductCard from "@/components/ui/product-card/ProductCard";
 import SectionHeader from "@/components/ui/section-header";
 import { useMenuFilterStore, useMenuAnimations } from "@/features/menu-filter";
+import { Product } from "@/types";
 
 type MenuItemsProps = {
-  menuItems: {
-    id: string;
-    type: string;
-    title: string;
-    image: string;
-    price: number;
-    description: string;
-  }[];
+  menuItems: Product[];
 };
 
 const ITEMS_DATA_ANIMATE = "#menu_items";
@@ -38,7 +32,7 @@ const MenuItems = ({ menuItems }: MenuItemsProps) => {
           menuItems.map((item) => (
             <ProductCard
               dataAnimate={ITEMS_DATA_ANIMATE}
-              key={item.id}
+              key={item._id}
               {...item}
             />
           ))}
@@ -49,7 +43,7 @@ const MenuItems = ({ menuItems }: MenuItemsProps) => {
             .map((item) => (
               <ProductCard
                 dataAnimate={ITEMS_DATA_ANIMATE}
-                key={item.id}
+                key={item._id}
                 {...item}
               />
             ))}
