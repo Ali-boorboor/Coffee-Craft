@@ -12,7 +12,7 @@ const ToggleSearchPanel = () => {
   };
 
   return (
-    <Button size="icon" onClick={toggleSearchInput}>
+    <Button size="icon" title="search" onClick={toggleSearchInput}>
       <IoSearchOutline className="size-4 md:size-6" />
     </Button>
   );

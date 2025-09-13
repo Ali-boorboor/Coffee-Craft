@@ -11,7 +11,7 @@ const ToggleCartPanel = () => {
   };
 
   return (
-    <Button size="icon" onClick={toggleCartPanel}>
+    <Button size="icon" title="cart" onClick={toggleCartPanel}>
       <FaCartShopping className="size-4 md:size-6" />
     </Button>
   );

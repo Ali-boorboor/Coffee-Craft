@@ -4,9 +4,12 @@ import MobileMenu from "@/components/ui/header/components/MobileMenu";
 import DesktopMenu from "@/components/ui/header/components/DesktopMenu";
 import ToggleCartPanel from "@/features/cart/components/ToggleCartPanel";
 import ToggleMobileMenu from "@/components/ui/header/components/ToggleMobileMenu";
+import { ToggleLogout, useAuthStore } from "@/features/auth";
 import { ToggleSearchPanel } from "@/features/search";
 
 const Header = () => {
+  const { isUserLogin } = useAuthStore();
+
   return (
     <header className="bg-secondary text-secondary-foreground shadow-xs shadow-secondary-foreground sticky left-0 right-0 top-0 border-b border-b-secondary-foreground z-30">
       <div className="container m-auto flex justify-between items-center py-2 md:py-4 px-4 md:px-0">
@@ -26,9 +29,11 @@ const Header = () => {
         <div className="flex items-center gap-2">
           <ToggleSearchPanel />
 
-          <ToggleCartPanel />
+          {isUserLogin && <ToggleCartPanel />}
 
           <ToggleMobileMenu />
+
+          <ToggleLogout />
         </div>
       </div>
     </header>
