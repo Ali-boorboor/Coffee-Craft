@@ -5,21 +5,15 @@ import FilterButtons, {
   useMenuAnimations,
   useMenuFilterStore,
 } from "@/features/menu-filter";
+import { Product } from "@/types";
 
 type SearchResultProps = {
-  menuItems: {
-    id: string;
-    type: string;
-    title: string;
-    image: string;
-    price: number;
-    description: string;
-  }[];
+  matchedProducts: Product[];
 };
 
-const ITEMS_DATA_ANIMATE = "test";
+const ITEMS_DATA_ANIMATE = "#search-result_items";
 
-const SearchResult = ({ menuItems }: SearchResultProps) => {
+const SearchResult = ({ matchedProducts }: SearchResultProps) => {
   const { menuFilterType } = useMenuFilterStore();
   const { containerRef } = useMenuAnimations({
     itemsDataAnimate: ITEMS_DATA_ANIMATE,
@@ -35,21 +29,21 @@ const SearchResult = ({ menuItems }: SearchResultProps) => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
           {menuFilterType === "all" &&
-            menuItems.map((item) => (
+            matchedProducts.map((item) => (
               <ProductCard
                 dataAnimate={ITEMS_DATA_ANIMATE}
-                key={item.id}
+                key={item._id}
                 {...item}
               />
             ))}
 
           {menuFilterType !== "all" &&
-            menuItems
+            matchedProducts
               .filter((item) => item.type === menuFilterType)
               .map((item) => (
                 <ProductCard
                   dataAnimate={ITEMS_DATA_ANIMATE}
-                  key={item.id}
+                  key={item._id}
                   {...item}
                 />
               ))}
