@@ -7,7 +7,7 @@ type Service = {
   iconPack: string;
 };
 
-type Product = {
+interface Product {
   _id: string;
   type: "hot" | "cold";
   title: string;
@@ -15,7 +15,7 @@ type Product = {
   price: number;
   description: string;
   comments: Comment[] | [];
-};
+}
 
 type Comment = {
   _id: string;

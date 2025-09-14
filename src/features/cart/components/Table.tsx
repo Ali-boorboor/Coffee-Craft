@@ -1,13 +1,10 @@
 import React from "react";
 import Button from "@/components/ui/button";
 import { FaMinus, FaPlus, FaTrashAlt } from "react-icons/fa";
+import { Cart } from "@/features/cart/types";
 
 type TableProps = {
-  cartDatas: {
-    products: { id: string; name: string; quantity: number; price: number }[];
-    totalPrice: number;
-    totalQuantity: number;
-  };
+  cartDatas: Cart;
   dataAnimate?: string;
 };
 
@@ -42,13 +39,13 @@ const Table = ({ cartDatas, dataAnimate }: TableProps) => {
           {cartDatas.products.map((product, index) => (
             <tr
               className="border-t-2 border-t-white/60 first:border-t-0 transition-colors duration-300 ease-linear hover:bg-secondary hover:text-secondary-foreground"
-              key={product.id}
+              key={product._id}
             >
               <td className="p-2 text-sm md:text-base font-medium capitalize transform-gpu will-change-transform">
                 {index + 1}
               </td>
               <td className="p-2 text-sm md:text-base font-medium capitalize transform-gpu will-change-transform">
-                {product.name}
+                {product.title}
               </td>
               <td className="p-2 text-sm md:text-base font-medium transform-gpu will-change-transform">
                 {product.quantity}

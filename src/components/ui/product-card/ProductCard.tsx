@@ -1,7 +1,11 @@
 import React from "react";
-import Button from "@/components/ui/button";
-import { FaCartShopping } from "react-icons/fa6";
 import Link from "next/link";
+import Button from "@/components/ui/button";
+import { useAddProductToCart } from "@/features/cart";
+import { FaCartShopping } from "react-icons/fa6";
+import { useAuthStore } from "@/features/auth";
+import { MdLogin } from "react-icons/md";
+import { useRouter } from "next/router";
 
 type ProductCardProps = {
   _id: string;
@@ -20,6 +24,13 @@ const ProductCard = ({
   description,
   dataAnimate,
 }: ProductCardProps) => {
+  const router = useRouter();
+
+  const { addProductToCart } = useAddProductToCart();
+  const { isUserLogin } = useAuthStore();
+
+  const loginHandler = () => router.push("/login");
+
   return (
     <div
       className="bg-primary text-primary-foreground flex flex-col rounded-md overflow-hidden border-2 border-primary drop-shadow-xs shadow-xs drop-shadow-white shadow-white relative group"
@@ -55,10 +66,23 @@ const ProductCard = ({
           </p>
         </div>
 
-        <Button className="flex justify-center items-center gap-4">
-          <FaCartShopping className="size-4 md:size-6" />
-          <span className="hidden md:inline-block">add to cart</span>
-        </Button>
+        {isUserLogin ? (
+          <Button
+            className="flex justify-center items-center gap-4"
+            onClick={() => addProductToCart({ productID: _id })}
+          >
+            <FaCartShopping className="size-4 md:size-6" />
+            <span className="hidden md:inline-block">add to cart</span>
+          </Button>
+        ) : (
+          <Button
+            className="flex justify-center items-center gap-4"
+            onClick={loginHandler}
+          >
+            <MdLogin className="size-4 md:size-6" />
+            <span className="hidden md:inline-block">login</span>
+          </Button>
+        )}
       </div>
     </div>
   );

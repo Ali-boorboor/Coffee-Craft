@@ -1,23 +1,18 @@
-import React from "react";
 import Button from "@/components/ui/button";
+import Alert from "@/components/ui/alert/Alert";
+import apiRequest from "@/utils/axios/axiosInstance";
 import Table from "@/features/cart/components/Table";
 import usePanelAnimation from "@/animations/usePanelAnimation";
-import { useCartStore } from "@/features/cart/stores/cartStores";
+import React, { useEffect } from "react";
 import { IoMdClose } from "react-icons/io";
-
-const cartDatas = {
-  products: [
-    { id: "1", name: "black coffee", quantity: 2, price: 20 },
-    { id: "2", name: "cappuccino", quantity: 2, price: 30 },
-  ],
-  totalPrice: 50,
-  totalQuantity: 4,
-};
+import { useCartStore, useUserCartStore } from "@/features/cart";
+import { CartData } from "@/features/cart/types";
 
 const DATA_ANIMATE = "cart-panel-items";
 
 const CartPanel = () => {
   const { setIsCartPanelAvailable, isCartPanelAvailable } = useCartStore();
+  const { setUserCart, userCart } = useUserCartStore();
 
   const { containerRef } = usePanelAnimation({
     itemsDataAnimate: DATA_ANIMATE,
@@ -28,6 +23,15 @@ const CartPanel = () => {
   const toggleCartPanel = () => {
     setIsCartPanelAvailable(!isCartPanelAvailable);
   };
+
+  useEffect(() => {
+    if (isCartPanelAvailable) {
+      apiRequest
+        .get("/cart")
+        .then((response) => response.data)
+        .then((data: CartData) => setUserCart(data.userCart));
+    }
+  }, [isCartPanelAvailable]);
 
   return (
     <section
@@ -50,7 +54,16 @@ const CartPanel = () => {
         cart
       </p>
 
-      <Table cartDatas={cartDatas} dataAnimate={DATA_ANIMATE} />
+      {userCart?.products?.length ? (
+        <Table cartDatas={userCart} dataAnimate={DATA_ANIMATE} />
+      ) : (
+        <div
+          className="text-primary-foreground w-full"
+          data-animate={DATA_ANIMATE}
+        >
+          <Alert title="no product is in your cart" />
+        </div>
+      )}
     </section>
   );
 };

@@ -1,16 +1,10 @@
 import { create } from "zustand";
-import { Product } from "@/types";
-
-type UserCart = {
-  products: Product[];
-  totalPrice: Number;
-  totalQuantity: Number;
-};
+import { Cart } from "@/features/cart/types";
 
 type UseUserCartStore = {
-  userCart: UserCart;
+  userCart: Cart;
 
-  setUserCart: (userCart: UserCart) => void;
+  setUserCart: (userCart: Cart) => void;
 };
 
 const useUserCartStore = create<UseUserCartStore>((set) => ({
