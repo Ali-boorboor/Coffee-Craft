@@ -19,7 +19,7 @@ interface Product {
 
 type Comment = {
   _id: string;
-  commenter: string;
+  commenter: { username: string };
   commentBody: string;
   image: string;
 };

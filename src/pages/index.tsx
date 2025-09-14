@@ -45,7 +45,9 @@ export const getStaticProps = async () => {
   const products = await ProductModel.find({}).lean();
   const parsedProducts = jsonDataParser(products);
 
-  const comments = await CommentModel.find({}).lean();
+  const comments = await CommentModel.find({})
+    .populate("commenter", "username")
+    .lean();
   const parsedComments = jsonDataParser(comments);
 
   return {

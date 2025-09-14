@@ -21,11 +21,16 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
           const hashedPassword = await hashData(password);
 
-          const newUser = await UserModel.create({
+          const user = await UserModel.create({
             username,
             password: hashedPassword,
             cart: newCartForNewUser._id,
           });
+
+          const newUser = user.toObject();
+          Reflect.deleteProperty(newUser, "password");
+          Reflect.deleteProperty(newUser, "cart");
+          Reflect.deleteProperty(newUser, "__v");
 
           return res
             .status(201)

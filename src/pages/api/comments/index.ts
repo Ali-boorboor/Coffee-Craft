@@ -8,7 +8,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     switch (req.method) {
       case "GET": {
-        const comments = await CommentModel.find({}, "-__v").lean();
+        const comments = await CommentModel.find(
+          {},
+          "-__v -createdAt -updatedAt"
+        )
+          .populate("commenter", "username")
+          .lean();
 
         res.json({ message: "Comments catched successfully", comments });
 

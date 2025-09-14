@@ -13,7 +13,7 @@ const CommentCard = ({ commenter, commentBody, image }: CommentCardProps) => {
           alt="client-image"
         />
         <p className="md:text-lg font-bold transform-gpu will-change-transform capitalize">
-          {commenter}
+          {commenter?.username}
         </p>
       </div>
       <p className="leading-6 line-clamp-3 font-normal text-sm md:text-base transform-gpu will-change-transform">

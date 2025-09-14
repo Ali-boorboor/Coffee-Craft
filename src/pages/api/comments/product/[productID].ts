@@ -12,8 +12,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
         const comments = await CommentModel.find(
           { product: productID },
-          "-__v"
-        ).lean();
+          "-__v -createdAt -updatedAt -product"
+        )
+          .populate("commenter", "username")
+          .lean();
 
         res.json({ message: "Comments catched successfully", comments });
 
