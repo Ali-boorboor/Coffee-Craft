@@ -21,7 +21,9 @@ const Testimonial = ({ comments }: TestimonialProps) => {
 export const getStaticProps = async () => {
   connectToDB();
 
-  const comments = await CommentModel.find({}).lean();
+  const comments = await CommentModel.find({})
+    .populate("commenter", "username")
+    .lean();
   const parsedComments = jsonDataParser(comments);
 
   return {

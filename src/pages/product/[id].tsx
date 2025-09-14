@@ -3,7 +3,7 @@ import ProductModel from "@/models/Product";
 import connectToDB from "@/database/dbConnection";
 import jsonDataParser from "@/utils/jsonDataParser";
 import Product from "@/components/templates/single-product/Product";
-import { NextPageContext } from "next";
+import { GetStaticPropsContext } from "next";
 import { Product as ProductType } from "@/types";
 
 type SingleProductProps = { product: ProductType };
@@ -16,13 +16,34 @@ const SingleProduct = ({ product }: SingleProductProps) => {
   );
 };
 
-export const getServerSideProps = async (context: NextPageContext) => {
+export const getStaticPaths = async () => {
   connectToDB();
 
-  const { id } = context.query;
+  const products = await ProductModel.find({}).lean();
 
-  const product = await ProductModel.findById(id, "-__v")
-    .populate("comments")
+  const paths = products.map((product) => ({
+    params: { id: String(product._id) },
+  }));
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps = async (context: GetStaticPropsContext) => {
+  connectToDB();
+
+  const productID = context.params?.id;
+
+  const product = await ProductModel.findById(productID, "-__v")
+    .populate({
+      path: "comments",
+      populate: {
+        path: "commenter",
+        select: "username",
+      },
+    })
     .lean();
   const parsedProduct = jsonDataParser(product);
 

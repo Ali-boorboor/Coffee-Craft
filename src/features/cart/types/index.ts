@@ -4,6 +4,12 @@ interface CartProduct extends Product {
   quantity: number;
 }
 
+type Cart = {
+  products: CartProduct[];
+  totalPrice: number;
+  totalQuantity: number;
+};
+
 type CartData = {
   userCart: {
     products: CartProduct[];
@@ -12,4 +18,4 @@ type CartData = {
   };
 };
 
-export type { CartData };
+export type { Cart, CartData };

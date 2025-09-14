@@ -23,7 +23,7 @@ const Comments = ({ comments, productName }: CommentsProps) => {
   const { containerRef } = useSliderAnimation({
     linesDataAnimate: LINES_DATA_ANIMATE,
     slidesDataAnimate: SLIDES_DATA_ANIMATE,
-    start: "top 70%",
+    start: "top 80%",
   });
 
   return (

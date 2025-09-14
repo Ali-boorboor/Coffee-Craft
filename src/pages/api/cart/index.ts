@@ -1,5 +1,6 @@
 import UserModel from "@/models/User";
 import CartModel from "@/models/Cart";
+import ProductModel from "@/models/Product";
 import connectToDB from "@/database/dbConnection";
 import { NextApiRequest, NextApiResponse } from "next";
 import { validateToken } from "@/utils/jwtUtils";
@@ -31,14 +32,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           "cart -_id"
         ).populate("cart", "_id");
 
-        const cart = await CartModel.findById(
+        const cart: any = await CartModel.findById(
           user.cart._id,
           "-__v -createdAt -updatedAt"
         )
           .populate("products", "-__v -createdAt -updatedAt")
           .lean();
 
-        const normalizeRepeatedProducts = cart?.products.reduce(
+        const normalizeRepeatedProducts = cart?.products?.reduce(
           (prevProducts: normalizedProduct[], product: normalizedProduct) => {
             const existingProduct = prevProducts.find(
               (accProduct: normalizedProduct) => {
@@ -59,6 +60,73 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         return res.json({
           message: "User cart catched successfully",
           userCart: { ...cart, products: normalizeRepeatedProducts },
+        });
+      }
+
+      case "POST": {
+        const token = req.cookies.token?.split(" ")[1]!;
+
+        const tokenPayload: any = validateToken(token);
+
+        const { productID } = req.body;
+
+        const user = await UserModel.findById(
+          tokenPayload.id,
+          "cart -_id"
+        ).populate("cart");
+
+        const product = await ProductModel.findById(productID);
+
+        const cartID = user.cart._id;
+
+        await CartModel.findByIdAndUpdate(cartID, {
+          $push: { products: product._id },
+          $inc: { totalQuantity: 1, totalPrice: product.price },
+        });
+
+        const userCart = await CartModel.findById(
+          cartID,
+          "-__v -createdAt -updatedAt"
+        ).lean();
+
+        return res.status(201).json({
+          message: "Product added to cart successfully",
+          userCart,
+        });
+      }
+
+      case "DELETE": {
+        const token = req.cookies.token?.split(" ")[1]!;
+
+        const tokenPayload: any = validateToken(token);
+
+        const { productID, productQuantity } = req.body;
+
+        const user = await UserModel.findById(
+          tokenPayload.id,
+          "cart -_id"
+        ).populate("cart");
+
+        const product = await ProductModel.findById(productID);
+
+        const cartID = user.cart._id;
+
+        await CartModel.findByIdAndUpdate(cartID, {
+          $pull: { products: product._id },
+          $inc: {
+            totalQuantity: -productQuantity,
+            totalPrice: -(productQuantity * product.price),
+          },
+        });
+
+        const userCart = await CartModel.findById(
+          cartID,
+          "-__v -createdAt -updatedAt"
+        ).lean();
+
+        return res.json({
+          message: "Product removed from cart successfully",
+          userCart,
         });
       }
 

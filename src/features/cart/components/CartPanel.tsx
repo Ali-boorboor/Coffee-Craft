@@ -27,9 +27,9 @@ const CartPanel = () => {
   useEffect(() => {
     if (isCartPanelAvailable) {
       apiRequest
-        .get("/cart")
+        .get("/cart", { skipErrorHandler: true })
         .then((response) => response.data)
-        .then((data: CartData) => setUserCart(data.userCart));
+        .then((data: CartData) => setUserCart(data?.userCart));
     }
   }, [isCartPanelAvailable]);
 
@@ -55,7 +55,7 @@ const CartPanel = () => {
       </p>
 
       {userCart?.products?.length ? (
-        <Table cartDatas={userCart} dataAnimate={DATA_ANIMATE} />
+        <Table dataAnimate={DATA_ANIMATE} />
       ) : (
         <div
           className="text-primary-foreground w-full"

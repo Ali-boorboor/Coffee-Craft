@@ -1,14 +1,14 @@
 import apiRequest from "@/utils/axios/axiosInstance";
 import { toast } from "react-toastify";
 
-type addProductToCart = { productID: string };
+type addProductToCartProps = { productID: string };
 
 const useAddProductToCart = () => {
-  const addProductToCart = async ({ productID }: addProductToCart) => {
-    const response = await apiRequest.post("/cart/add-product", { productID });
+  const addProductToCart = async ({ productID }: addProductToCartProps) => {
+    const response = await apiRequest.post("/cart", { productID });
 
     if (response.status === 201) {
-      toast.success("Product Added To Cart Successfully");
+      toast.success("Product Added Successfully");
     }
   };
 

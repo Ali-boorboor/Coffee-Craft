@@ -1,14 +1,16 @@
 import React from "react";
 import Button from "@/components/ui/button";
-import { FaMinus, FaPlus, FaTrashAlt } from "react-icons/fa";
-import { Cart } from "@/features/cart/types";
+import { FaTrashAlt } from "react-icons/fa";
+import { useRemoveProductFromCart, useUserCartStore } from "@/features/cart";
 
 type TableProps = {
-  cartDatas: Cart;
   dataAnimate?: string;
 };
 
-const Table = ({ cartDatas, dataAnimate }: TableProps) => {
+const Table = ({ dataAnimate }: TableProps) => {
+  const { removeProductFromCart } = useRemoveProductFromCart();
+  const { userCart } = useUserCartStore();
+
   return (
     <div
       className="max-w-2xl w-full rounded-md border-2 border-white/60 shadow-xs shadow-white overflow-auto cart-panel-table-scrollbar"
@@ -36,7 +38,7 @@ const Table = ({ cartDatas, dataAnimate }: TableProps) => {
         </thead>
 
         <tbody>
-          {cartDatas.products.map((product, index) => (
+          {userCart.products.map((product, index) => (
             <tr
               className="border-t-2 border-t-white/60 first:border-t-0 transition-colors duration-300 ease-linear hover:bg-secondary hover:text-secondary-foreground"
               key={product._id}
@@ -54,13 +56,16 @@ const Table = ({ cartDatas, dataAnimate }: TableProps) => {
                 {product.price} $
               </td>
               <td className="p-2 flex justify-center items-center gap-1.5 text-sm md:text-base font-medium transform-gpu will-change-transform">
-                <Button size="icon">
-                  <FaPlus className="size-4 md:size-6" />
-                </Button>
-                <Button size="icon">
-                  <FaMinus className="size-4 md:size-6" />
-                </Button>
-                <Button variant="danger" size="icon">
+                <Button
+                  onClick={() => {
+                    removeProductFromCart({
+                      productQuantity: product.quantity,
+                      productID: product._id,
+                    });
+                  }}
+                  variant="danger"
+                  size="icon"
+                >
                   <FaTrashAlt className="size-4 md:size-6" />
                 </Button>
               </td>
@@ -77,10 +82,10 @@ const Table = ({ cartDatas, dataAnimate }: TableProps) => {
               -
             </td>
             <td className="p-2 text-base md:text-lg font-bold transform-gpu will-change-transform">
-              {cartDatas.totalQuantity}
+              {userCart.totalQuantity}
             </td>
             <td className="p-2 text-base md:text-lg font-bold transform-gpu will-change-transform">
-              {cartDatas.totalPrice} $
+              {userCart.totalPrice} $
             </td>
             <td className="p-2 text-base md:text-lg font-bold transform-gpu will-change-transform">
               -
