@@ -1,8 +1,16 @@
 import Button from "@/components/ui/button";
 import apiRequest from "@/utils/axios/axiosInstance";
+import validationSchema from "@/validations/validationSchema";
+import validateInputValues from "@/validations/validateInputValues";
 import React, { useReducer } from "react";
-import { Input, Textarea } from "@/components/ui/input";
 import { toast } from "react-toastify";
+import { Input, Textarea } from "@/components/ui/input";
+import {
+  nameValidations,
+  emailValidations,
+  subjectValidations,
+  messageValidations,
+} from "@/validations";
 
 type InitialState = {
   name: string;
@@ -34,7 +42,7 @@ function reducer(state: InitialState, action: Action) {
 }
 
 const Form = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [inputValues, dispatch] = useReducer(reducer, initialState);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -46,7 +54,21 @@ const Form = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const res = await apiRequest.post("/contact", { ...state });
+    const schema = validationSchema({
+      name: nameValidations,
+      email: emailValidations,
+      subject: subjectValidations,
+      message: messageValidations,
+    });
+
+    const isValid = await validateInputValues({
+      values: { ...inputValues },
+      schema,
+    });
+
+    if (!isValid) return;
+
+    const res = await apiRequest.post("/contact", { ...inputValues });
 
     if (res.status === 201) {
       toast.success("Message Sent Successfully");
@@ -62,32 +84,35 @@ const Form = () => {
     >
       <Input
         placeholder="your name..."
+        value={inputValues.name}
         onChange={handleChange}
-        value={state.name}
+        maxLength={30}
         name="name"
         type="text"
       />
 
       <Input
         placeholder="your email..."
+        value={inputValues.email}
         onChange={handleChange}
-        value={state.email}
         name="email"
-        type="email"
+        type="text"
       />
 
       <Input
+        value={inputValues.subject}
         placeholder="subject..."
         onChange={handleChange}
-        value={state.subject}
+        maxLength={30}
         name="subject"
         type="text"
       />
 
       <Textarea
+        value={inputValues.message}
         placeholder="message..."
         onChange={handleChange}
-        value={state.message}
+        maxLength={1000}
         name="message"
       />
 

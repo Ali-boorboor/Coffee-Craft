@@ -2,8 +2,11 @@ import Input from "@/components/ui/input";
 import Button from "@/components/ui/button";
 import apiRequest from "@/utils/axios/axiosInstance";
 import SectionHeader from "@/components/ui/section-header";
+import validateInputValues from "@/validations/validateInputValues";
+import validationSchema from "@/validations/validationSchema";
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
 import React, { useState } from "react";
+import { emailValidations } from "@/validations";
 import { toast } from "react-toastify";
 
 const FADE_UP_DATA_ANIMATE = "newsletter-fadeUp";
@@ -23,6 +26,12 @@ const Newsletter = () => {
 
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    const schema = validationSchema({ email: emailValidations });
+
+    const isValid = await validateInputValues({ values: { email }, schema });
+
+    if (!isValid) return;
 
     const response = await apiRequest.post("/newsletter", { email });
 
@@ -50,11 +59,11 @@ const Newsletter = () => {
           onSubmit={handleFormSubmit}
         >
           <Input
-            className="grow transform-gpu will-change-transform normal-case"
+            className="grow transform-gpu will-change-transform"
             onChange={handleEmailInputChange}
             placeholder="email..."
             value={email}
-            type="email"
+            type="text"
           />
           <Button
             className="grow transform-gpu will-change-transform"

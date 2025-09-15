@@ -9,7 +9,7 @@ type InputProps = {
 
 const Input = ({ variant = "default", className, ...props }: InputProps) => {
   const baseStyles =
-    "capitalize shadow-xs py-1.5 px-2.5 w-full font-semibold rounded-md transition-colors duration-300 ease-linear";
+    "shadow-xs py-1.5 px-2.5 w-full font-semibold rounded-md transition-colors duration-300 ease-linear";
 
   const variants = {
     default:

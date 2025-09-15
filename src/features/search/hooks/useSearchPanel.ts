@@ -1,29 +1,16 @@
+import validationSchema from "@/validations/validationSchema";
+import validateInputValues from "@/validations/validateInputValues";
 import { useSearchStore } from "@/features/search/stores/searchStores";
-import { isTextInputValueValid } from "@/utils/inputValidations";
 import { ChangeEvent, KeyboardEvent, useState } from "react";
+import { searchValidations } from "@/validations";
 import { useRouter } from "next/router";
 
 const useSearchPanel = () => {
-  const { isSearchInputAvailable, setIsSearchInputAvailable } =
-    useSearchStore();
-
   const [searchValue, setSearchValue] = useState("");
-
   const router = useRouter();
 
-  const closeSearchPanel = () => setIsSearchInputAvailable(false);
-
-  const redirectToSearchPage = () => {
-    if (isTextInputValueValid({ inputValue: searchValue })) {
-      const searchQuery = encodeURIComponent(searchValue);
-
-      router.push(`/search?q=${searchQuery}`);
-
-      setSearchValue("");
-
-      closeSearchPanel();
-    }
-  };
+  const { isSearchInputAvailable, setIsSearchInputAvailable } =
+    useSearchStore();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -35,6 +22,27 @@ const useSearchPanel = () => {
     if (isEnterPressed) {
       redirectToSearchPage();
     }
+  };
+
+  const closeSearchPanel = () => setIsSearchInputAvailable(false);
+
+  const redirectToSearchPage = async () => {
+    const searchQuery = encodeURIComponent(searchValue);
+
+    const schema = validationSchema({ search: searchValidations });
+
+    const isValid = await validateInputValues({
+      values: { search: searchQuery },
+      schema,
+    });
+
+    if (!isValid) return;
+
+    router.push(`/search?q=${searchQuery}`);
+
+    setSearchValue("");
+
+    closeSearchPanel();
   };
 
   return {

@@ -1,8 +1,16 @@
 import Input from "@/components/ui/input";
 import Button from "@/components/ui/button";
 import apiRequest from "@/utils/axios/axiosInstance";
+import validationSchema from "@/validations/validationSchema";
+import validateInputValues from "@/validations/validateInputValues";
 import React, { useReducer } from "react";
 import { toast } from "react-toastify";
+import {
+  nameValidations,
+  emailValidations,
+  dateValidations,
+  timeValidations,
+} from "@/validations";
 
 type InitialState = {
   name: string;
@@ -15,11 +23,19 @@ type Action =
   | { type: "SET_FIELD"; field: keyof InitialState; value: string }
   | { type: "RESET" };
 
+const now = new Date();
+
+const nowDate = String(now.toJSON().slice(0, 10));
+
+const hours = String((now.getHours() + 2) % 24).padStart(2, "0");
+const minutes = String(now.getMinutes()).padStart(2, "0");
+const nowTime = `${hours}:${minutes}`;
+
 const initialState: InitialState = {
   name: "",
   email: "",
-  date: "",
-  time: "",
+  date: nowDate,
+  time: nowTime,
 };
 
 function reducer(state: InitialState, action: Action) {
@@ -34,7 +50,7 @@ function reducer(state: InitialState, action: Action) {
 }
 
 const Form = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [inputValues, dispatch] = useReducer(reducer, initialState);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -44,7 +60,21 @@ const Form = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const res = await apiRequest.post("/reservation", { ...state });
+    const schema = validationSchema({
+      name: nameValidations,
+      email: emailValidations,
+      date: dateValidations,
+      time: timeValidations,
+    });
+
+    const isValid = await validateInputValues({
+      values: { ...inputValues },
+      schema,
+    });
+
+    if (!isValid) return;
+
+    const res = await apiRequest.post("/reservation", { ...inputValues });
 
     if (res.status === 201) {
       toast.success("Reservation Added Successfully");
@@ -61,31 +91,32 @@ const Form = () => {
       onSubmit={handleSubmit}
     >
       <Input
+        value={inputValues.name}
         onChange={handleChange}
         placeholder="name..."
-        value={state.name}
+        maxLength={30}
         type="text"
         name="name"
       />
 
       <Input
+        value={inputValues.email}
         onChange={handleChange}
         placeholder="email..."
-        value={state.email}
-        type="email"
         name="email"
+        type="text"
       />
 
       <Input
+        value={inputValues.date}
         onChange={handleChange}
-        value={state.date}
         type="date"
         name="date"
       />
 
       <Input
+        value={inputValues.time}
         onChange={handleChange}
-        value={state.time}
         type="time"
         name="time"
       />
