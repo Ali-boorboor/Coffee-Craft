@@ -11,7 +11,7 @@ type MenuProps = { products: Product[] };
 const Menu = ({ products }: MenuProps) => {
   return (
     <main className="space-y-20 md:space-y-40">
-      <PageBreadcrumb title="about us" href="/about" />
+      <PageBreadcrumb title="menu" href="/menu" />
 
       <MenuItems menuItems={products} />
     </main>

@@ -39,7 +39,7 @@ const ProductCard = ({
       <div className="h-52 md:h-72 bg-primary-foreground overflow-hidden rounded-b-3xl">
         <Link href={`/product/${_id}`}>
           <img
-            className="w-full h-full object-cover object-center scale-95 transition-transform duration-300 ease-linear group-hover:scale-105 transform-gpu will-change-transform"
+            className="w-full h-full object-contain object-center scale-95 transition-transform duration-300 ease-linear group-hover:scale-105 transform-gpu will-change-transform"
             alt="menu-card-image"
             src={image}
           />
@@ -72,7 +72,7 @@ const ProductCard = ({
             onClick={() => addProductToCart({ productID: _id })}
           >
             <FaCartShopping className="size-4 md:size-6" />
-            <span className="hidden md:inline-block">add to cart</span>
+            <span>add to cart</span>
           </Button>
         ) : (
           <Button
@@ -80,7 +80,7 @@ const ProductCard = ({
             onClick={loginHandler}
           >
             <MdLogin className="size-4 md:size-6" />
-            <span className="hidden md:inline-block">login</span>
+            <span>login</span>
           </Button>
         )}
       </div>

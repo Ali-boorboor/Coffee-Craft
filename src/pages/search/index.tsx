@@ -22,10 +22,12 @@ const Search = ({ matchedProducts }: SearchProps) => {
 export const getServerSideProps = async (context: NextPageContext) => {
   connectToDB();
 
-  const { q } = context.query;
+  const { product_name } = context.query;
+
+  const query = String(product_name).toLowerCase();
 
   const matchedProducts = await ProductModel.find({
-    title: { $regex: q },
+    title: { $regex: query, $options: "i" },
   }).lean();
 
   const parsedMatchedProducts = jsonDataParser(matchedProducts);

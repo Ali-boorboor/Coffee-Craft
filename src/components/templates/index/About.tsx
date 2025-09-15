@@ -1,6 +1,7 @@
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
 import SectionHeader from "@/components/ui/section-header";
 import Button from "@/components/ui/button";
+import Link from "next/link";
 import React from "react";
 
 const FADE_UP_DATA_ANIMATE = "about-fadeUp";
@@ -30,7 +31,9 @@ const About = () => {
           there isn't anything embarrassing hidden in the middle of text. All
         </p>
 
-        <Button data-animate={FADE_UP_DATA_ANIMATE}>learn more</Button>
+        <Link href="/about">
+          <Button data-animate={FADE_UP_DATA_ANIMATE}>learn more</Button>
+        </Link>
 
         <img
           className="w-60 h-60 md:w-80 md:h-80 object-cover object-center"

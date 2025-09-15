@@ -1,7 +1,7 @@
-import React from "react";
 import FilterButtons from "@/features/menu-filter";
-import ProductCard from "@/components/ui/product-card/ProductCard";
 import SectionHeader from "@/components/ui/section-header";
+import ProductCard from "@/components/ui/product-card/ProductCard";
+import React, { useEffect } from "react";
 import { useMenuFilterStore, useMenuAnimations } from "@/features/menu-filter";
 import { Product } from "@/types";
 
@@ -12,11 +12,13 @@ type MenuProps = {
 const ITEMS_DATA_ANIMATE = "menu-zoom-in";
 
 const Menu = ({ menuItems }: MenuProps) => {
-  const { menuFilterType } = useMenuFilterStore();
+  const { menuFilterType, setMenuFilterType } = useMenuFilterStore();
   const { containerRef } = useMenuAnimations({
     itemsDataAnimate: ITEMS_DATA_ANIMATE,
     menuFilterType,
   });
+
+  useEffect(() => setMenuFilterType("all"), []);
 
   return (
     <section

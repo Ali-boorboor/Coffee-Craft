@@ -11,7 +11,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     switch (req.method) {
       case "GET": {
-        const user = await UserModel.findById(tokenPayload.id, "username cart")
+        const user = await UserModel.findById(tokenPayload?.id, "username cart")
           .populate("cart", "-_id -__v -createdAt -updatedAt")
           .lean();
 

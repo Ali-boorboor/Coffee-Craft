@@ -19,7 +19,7 @@ const useProductInfosAniamtion = () => {
           clipPath: "circle(0% at 50% 50%)",
         },
         {
-          clipPath: "circle(50% at 50% 50%)",
+          clipPath: "circle(100% at 50% 50%)",
         }
       );
 

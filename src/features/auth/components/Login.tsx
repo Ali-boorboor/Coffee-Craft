@@ -3,7 +3,10 @@ import Form from "@/features/auth/components/Form";
 import apiRequest from "@/utils/axios/axiosInstance";
 import PageHeading from "@/components/ui/page-breadcrumb";
 import SectionHeader from "@/components/ui/section-header";
+import validationSchema from "@/validations/validationSchema";
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
+import validateInputValues from "@/validations/validateInputValues";
+import { nameValidations, passwordValidations } from "@/validations";
 import { onSubmitHandlerProps } from "@/features/auth/types";
 import { useAuthStore } from "@/features/auth";
 import { useRouter } from "next/router";
@@ -25,6 +28,18 @@ const Login = () => {
     password,
   }: onSubmitHandlerProps) => {
     event.preventDefault();
+
+    const schema = validationSchema({
+      username: nameValidations,
+      password: passwordValidations,
+    });
+
+    const isValid = await validateInputValues({
+      values: { username, password },
+      schema,
+    });
+
+    if (!isValid) return;
 
     const response = await apiRequest.post("/auth/login", {
       username,

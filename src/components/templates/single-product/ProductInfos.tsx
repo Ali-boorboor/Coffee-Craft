@@ -1,12 +1,23 @@
 import React from "react";
 import Button from "@/components/ui/button";
 import useProductInfosAniamtion from "@/components/templates/single-product/animations/useProductInfosAniamtion";
+import { useAddProductToCart } from "@/features/cart";
 import { FaCartShopping } from "react-icons/fa6";
+import { useAuthStore } from "@/features/auth";
+import { MdLogin } from "react-icons/md";
+import { useRouter } from "next/router";
 import { Product } from "@/types";
 
-const ProductInfos = ({ title, price, image }: Product) => {
+const ProductInfos = ({ _id, title, price, image }: Product) => {
+  const router = useRouter();
+
   const { containerRef, productImageRef, coffeeBeanImageRef } =
     useProductInfosAniamtion();
+
+  const { addProductToCart } = useAddProductToCart();
+  const { isUserLogin } = useAuthStore();
+
+  const loginHandler = () => router.push("/login");
 
   return (
     <div
@@ -23,16 +34,29 @@ const ProductInfos = ({ title, price, image }: Product) => {
         </p>
 
         <img
-          className="w-60 h-60 md:w-96 md:h-96 object-cover object-center z-20"
+          className="w-60 h-60 md:w-96 md:h-96 object-contain object-center z-20"
           ref={productImageRef}
           alt="product-image"
           src={image}
         />
 
-        <Button className="flex justify-center items-center gap-2 md:gap-4 z-20">
-          <FaCartShopping className="size-4 md:size-6" />
-          <span>add to cart</span>
-        </Button>
+        {isUserLogin ? (
+          <Button
+            className="flex justify-center items-center gap-4"
+            onClick={() => addProductToCart({ productID: _id })}
+          >
+            <FaCartShopping className="size-4 md:size-6" />
+            <span>add to cart</span>
+          </Button>
+        ) : (
+          <Button
+            className="flex justify-center items-center gap-4"
+            onClick={loginHandler}
+          >
+            <MdLogin className="size-4 md:size-6" />
+            <span>login</span>
+          </Button>
+        )}
 
         <img
           className="w-40 h-40 md:w-72 md:h-72 object-cover object-center absolute right-0 top-0 z-10 transform-gpu will-change-transform"

@@ -38,7 +38,7 @@ const useSearchPanel = () => {
 
     if (!isValid) return;
 
-    router.push(`/search?q=${searchQuery}`);
+    router.push(`/search?product_name=${searchQuery}`);
 
     setSearchValue("");
 

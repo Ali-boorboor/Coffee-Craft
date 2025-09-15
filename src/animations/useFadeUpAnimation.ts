@@ -39,7 +39,7 @@ const useFadeUpAnimation = ({ fadeUpDataAnimate }: useFadeUpAnimationProps) => {
             y: 40,
           },
           {
-            clipPath: "circle(60% at 50% 50%)",
+            clipPath: "circle(100% at 50% 50%)",
             y: 0,
           },
           "-=1"

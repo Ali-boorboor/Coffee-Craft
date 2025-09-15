@@ -12,7 +12,7 @@ const PageBreadcrumb = ({ title, href }: PageBreadcrumbProps) => {
       className="coffee-background py-10 md:py-20 text-white relative paper-torn-piece-bottom"
       ref={containerRef}
     >
-      <div className="container m-auto flex flex-col justify-center items-center gap-4 text-base md:text-lg font-normal capitalize">
+      <div className="container m-auto flex flex-col justify-center items-center gap-2 md:gap-4 text-base md:text-lg font-normal capitalize">
         <h3 className="text-3xl md:text-5xl font-bold uppercase transform-gpu will-change-transform">
           {title}
         </h3>
