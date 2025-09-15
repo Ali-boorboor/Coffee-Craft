@@ -6,6 +6,7 @@ const schema = new mongoose.Schema(
     title: {
       type: String,
       minLength: 3,
+      unique: true,
       required: true,
     },
     image: {

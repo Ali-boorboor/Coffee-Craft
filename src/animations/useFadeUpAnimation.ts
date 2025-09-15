@@ -13,7 +13,7 @@ const useFadeUpAnimation = ({ fadeUpDataAnimate }: useFadeUpAnimationProps) => {
       const gsapTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top center",
+          start: "top 80%",
         },
         defaults: { ease: "power4.inOut", duration: 1 },
       });

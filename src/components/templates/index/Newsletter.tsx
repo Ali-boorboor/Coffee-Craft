@@ -30,6 +30,8 @@ const Newsletter = () => {
       toast.success("Email Saved Successfully");
 
       setEmail("");
+    } else if (response.status === 409) {
+      toast.error("Email Already Exist!");
     }
   };
 

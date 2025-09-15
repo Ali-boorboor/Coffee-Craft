@@ -10,11 +10,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       case "POST": {
         const { email } = req.body;
 
+        const isEmailRepeated = await NewsletterModel.find({ email });
+
+        if (isEmailRepeated) {
+          return res.status(409).json({ message: "Email already exist!" });
+        }
+
         await NewsletterModel.create({ email });
 
-        res.status(201).json({ message: "Email added successfully" });
-
-        break;
+        return res.status(201).json({ message: "Email added successfully" });
       }
 
       default: {
