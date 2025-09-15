@@ -9,7 +9,7 @@ import connectToDB from "@/database/dbConnection";
 import ServiceModel from "@/models/Service";
 import ProductModel from "@/models/Product";
 import CommentModel from "@/models/Comment";
-import React from "react";
+import React, { useEffect } from "react";
 import { Comment, Product, Service } from "@/types";
 
 type IndexProps = {
@@ -19,6 +19,10 @@ type IndexProps = {
 };
 
 const Index = ({ services, products, comments }: IndexProps) => {
+  useEffect(() => {
+    document.title = "Coffee Craft";
+  }, []);
+
   return (
     <main className="space-y-40 md:space-y-80">
       <Intro />
@@ -56,6 +60,7 @@ export const getStaticProps = async () => {
       products: parsedProducts,
       comments: parsedComments,
     },
+    revalidate: 60 * 60 * 24,
   };
 };
 

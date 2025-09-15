@@ -1,15 +1,19 @@
-import React from "react";
 import ProductModel from "@/models/Product";
 import connectToDB from "@/database/dbConnection";
 import jsonDataParser from "@/utils/jsonDataParser";
 import PageHeading from "@/components/ui/page-breadcrumb";
 import SearchResult from "@/features/search/components/SearchResult";
+import React, { useEffect } from "react";
 import { NextPageContext } from "next";
 import { Product } from "@/types";
 
 type SearchProps = { matchedProducts: Product[] };
 
 const Search = ({ matchedProducts }: SearchProps) => {
+  useEffect(() => {
+    document.title = "Coffee Craft | Search";
+  }, []);
+
   return (
     <main className="space-y-20 md:space-y-40">
       <PageHeading title="search" />

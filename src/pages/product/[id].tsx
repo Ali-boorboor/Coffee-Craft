@@ -1,14 +1,18 @@
-import React from "react";
 import ProductModel from "@/models/Product";
 import connectToDB from "@/database/dbConnection";
 import jsonDataParser from "@/utils/jsonDataParser";
 import Product from "@/components/templates/single-product/Product";
+import React, { useEffect } from "react";
 import { GetStaticPropsContext } from "next";
 import { Product as ProductType } from "@/types";
 
 type SingleProductProps = { product: ProductType };
 
 const SingleProduct = ({ product }: SingleProductProps) => {
+  useEffect(() => {
+    document.title = `Coffee Craft | ${product.title}`;
+  }, []);
+
   return (
     <main>
       <Product product={product} />
@@ -47,7 +51,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     .lean();
   const parsedProduct = jsonDataParser(product);
 
-  return { props: { product: parsedProduct } };
+  return { props: { product: parsedProduct }, revalidate: 60 * 60 * 24 };
 };
 
 export default SingleProduct;

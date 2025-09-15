@@ -29,9 +29,13 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Header />
+
       <Component {...pageProps} />
+
       <SearchPanel />
+
       <CartPanel />
+
       <ToastContainer
         pauseOnFocusLoss={false}
         position="top-right"
@@ -40,6 +44,7 @@ export default function App({ Component, pageProps }: AppProps) {
         theme="colored"
         draggable
       />
+
       <Footer />
     </>
   );
