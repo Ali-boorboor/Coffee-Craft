@@ -1,13 +1,10 @@
 import React from "react";
 import Alert from "@/components/ui/alert/Alert";
-import ProductCard from "@/components/ui/product-card/ProductCard";
 import SectionHeader from "@/components/ui/section-header";
-import FilterButtons, {
-  useMenuAnimations,
-  useMenuFilterStore,
-} from "@/features/menu-filter";
-import { Product } from "@/types";
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
+import ProductCard from "@/components/ui/product-card/ProductCard";
+import { useMenuAnimations, useMenuFilterStore } from "@/features/menu-filter";
+import { Product } from "@/types";
 
 type SearchResultProps = {
   matchedProducts: Product[];
@@ -27,20 +24,32 @@ const SearchResult = ({ matchedProducts }: SearchResultProps) => {
     menuFilterType,
   });
 
+  const isProductsFound = matchedProducts.length;
+
   return (
     <section className="px-4 md:px-0" ref={containerRef}>
       <div
-        className="container m-auto flex flex-col gap-4"
+        className="container m-auto flex flex-col gap-6 md:gap-10"
         ref={fadeUpContainerRef}
       >
-        <SectionHeader
-          linesDataAnimate={FADE_UP_DATA_ANIMATE}
-          title="search result"
-          text="found products"
-        />
+        {isProductsFound ? (
+          <>
+            <SectionHeader
+              linesDataAnimate={FADE_UP_DATA_ANIMATE}
+              title="search result"
+              text="found products"
+            />
 
-        {matchedProducts.length ? (
-          <FilterButtons />
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+              {matchedProducts.map((item) => (
+                <ProductCard
+                  dataAnimate={ITEMS_DATA_ANIMATE}
+                  key={item._id}
+                  {...item}
+                />
+              ))}
+            </div>
+          </>
         ) : (
           <>
             <Alert
@@ -55,28 +64,6 @@ const SearchResult = ({ matchedProducts }: SearchResultProps) => {
             />
           </>
         )}
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-          {menuFilterType === "all" &&
-            matchedProducts.map((item) => (
-              <ProductCard
-                dataAnimate={ITEMS_DATA_ANIMATE}
-                key={item._id}
-                {...item}
-              />
-            ))}
-
-          {menuFilterType !== "all" &&
-            matchedProducts
-              .filter((item) => item.type === menuFilterType)
-              .map((item) => (
-                <ProductCard
-                  dataAnimate={ITEMS_DATA_ANIMATE}
-                  key={item._id}
-                  {...item}
-                />
-              ))}
-        </div>
       </div>
     </section>
   );
