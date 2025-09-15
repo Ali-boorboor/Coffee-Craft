@@ -1,6 +1,7 @@
 import CommentModel from "@/models/Comment";
 import connectToDB from "@/database/dbConnection";
 import { NextApiRequest, NextApiResponse } from "next";
+import { isValidObjectId } from "mongoose";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   connectToDB();
@@ -9,6 +10,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     switch (req.method) {
       case "GET": {
         const { productID } = req.query;
+
+        const isValid = isValidObjectId(productID);
+
+        if (!isValid) {
+          return res.status(422).json({ message: "Product id is invalid!" });
+        }
 
         const comments = await CommentModel.find(
           { product: productID },

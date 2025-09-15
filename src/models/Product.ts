@@ -6,6 +6,7 @@ const schema = new mongoose.Schema(
     title: {
       type: String,
       minLength: 3,
+      maxLength: 30,
       unique: true,
       required: true,
     },
@@ -26,6 +27,7 @@ const schema = new mongoose.Schema(
     description: {
       type: String,
       minLength: 3,
+      maxLength: 1000,
       default:
         "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
     },

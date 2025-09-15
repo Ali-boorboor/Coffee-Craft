@@ -1,25 +1,22 @@
 import cookie from "cookie";
+import checkToken from "@/utils/checkToken";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
+    checkToken(req, res);
+
     switch (req.method) {
       case "GET": {
-        const hasToken = req.cookies.token;
-
-        if (hasToken) {
-          return res
-            .setHeader(
-              "Set-Cookie",
-              cookie.serialize("token", "", {
-                path: "/",
-                maxAge: 0,
-              })
-            )
-            .json({ message: "Logged out successfully" });
-        } else {
-          return res.status(401).json({ message: "Not allowed!" });
-        }
+        return res
+          .setHeader(
+            "Set-Cookie",
+            cookie.serialize("token", "", {
+              path: "/",
+              maxAge: 0,
+            })
+          )
+          .json({ message: "Logged out successfully" });
       }
 
       default: {

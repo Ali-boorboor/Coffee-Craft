@@ -1,6 +1,9 @@
 import UserModel from "@/models/User";
 import CartModel from "@/models/Cart";
 import connectToDB from "@/database/dbConnection";
+import validationSchema from "@/validations/validationSchema";
+import validateInputValues from "@/validations/validateInputValues";
+import { nameValidations, passwordValidations } from "@/validations";
 import { NextApiRequest, NextApiResponse } from "next";
 import { hashData } from "@/utils/bcryptUtils";
 
@@ -11,6 +14,20 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     switch (req.method) {
       case "POST": {
         const { username, password } = req.body;
+
+        const schema = validationSchema({
+          username: nameValidations,
+          password: passwordValidations,
+        });
+
+        const isValid = await validateInputValues({
+          values: { username, password },
+          schema,
+        });
+
+        if (!isValid) {
+          return res.status(422).json({ message: "Request body is invalid!" });
+        }
 
         const isUserAlreadyExist = await UserModel.findOne({ username }).lean();
 

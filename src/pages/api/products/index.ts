@@ -1,6 +1,14 @@
 import ProductModel from "@/models/Product";
 import connectToDB from "@/database/dbConnection";
+import validationSchema from "@/validations/validationSchema";
+import validateInputValues from "@/validations/validateInputValues";
 import { NextApiRequest, NextApiResponse } from "next";
+import {
+  imageValidations,
+  messageValidations,
+  nameValidations,
+  typeValidations,
+} from "@/validations";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   connectToDB();
@@ -19,6 +27,23 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
       case "POST": {
         const { title, description, image, price, type } = req.body;
+
+        const schema = validationSchema({
+          title: nameValidations,
+          description: messageValidations,
+          image: imageValidations,
+          type: typeValidations,
+        });
+
+        const isValid =
+          (await validateInputValues({
+            values: { title, description, image, type },
+            schema,
+          })) || typeof price === "number";
+
+        if (!isValid) {
+          return res.status(422).json({ message: "Request body is invalid!" });
+        }
 
         await ProductModel.create({ title, description, image, price, type });
 

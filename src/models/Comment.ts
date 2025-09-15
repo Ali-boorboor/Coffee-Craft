@@ -17,6 +17,7 @@ const schema = new mongoose.Schema(
     commentBody: {
       type: String,
       minLength: 3,
+      maxLength: 1000,
       default:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio facilis error culpa tenetur fugit facere adipisci, laudantium numquam ullam dicta?",
     },

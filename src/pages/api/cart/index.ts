@@ -1,9 +1,10 @@
 import UserModel from "@/models/User";
 import CartModel from "@/models/Cart";
+import checkToken from "@/utils/checkToken";
 import ProductModel from "@/models/Product";
 import connectToDB from "@/database/dbConnection";
 import { NextApiRequest, NextApiResponse } from "next";
-import { validateToken } from "@/utils/jwtUtils";
+import { isValidObjectId } from "mongoose";
 import { Product } from "@/types";
 
 interface normalizedProduct extends Product {
@@ -14,19 +15,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   connectToDB();
 
   try {
-    const hasToken =
-      req.cookies.token && req.cookies.token.startsWith("Bearer ");
-
-    if (!hasToken) {
-      return res.status(401).json({ message: "Unauthorized!" });
-    }
+    const tokenPayload = checkToken(req, res);
 
     switch (req.method) {
       case "GET": {
-        const token = req.cookies.token?.split(" ")[1]!;
-
-        const tokenPayload: any = validateToken(token);
-
         const user = await UserModel.findById(
           tokenPayload.id,
           "cart -_id"
@@ -64,11 +56,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       }
 
       case "POST": {
-        const token = req.cookies.token?.split(" ")[1]!;
-
-        const tokenPayload: any = validateToken(token);
-
         const { productID } = req.body;
+
+        const isValid = isValidObjectId(productID);
+
+        if (!isValid) {
+          return res.status(422).json({ message: "Request body is invalid!" });
+        }
 
         const user = await UserModel.findById(
           tokenPayload.id,
@@ -96,11 +90,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       }
 
       case "DELETE": {
-        const token = req.cookies.token?.split(" ")[1]!;
-
-        const tokenPayload: any = validateToken(token);
-
         const { productID, productQuantity } = req.body;
+
+        const isValid =
+          isValidObjectId(productID) || typeof productQuantity === "number";
+
+        if (!isValid) {
+          return res.status(422).json({ message: "Request body is invalid!" });
+        }
 
         const user = await UserModel.findById(
           tokenPayload.id,

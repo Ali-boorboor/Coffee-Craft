@@ -1,6 +1,7 @@
 import ProductModel from "@/models/Product";
 import connectToDB from "@/database/dbConnection";
 import { NextApiRequest, NextApiResponse } from "next";
+import { isValidObjectId } from "mongoose";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   connectToDB();
@@ -9,6 +10,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     switch (req.method) {
       case "GET": {
         const { id } = req.query;
+
+        const isValid = isValidObjectId(id);
+
+        if (!isValid) {
+          return res.status(422).json({ message: "ID is invalid!" });
+        }
 
         const product = await ProductModel.findById(id, "-__v").lean();
 

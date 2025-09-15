@@ -1,6 +1,10 @@
 import CommentModel from "@/models/Comment";
 import connectToDB from "@/database/dbConnection";
+import validationSchema from "@/validations/validationSchema";
+import validateInputValues from "@/validations/validateInputValues";
+import { imageValidations, messageValidations } from "@/validations";
 import { NextApiRequest, NextApiResponse } from "next";
+import { isValidObjectId } from "mongoose";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   connectToDB();
@@ -22,6 +26,23 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
       case "POST": {
         const { product, commenter, commentBody, image } = req.body;
+
+        const schema = validationSchema({
+          commentBody: messageValidations,
+          image: imageValidations,
+        });
+
+        const isValid =
+          (await validateInputValues({
+            values: { commentBody, image },
+            schema,
+          })) ||
+          isValidObjectId(product) ||
+          isValidObjectId(commenter);
+
+        if (!isValid) {
+          return res.status(422).json({ message: "Request body is invalid!" });
+        }
 
         await CommentModel.create({ product, commenter, commentBody, image });
 

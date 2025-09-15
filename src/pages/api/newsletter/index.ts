@@ -1,6 +1,9 @@
 import NewsletterModel from "@/models/Newsletter";
 import connectToDB from "@/database/dbConnection";
+import validationSchema from "@/validations/validationSchema";
+import validateInputValues from "@/validations/validateInputValues";
 import { NextApiRequest, NextApiResponse } from "next";
+import { emailValidations } from "@/validations";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   connectToDB();
@@ -10,7 +13,20 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       case "POST": {
         const { email } = req.body;
 
-        const isEmailRepeated = await NewsletterModel.find({ email });
+        const schema = validationSchema({
+          email: emailValidations,
+        });
+
+        const isValid = await validateInputValues({
+          values: { email },
+          schema,
+        });
+
+        if (!isValid) {
+          return res.status(422).json({ message: "Request body is invalid!" });
+        }
+
+        const isEmailRepeated = await NewsletterModel.findOne({ email });
 
         if (isEmailRepeated) {
           return res.status(409).json({ message: "Email already exist!" });

@@ -1,6 +1,14 @@
 import connectToDB from "@/database/dbConnection";
 import ReservationModel from "@/models/Reservation";
+import validationSchema from "@/validations/validationSchema";
+import validateInputValues from "@/validations/validateInputValues";
 import { NextApiRequest, NextApiResponse } from "next";
+import {
+  nameValidations,
+  emailValidations,
+  dateValidations,
+  timeValidations,
+} from "@/validations";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   connectToDB();
@@ -9,6 +17,22 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     switch (req.method) {
       case "POST": {
         const { name, email, date, time } = req.body;
+
+        const schema = validationSchema({
+          name: nameValidations,
+          email: emailValidations,
+          date: dateValidations,
+          time: timeValidations,
+        });
+
+        const isValid = await validateInputValues({
+          values: { name, email, date, time },
+          schema,
+        });
+
+        if (!isValid) {
+          return res.status(422).json({ message: "Request body is invalid!" });
+        }
 
         const isReservationRepeated = await ReservationModel.findOne({
           $or: [{ name }, { email }],

@@ -1,6 +1,13 @@
 import ServiceModel from "@/models/Service";
 import connectToDB from "@/database/dbConnection";
+import validationSchema from "@/validations/validationSchema";
+import validateInputValues from "@/validations/validateInputValues";
 import { NextApiRequest, NextApiResponse } from "next";
+import {
+  nameValidations,
+  imageValidations,
+  messageValidations,
+} from "@/validations";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   connectToDB();
@@ -17,6 +24,21 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
       case "POST": {
         const { title, description, image, iconName, iconPack } = req.body;
+
+        const schema = validationSchema({
+          title: nameValidations,
+          image: imageValidations,
+          description: messageValidations,
+        });
+
+        const isValid = await validateInputValues({
+          values: { title, description, image, iconName, iconPack },
+          schema,
+        });
+
+        if (!isValid) {
+          return res.status(422).json({ message: "Request body is invalid!" });
+        }
 
         await ServiceModel.create({
           title,
