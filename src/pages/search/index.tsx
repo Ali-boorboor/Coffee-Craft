@@ -1,7 +1,7 @@
 import ProductModel from "@/models/Product";
 import connectToDB from "@/database/dbConnection";
 import jsonDataParser from "@/utils/jsonDataParser";
-import PageHeading from "@/components/ui/page-breadcrumb";
+import PageBreadcrumb from "@/components/ui/page-breadcrumb";
 import validationSchema from "@/validations/validationSchema";
 import validateInputValues from "@/validations/validateInputValues";
 import SearchResult from "@/features/search/components/SearchResult";
@@ -19,7 +19,7 @@ const Search = ({ matchedProducts }: SearchProps) => {
 
   return (
     <main className="space-y-20 md:space-y-40">
-      <PageHeading title="search" />
+      <PageBreadcrumb title="search" />
 
       <SearchResult matchedProducts={matchedProducts} />
     </main>
@@ -40,9 +40,7 @@ export const getServerSideProps = async (context: NextPageContext) => {
 
   if (!isValid) {
     return {
-      redirect: {
-        destination: "/",
-      },
+      props: { matchedProducts: [] },
     };
   }
 

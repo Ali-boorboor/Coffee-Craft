@@ -10,7 +10,7 @@ const useProductInfosAniamtion = () => {
   useGSAP(
     () => {
       const timeline = gsap.timeline({
-        defaults: { ease: "power4.inOut", duration: 1 },
+        defaults: { ease: "power4.inOut", duration: 1.4 },
       });
 
       timeline.fromTo(

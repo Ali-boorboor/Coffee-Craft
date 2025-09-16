@@ -16,7 +16,7 @@ const Button = ({
   ...props
 }: ButtonProps) => {
   const baseStyles =
-    "capitalize border-2 shadow-xs font-semibold rounded-md cursor-pointer transition-colors duration-300 ease-linear transform-gpu will-change-transform";
+    "capitalize border-2 shadow-xs font-semibold rounded-md cursor-pointer transition-colors duration-300 ease-linear";
 
   const variants = {
     default:

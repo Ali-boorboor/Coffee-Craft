@@ -1,23 +1,18 @@
-import Image from "next/image";
 import Input from "@/components/ui/input";
 import Button from "@/components/ui/button";
 import apiRequest from "@/utils/axios/axiosInstance";
 import SectionHeader from "@/components/ui/section-header";
-import validateInputValues from "@/validations/validateInputValues";
 import validationSchema from "@/validations/validationSchema";
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
+import validateInputValues from "@/validations/validateInputValues";
 import React, { useState } from "react";
 import { emailValidations } from "@/validations";
 import { toast } from "react-toastify";
 
-const FADE_UP_DATA_ANIMATE = "newsletter-fadeUp";
-
 const Newsletter = () => {
   const [email, setEmail] = useState("");
 
-  const { containerRef, imageRef } = useFadeUpAnimation({
-    fadeUpDataAnimate: FADE_UP_DATA_ANIMATE,
-  });
+  const { containerRef } = useFadeUpAnimation();
 
   const handleEmailInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -46,40 +41,33 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="px-4" ref={containerRef}>
+    <section
+      className="px-4 transform-gpu will-change-transform"
+      ref={containerRef}
+    >
       <div className="flex flex-col justify-center items-center gap-2 md:gap-6 container m-auto">
-        <SectionHeader
-          title="news letter"
-          text="join us for offers and news"
-          linesDataAnimate={FADE_UP_DATA_ANIMATE}
-        />
+        <SectionHeader title="news letter" text="join us for offers and news" />
 
         <form
           className="flex flex-wrap sm:flex-nowrap gap-2 max-w-full sm:max-w-xl w-full"
-          data-animate={FADE_UP_DATA_ANIMATE}
           onSubmit={handleFormSubmit}
         >
           <Input
-            className="grow transform-gpu will-change-transform"
+            className="grow"
             onChange={handleEmailInputChange}
             placeholder="email..."
             value={email}
             type="text"
           />
-          <Button
-            className="grow transform-gpu will-change-transform"
-            variant="ghost"
-            type="submit"
-          >
+          <Button className="grow" variant="ghost" type="submit">
             join
           </Button>
         </form>
 
-        <Image
+        <img
           className="w-60 h-60 md:w-80 md:h-80 object-cover object-center"
           src="/image/coffeeBean-bag.png"
           alt="coffee-bean-bag"
-          ref={imageRef}
         />
       </div>
     </section>

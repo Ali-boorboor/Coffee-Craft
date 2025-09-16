@@ -10,21 +10,20 @@ const MobileMenu = () => {
   const { setIsMenuAvailable, isMenuAvailable } = useMobileMenuStore();
 
   const { containerRef } = useMobileMenuAnimation({
-    isMenuAvailable,
     itemsDataAnimate: DATA_ANIMATE,
+    isMenuAvailable,
   });
 
   const closeMenuOnItemsClick = () => setIsMenuAvailable(false);
 
   return (
     <nav
-      className="block md:hidden border-b-2 border-b-secondary-foreground w-full absolute left-0 m-auto top-10"
+      className="block md:hidden border-b-2 border-b-secondary-foreground w-full absolute left-0 m-auto top-10 transform-gpu will-change-transform [clip-path:polygon(0%_0%,100%_0%,100%_0%,0%_0%)]"
       ref={containerRef}
     >
       <ul className="text-center p-4 bg-secondary space-y-4 capitalize font-semibold">
         {mobileMenuItems.map((menuItem) => (
           <li
-            className="transform-gpu will-change-transform"
             onClick={closeMenuOnItemsClick}
             data-animate={DATA_ANIMATE}
             key={menuItem.id}

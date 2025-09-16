@@ -87,7 +87,7 @@ const Form = () => {
 
   return (
     <form
-      className="space-y-2 md:space-y-4 basis-full md:basis-1/2 transform-gpu will-change-transform"
+      className="space-y-2 md:space-y-4 basis-full md:basis-1/2"
       onSubmit={handleSubmit}
     >
       <Input

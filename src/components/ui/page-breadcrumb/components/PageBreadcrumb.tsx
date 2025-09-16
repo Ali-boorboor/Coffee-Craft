@@ -13,30 +13,28 @@ const PageBreadcrumb = ({ title, href }: PageBreadcrumbProps) => {
       ref={containerRef}
     >
       <div className="container m-auto flex flex-col justify-center items-center gap-2 md:gap-4 text-base md:text-lg font-normal capitalize">
-        <h3 className="text-3xl md:text-5xl font-bold uppercase transform-gpu will-change-transform">
-          {title}
-        </h3>
+        <h3 className="text-3xl md:text-5xl font-bold uppercase">{title}</h3>
 
         <div className="space-x-2">
           <Link
-            className="relative after:absolute after:w-0 after:h-0.5 after:bg-primary after:-bottom-0.5 after:left-0 after:right-0 after:m-auto after:transition-all after:duration-300 after:ease-linear hover:after:w-full transform-gpu will-change-transform"
+            className="relative after:absolute after:w-0 after:h-0.5 after:bg-primary after:-bottom-0.5 after:left-0 after:right-0 after:m-auto after:transition-all after:duration-300 after:ease-linear hover:after:w-full"
             href="/"
           >
             home
           </Link>
 
-          {href ? (
+          {href && (
             <>
               <span>/</span>
 
               <Link
-                className="relative after:absolute after:w-0 after:h-0.5 after:bg-primary after:-bottom-0.5 after:left-0 after:right-0 after:m-auto after:transition-all after:duration-300 after:ease-linear hover:after:w-full transform-gpu will-change-transform"
+                className="relative after:absolute after:w-0 after:h-0.5 after:bg-primary after:-bottom-0.5 after:left-0 after:right-0 after:m-auto after:transition-all after:duration-300 after:ease-linear hover:after:w-full"
                 href={href}
               >
                 {title}
               </Link>
             </>
-          ) : null}
+          )}
         </div>
       </div>
     </section>

@@ -19,7 +19,6 @@ const useMenuAnimations = ({
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top center",
-        end: 99999,
       },
       defaults: { ease: "power4.inOut", duration: 1 },
     });
@@ -27,11 +26,9 @@ const useMenuAnimations = ({
     gsapTimeline.fromTo(
       `[data-animate='${itemsDataAnimate}']`,
       {
-        scale: 0,
         clipPath: "circle(0% at 50% 50%)",
       },
       {
-        scale: 1,
         clipPath: "circle(100% at 50% 50%)",
         stagger: {
           each: 0.1,

@@ -15,12 +15,10 @@ type TestimonialProps = {
   comments: Comment[];
 };
 
-const LINES_DATA_ANIMATE = "testimonial-lines";
 const SLIDES_DATA_ANIMATE = "testimonial-slides";
 
 const Testimonial = ({ comments }: TestimonialProps) => {
   const { containerRef } = useSliderAnimation({
-    linesDataAnimate: LINES_DATA_ANIMATE,
     slidesDataAnimate: SLIDES_DATA_ANIMATE,
     start: "top 70%",
   });
@@ -28,11 +26,7 @@ const Testimonial = ({ comments }: TestimonialProps) => {
   return (
     <section className="px-4 md:px-0" ref={containerRef}>
       <div className="container m-auto">
-        <SectionHeader
-          linesDataAnimate={LINES_DATA_ANIMATE}
-          text="Our Clients Say"
-          title="Testimonial"
-        />
+        <SectionHeader text="Our Clients Say" title="Testimonial" />
 
         <div className="mt-10 md:mt-20">
           <Slider

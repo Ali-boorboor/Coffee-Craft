@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "@/features/auth/components/Form";
 import apiRequest from "@/utils/axios/axiosInstance";
-import PageHeading from "@/components/ui/page-breadcrumb";
+import PageBreadcrumb from "@/components/ui/page-breadcrumb";
 import SectionHeader from "@/components/ui/section-header";
 import validationSchema from "@/validations/validationSchema";
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
@@ -12,15 +12,11 @@ import { useAuthStore } from "@/features/auth";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 
-const FADE_UP_DATA_ANIMATE = "#login_data_animate";
-
 const Login = () => {
   const router = useRouter();
 
   const { setIsUserLogin } = useAuthStore();
-  const { containerRef } = useFadeUpAnimation({
-    fadeUpDataAnimate: FADE_UP_DATA_ANIMATE,
-  });
+  const { containerRef } = useFadeUpAnimation();
 
   const onSubmitHandler = async ({
     event,
@@ -60,21 +56,22 @@ const Login = () => {
   };
 
   return (
-    <main className="space-y-20 md:space-y-40" ref={containerRef}>
-      <PageHeading title="login" />
+    <main className="space-y-20 md:space-y-40">
+      <PageBreadcrumb title="login" />
 
-      <section className="px-4 space-y-20 md:space-y-40">
+      <section
+        className="px-4 space-y-20 md:space-y-40 transform-gpu will-change-transform"
+        ref={containerRef}
+      >
         <SectionHeader
           title="login to you account"
           text="to use cart features"
-          linesDataAnimate={FADE_UP_DATA_ANIMATE}
         />
 
         <Form
           submitButtonTitle="login"
           redirectButtonTitle="signup"
           redirectButtonHref="/signup"
-          dataAnimate={FADE_UP_DATA_ANIMATE}
           onSubmitHandler={onSubmitHandler}
         />
       </section>

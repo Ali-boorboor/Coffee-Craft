@@ -1,30 +1,18 @@
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
 import SectionHeader from "@/components/ui/section-header";
-import Image from "next/image";
 import React from "react";
 
-const FADE_UP_DATA_ANIMATE = "#about_lines";
-
 const AboutDetails = () => {
-  const { containerRef, imageRef } = useFadeUpAnimation({
-    fadeUpDataAnimate: FADE_UP_DATA_ANIMATE,
-  });
+  const { containerRef } = useFadeUpAnimation();
 
   return (
     <section
-      className="flex flex-col justify-center items-center gap-2 md:gap-6 container m-auto md:px-0 px-4"
+      className="flex flex-col justify-center items-center gap-2 md:gap-6 container m-auto md:px-0 px-4 transform-gpu will-change-transform"
       ref={containerRef}
     >
-      <SectionHeader
-        title="about us"
-        text="serving since 2004"
-        linesDataAnimate={FADE_UP_DATA_ANIMATE}
-      />
+      <SectionHeader title="about us" text="serving since 2004" />
 
-      <p
-        className="md:max-w-96 w-full m-auto md:leading-6 text-center font-normal transform-gpu will-change-transform"
-        data-animate={FADE_UP_DATA_ANIMATE}
-      >
+      <p className="md:max-w-96 w-full m-auto md:leading-6 text-center font-normal">
         There are many variations of passages of Lorem Ipsum available, but the
         majority have suffered alteration in some form, by injected humour, or
         randomised words which don&apos;t look even slightly believable. If you
@@ -32,11 +20,10 @@ const AboutDetails = () => {
         isn&apos;t anything embarrassing hidden in the middle of text. All
       </p>
 
-      <Image
+      <img
         className="w-60 h-60 md:w-80 md:h-80 object-cover object-center"
         src="/image/flying-coffee-cup.png"
         alt="flying-coffee-cup"
-        ref={imageRef}
       />
     </section>
   );

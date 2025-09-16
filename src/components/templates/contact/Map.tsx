@@ -40,7 +40,7 @@ const Map = () => {
   if (!locationIcon) return null;
 
   return (
-    <div className="basis-full md:basis-1/2 h-90.5 z-10 border-2 border-primary rounded-md overflow-hidden shadow-xs shadow-primary transform-gpu will-change-transform">
+    <div className="basis-full md:basis-1/2 h-90.5 z-10 border-2 border-primary rounded-md overflow-hidden shadow-xs shadow-primary">
       <MapContainer
         center={LOCATION_COORDINATES}
         zoom={13}

@@ -12,12 +12,10 @@ type ServicesProps = {
   services: Service[];
 };
 
-const LINES_DATA_ANIMATE = "services-lines";
 const SLIDES_DATA_ANIMATE = "services-slides";
 
 const Services = ({ services }: ServicesProps) => {
   const { containerRef } = useSliderAnimation({
-    linesDataAnimate: LINES_DATA_ANIMATE,
     slidesDataAnimate: SLIDES_DATA_ANIMATE,
   });
 
@@ -27,11 +25,7 @@ const Services = ({ services }: ServicesProps) => {
       ref={containerRef}
     >
       <div className="container m-auto space-y-10 md:space-y-20">
-        <SectionHeader
-          title="Our Services"
-          text="Fresh & Organic Beans"
-          linesDataAnimate={LINES_DATA_ANIMATE}
-        />
+        <SectionHeader title="Our Services" text="Fresh & Organic Beans" />
 
         <Slider
           autoplay={{ delay: 3000 }}

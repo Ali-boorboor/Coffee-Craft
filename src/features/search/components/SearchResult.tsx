@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import Alert from "@/components/ui/alert/Alert";
 import SectionHeader from "@/components/ui/section-header";
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
@@ -12,14 +11,11 @@ type SearchResultProps = {
 };
 
 const ITEMS_DATA_ANIMATE = "#search-result_items";
-const FADE_UP_DATA_ANIMATE = "#search-result_lines";
 
 const SearchResult = ({ matchedProducts }: SearchResultProps) => {
   const { menuFilterType } = useMenuFilterStore();
 
-  const { containerRef: fadeUpContainerRef, imageRef } = useFadeUpAnimation({
-    fadeUpDataAnimate: FADE_UP_DATA_ANIMATE,
-  });
+  const { containerRef: fadeUpContainerRef } = useFadeUpAnimation();
   const { containerRef } = useMenuAnimations({
     itemsDataAnimate: ITEMS_DATA_ANIMATE,
     menuFilterType,
@@ -28,18 +24,17 @@ const SearchResult = ({ matchedProducts }: SearchResultProps) => {
   const isProductsFound = matchedProducts.length;
 
   return (
-    <section className="px-4 md:px-0" ref={containerRef}>
+    <section
+      className="px-4 md:px-0 transform-gpu will-change-transform"
+      ref={containerRef}
+    >
       <div
         className="container m-auto flex flex-col gap-6 md:gap-10"
         ref={fadeUpContainerRef}
       >
         {isProductsFound ? (
           <>
-            <SectionHeader
-              linesDataAnimate={FADE_UP_DATA_ANIMATE}
-              title="search result"
-              text="found products"
-            />
+            <SectionHeader title="search result" text="found products" />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
               {matchedProducts.map((item) => (
@@ -53,15 +48,11 @@ const SearchResult = ({ matchedProducts }: SearchResultProps) => {
           </>
         ) : (
           <>
-            <Alert
-              dataAnimate={FADE_UP_DATA_ANIMATE}
-              title="no products found"
-            />
-            <Image
+            <Alert title="no products found" />
+            <img
               className="w-60 h-60 md:w-80 md:h-80 object-cover object-center m-auto"
               src="/image/flying-coffee-cup.png"
               alt="flying-coffee-cup-image"
-              ref={imageRef}
             />
           </>
         )}

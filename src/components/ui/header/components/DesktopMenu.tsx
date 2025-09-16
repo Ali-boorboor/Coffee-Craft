@@ -10,13 +10,13 @@ const DesktopMenu = () => {
   useDesktopMenuAnimation({ itemsDataAnimate: DATA_ANIMATE });
 
   return (
-    <nav className="hidden md:block">
+    <nav className="hidden md:block transform-gpu will-change-transform">
       <ul className="flex justify-center items-center gap-6 capitalize font-semibold">
         {desktopMenuItems.map((menuItem) => {
           if (menuItem.children) {
             return (
               <li
-                className="relative group transform-gpu will-change-transform"
+                className="relative group"
                 data-animate={DATA_ANIMATE}
                 key={menuItem.id}
               >
@@ -43,11 +43,7 @@ const DesktopMenu = () => {
             );
           } else {
             return (
-              <li
-                className="transform-gpu will-change-transform"
-                data-animate={DATA_ANIMATE}
-                key={menuItem.id}
-              >
+              <li data-animate={DATA_ANIMATE} key={menuItem.id}>
                 <Link
                   className="transition-all duration-300 ease-linear hover:text-primary"
                   href={menuItem.href}

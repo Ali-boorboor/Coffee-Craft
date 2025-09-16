@@ -5,30 +5,19 @@ import Form from "@/components/templates/contact/Form";
 import Map from "@/components/templates/contact/Map";
 import React from "react";
 
-const FADE_UP_DATA_ANIMATE = "#contact_items";
-
 const ContactDetails = () => {
-  const { containerRef } = useFadeUpAnimation({
-    fadeUpDataAnimate: FADE_UP_DATA_ANIMATE,
-  });
+  const { containerRef } = useFadeUpAnimation();
 
   return (
     <section
-      className="container m-auto space-y-5 md:space-y-10"
+      className="container m-auto space-y-5 md:space-y-10 transform-gpu will-change-transform"
       ref={containerRef}
     >
-      <SectionHeader
-        title="Contact Us"
-        text="Feel Free To Contact"
-        linesDataAnimate={FADE_UP_DATA_ANIMATE}
-      />
+      <SectionHeader title="Contact Us" text="Feel Free To Contact" />
 
       <Contacts />
 
-      <div
-        className="flex flex-wrap-reverse md:flex-nowrap gap-4 justify-center md:justify-between items-stretch px-4 md:px-0"
-        data-animate={FADE_UP_DATA_ANIMATE}
-      >
+      <div className="flex flex-wrap-reverse md:flex-nowrap gap-4 justify-center md:justify-between items-stretch px-4 md:px-0">
         <Map />
 
         <Form />
