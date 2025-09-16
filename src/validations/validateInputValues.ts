@@ -1,20 +1,22 @@
-import { AnyObject, ObjectSchema } from "yup";
+import { AnyObject, ObjectSchema, ValidationError } from "yup";
 import { toast } from "react-toastify";
 
-type validateInputValuesProps = {
-  schema: ObjectSchema<AnyObject>;
-  values: Object;
+type ValidateInputValuesProps<T extends AnyObject> = {
+  schema: ObjectSchema<T>;
+  values: T;
 };
 
-const validateInputValues = async ({
+const validateInputValues = async <T extends AnyObject>({
   schema,
   values,
-}: validateInputValuesProps) => {
+}: ValidateInputValuesProps<T>) => {
   try {
     await schema.validate(values, { strict: true, abortEarly: true });
     return true;
-  } catch (error: any) {
-    error.errors.forEach((msg: string) => toast.error(msg));
+  } catch (error) {
+    if (error instanceof ValidationError) {
+      error.errors.forEach((msg) => toast.error(msg));
+    }
     return false;
   }
 };

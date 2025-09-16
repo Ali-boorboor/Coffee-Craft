@@ -31,7 +31,7 @@ const useFadeUpAnimation = ({ fadeUpDataAnimate }: useFadeUpAnimationProps) => {
         }
       );
 
-      imageRef.current &&
+      if (imageRef.current) {
         gsapTimeline.fromTo(
           imageRef.current,
           {
@@ -44,6 +44,7 @@ const useFadeUpAnimation = ({ fadeUpDataAnimate }: useFadeUpAnimationProps) => {
           },
           "-=1"
         );
+      }
     },
     { scope: containerRef, dependencies: [] }
   );

@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import UserModel from "@/models/User";
 import CartModel from "@/models/Cart";
 import checkToken from "@/utils/checkToken";
@@ -11,7 +12,14 @@ interface normalizedProduct extends Product {
   quantity: number;
 }
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+interface CartLean {
+  _id: mongoose.Types.ObjectId;
+  products: Product[] | mongoose.Types.ObjectId[];
+  totalPrice: number;
+  totalQuantity: number;
+}
+
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   connectToDB();
 
   try {
@@ -20,34 +28,37 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     switch (req.method) {
       case "GET": {
         const user = await UserModel.findById(
-          tokenPayload.id,
+          tokenPayload?.id,
           "cart -_id"
         ).populate("cart", "_id");
 
-        const cart: any = await CartModel.findById(
+        const cart = await CartModel.findById(
           user.cart._id,
           "-__v -createdAt -updatedAt"
         )
           .populate("products", "-__v -createdAt -updatedAt")
-          .lean();
+          .lean<CartLean>();
 
-        const normalizeRepeatedProducts = cart?.products?.reduce(
-          (prevProducts: normalizedProduct[], product: normalizedProduct) => {
-            const existingProduct = prevProducts.find(
-              (accProduct: normalizedProduct) => {
-                return String(accProduct._id) === String(product._id);
-              }
-            );
+        const normalizeRepeatedProducts =
+          Array.isArray(cart?.products) && cart.products[0]?._id
+            ? (cart.products as Product[]).reduce(
+                (prevProducts: normalizedProduct[], product) => {
+                  const existingProduct = prevProducts.find(
+                    (accProduct) =>
+                      String(accProduct._id) === String(product._id)
+                  );
 
-            if (existingProduct) {
-              existingProduct.quantity += 1;
-            } else {
-              prevProducts.push({ ...product, quantity: 1 });
-            }
-            return prevProducts;
-          },
-          []
-        );
+                  if (existingProduct) {
+                    existingProduct.quantity += 1;
+                  } else {
+                    prevProducts.push({ ...product, quantity: 1 });
+                  }
+
+                  return prevProducts;
+                },
+                []
+              )
+            : [];
 
         return res.json({
           message: "User cart catched successfully",
@@ -65,7 +76,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
         const user = await UserModel.findById(
-          tokenPayload.id,
+          tokenPayload?.id,
           "cart -_id"
         ).populate("cart");
 
@@ -100,7 +111,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
         const user = await UserModel.findById(
-          tokenPayload.id,
+          tokenPayload?.id,
           "cart -_id"
         ).populate("cart");
 
@@ -136,3 +147,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(500).json({ message: "Error in server!" });
   }
 };
+
+export default handler;

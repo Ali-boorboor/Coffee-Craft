@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Button from "@/components/ui/button";
 import useProductInfosAniamtion from "@/components/templates/single-product/animations/useProductInfosAniamtion";
 import { useAddProductToCart } from "@/features/cart";
@@ -33,7 +34,7 @@ const ProductInfos = ({ _id, title, price, image }: Product) => {
           {price} $
         </p>
 
-        <img
+        <Image
           className="w-60 h-60 md:w-96 md:h-96 object-contain object-center z-20"
           ref={productImageRef}
           alt="product-image"
@@ -58,7 +59,7 @@ const ProductInfos = ({ _id, title, price, image }: Product) => {
           </Button>
         )}
 
-        <img
+        <Image
           className="w-40 h-40 md:w-72 md:h-72 object-cover object-center absolute right-0 top-0 z-10 transform-gpu will-change-transform"
           src="/image/coffee-beans.png"
           ref={coffeeBeanImageRef}

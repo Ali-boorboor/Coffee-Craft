@@ -2,7 +2,7 @@ import cookie from "cookie";
 import checkToken from "@/utils/checkToken";
 import { NextApiRequest, NextApiResponse } from "next";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     checkToken(req, res);
 
@@ -28,3 +28,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(500).json({ message: "Error in server!" });
   }
 };
+
+export default handler;

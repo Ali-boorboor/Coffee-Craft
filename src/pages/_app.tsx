@@ -24,6 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
         setIsUserLogin(false);
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

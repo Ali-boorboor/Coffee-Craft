@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Input from "@/components/ui/input";
 import Button from "@/components/ui/button";
 import apiRequest from "@/utils/axios/axiosInstance";
@@ -74,7 +75,7 @@ const Newsletter = () => {
           </Button>
         </form>
 
-        <img
+        <Image
           className="w-60 h-60 md:w-80 md:h-80 object-cover object-center"
           src="/image/coffeeBean-bag.png"
           alt="coffee-bean-bag"

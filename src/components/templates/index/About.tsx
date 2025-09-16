@@ -1,6 +1,7 @@
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
 import SectionHeader from "@/components/ui/section-header";
 import Button from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -26,16 +27,17 @@ const About = () => {
         >
           There are many variations of passages of Lorem Ipsum available, but
           the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don't look even slightly believable.
-          If you are going to use a passage of Lorem Ipsum, you need to be sure
-          there isn't anything embarrassing hidden in the middle of text. All
+          humour, or randomised words which don&apos;t look even slightly
+          believable. If you are going to use a passage of Lorem Ipsum, you need
+          to be sure there isn&apos;t anything embarrassing hidden in the middle
+          of text. All
         </p>
 
         <Link href="/about">
           <Button data-animate={FADE_UP_DATA_ANIMATE}>learn more</Button>
         </Link>
 
-        <img
+        <Image
           className="w-60 h-60 md:w-80 md:h-80 object-cover object-center"
           src="/image/flying-coffee-cup.png"
           alt="flying-coffee-cup"

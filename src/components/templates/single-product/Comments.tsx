@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "@/features/slider";
 import SectionHeader from "@/components/ui/section-header";
 import CommentCard from "@/components/ui/comment-card/CommentCard";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 import { SwiperSlide } from "swiper/react";
 import {
   renderBullet,
@@ -42,8 +42,7 @@ const Comments = ({ comments, productName }: CommentsProps) => {
               clickable: true,
               renderBullet,
             }}
-            modules={[Autoplay, Pagination]}
-            autoplay={{ delay: 3000 }}
+            modules={[Pagination]}
             slidesPerView={1}
             spaceBetween={10}
             breakpoints={{
@@ -58,7 +57,6 @@ const Comments = ({ comments, productName }: CommentsProps) => {
             }}
             speed={1000}
             grabCursor
-            loop
           >
             {comments.map((comment) => (
               <SwiperSlide data-animate={SLIDES_DATA_ANIMATE} key={comment._id}>

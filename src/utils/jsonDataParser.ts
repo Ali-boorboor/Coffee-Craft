@@ -1,21 +1,4 @@
-import { FlattenMaps } from "mongoose";
-
-type jsonDataParserProps =
-  | (FlattenMaps<any> &
-      Required<{
-        _id: unknown;
-      }> & {
-        __v: number;
-      })[]
-  | (FlattenMaps<any> &
-      Required<{
-        _id: unknown;
-      }> & {
-        __v: number;
-      })
-  | null;
-
-const jsonDataParser = (data: jsonDataParserProps) => {
+const jsonDataParser = <T>(data: T): T => {
   return JSON.parse(JSON.stringify(data));
 };
 

@@ -6,7 +6,7 @@ import { imageValidations, messageValidations } from "@/validations";
 import { NextApiRequest, NextApiResponse } from "next";
 import { isValidObjectId } from "mongoose";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   connectToDB();
 
   try {
@@ -60,3 +60,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(500).json({ message: "Error in server!" });
   }
 };
+
+export default handler;

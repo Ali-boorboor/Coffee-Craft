@@ -3,7 +3,7 @@ import checkToken from "@/utils/checkToken";
 import connectToDB from "@/database/dbConnection";
 import { NextApiRequest, NextApiResponse } from "next";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     connectToDB();
 
@@ -27,3 +27,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(500).json({ message: "Error in server!" });
   }
 };
+
+export default handler;

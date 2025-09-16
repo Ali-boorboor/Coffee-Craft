@@ -11,6 +11,7 @@ type SingleProductProps = { product: ProductType };
 const SingleProduct = ({ product }: SingleProductProps) => {
   useEffect(() => {
     document.title = `Coffee Craft | ${product.title}`;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

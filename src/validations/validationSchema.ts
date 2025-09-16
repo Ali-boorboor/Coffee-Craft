@@ -1,11 +1,13 @@
 import * as Yup from "yup";
 
-type validationSchemaProps = Record<string, Yup.AnySchema>;
+type ValidationSchemaProps<T extends Record<string, Yup.AnySchema>> = T;
 
-const validationSchema = (validations: validationSchemaProps) => {
-  const schema = Yup.object().shape(validations);
-
-  return schema;
+const validationSchema = <T extends Record<string, Yup.AnySchema>>(
+  validations: ValidationSchemaProps<T>
+) => {
+  return Yup.object().shape(validations) as Yup.ObjectSchema<{
+    [K in keyof T]: Yup.InferType<T[K]>;
+  }>;
 };
 
 export default validationSchema;

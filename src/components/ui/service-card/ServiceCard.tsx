@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 type ServiceCardProps = {
@@ -12,7 +13,7 @@ type ServiceCardProps = {
 const ServiceCard = ({ image, title, description, Icon }: ServiceCardProps) => {
   return (
     <div className="flex justify-between items-center w-full bg-primary text-primary-foreground border-2 border-white/60 rounded-md overflow-hidden drop-shadow-xs drop-shadow-white">
-      <img
+      <Image
         className="w-1/2 h-full object-cover object-center border-r-2 border-white/60 transform-gpu will-change-transform"
         alt="service-image"
         src={image}

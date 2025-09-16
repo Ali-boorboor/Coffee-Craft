@@ -18,7 +18,10 @@ const MenuItems = ({ menuItems }: MenuItemsProps) => {
     menuFilterType,
   });
 
-  useEffect(() => setMenuFilterType("all"), []);
+  useEffect(() => {
+    setMenuFilterType("all");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <section

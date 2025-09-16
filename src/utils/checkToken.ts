@@ -1,16 +1,26 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { validateToken } from "@/utils/jwtUtils";
 
-const checkToken = (req: NextApiRequest, res: NextApiResponse) => {
-  const hasToken = req.cookies.token && req.cookies.token.startsWith("Bearer ");
+type TokenPayload = {
+  id: string;
+  iat?: number;
+  exp?: number;
+};
 
-  if (!hasToken) {
+const checkToken = (req: NextApiRequest, res: NextApiResponse) => {
+  const tokenHeader = req.cookies.token;
+
+  if (!tokenHeader || !tokenHeader.startsWith("Bearer ")) {
     return res.status(401).json({ message: "Unauthorized!" });
   }
 
-  const token = req.cookies.token?.split(" ")[1]!;
+  const token = tokenHeader.split(" ")[1];
+  
+  if (!token) {
+    return res.status(401).json({ message: "Unauthorized!" });
+  }
 
-  const tokenPayload: any = validateToken(token);
+  const tokenPayload = validateToken(token) as TokenPayload;
 
   return tokenPayload;
 };

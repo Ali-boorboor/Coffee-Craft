@@ -31,6 +31,7 @@ const CartPanel = () => {
         .then((response) => response.data)
         .then((data: CartData) => setUserCart(data?.userCart));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCartPanelAvailable]);
 
   return (

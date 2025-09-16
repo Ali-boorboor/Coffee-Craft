@@ -1,6 +1,12 @@
 import dynamic from "next/dynamic";
+import { IconType } from "react-icons";
 
-export const iconPacks: Record<string, () => Promise<any>> = {
+type IconModule = {
+  default?: unknown;
+  [key: string]: IconType | unknown;
+};
+
+export const iconPacks: Record<string, () => Promise<IconModule>> = {
   tb: () => import("react-icons/tb"),
   pi: () => import("react-icons/pi"),
   fa: () => import("react-icons/fa"),

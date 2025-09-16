@@ -13,7 +13,9 @@ const useMenuFilterStore = create<UseMenuFilterStore>((set, get) => ({
   setMenuFilterType: (menuFilterType) => {
     const hasFilterChanged = get().menuFilterType !== menuFilterType;
 
-    hasFilterChanged && set({ menuFilterType });
+    if (hasFilterChanged) {
+      set({ menuFilterType });
+    }
   },
 }));
 
