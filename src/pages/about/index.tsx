@@ -1,18 +1,21 @@
 import AboutDetails from "@/components/templates/about/AboutDetails";
 import PageBreadcrumb from "@/components/ui/page-breadcrumb";
-import React, { useEffect } from "react";
+import Head from "next/head";
+import React from "react";
 
 const About = () => {
-  useEffect(() => {
-    document.title = "Coffee Craft | About";
-  }, []);
-
   return (
-    <main className="space-y-20 md:space-y-40">
-      <PageBreadcrumb title="about us" href="/about" />
+    <>
+      <Head>
+        <title>Coffee Craft | About</title>
+      </Head>
 
-      <AboutDetails />
-    </main>
+      <main className="space-y-20 md:space-y-40">
+        <PageBreadcrumb title="about us" href="/about" />
+
+        <AboutDetails />
+      </main>
+    </>
   );
 };
 

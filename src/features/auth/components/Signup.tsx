@@ -1,7 +1,6 @@
 import React from "react";
 import Form from "@/features/auth/components/Form";
 import apiRequest from "@/utils/axios/axiosInstance";
-import PageBreadcrumb from "@/components/ui/page-breadcrumb";
 import SectionHeader from "@/components/ui/section-header";
 import validationSchema from "@/validations/validationSchema";
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
@@ -50,23 +49,19 @@ const Signup = () => {
   };
 
   return (
-    <main className="space-y-20 md:space-y-40">
-      <PageBreadcrumb title="signup" />
+    <section
+      className="px-4 space-y-20 md:space-y-40 transform-gpu will-change-transform"
+      ref={containerRef}
+    >
+      <SectionHeader title="create an account" text="to use cart features" />
 
-      <section
-        className="px-4 space-y-20 md:space-y-40 transform-gpu will-change-transform"
-        ref={containerRef}
-      >
-        <SectionHeader title="create an account" text="to use cart features" />
-
-        <Form
-          submitButtonTitle="signup"
-          redirectButtonTitle="login"
-          redirectButtonHref="/login"
-          onSubmitHandler={onSubmitHandler}
-        />
-      </section>
-    </main>
+      <Form
+        submitButtonTitle="signup"
+        redirectButtonTitle="login"
+        redirectButtonHref="/login"
+        onSubmitHandler={onSubmitHandler}
+      />
+    </section>
   );
 };
 

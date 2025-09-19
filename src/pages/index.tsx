@@ -1,15 +1,16 @@
+import React from "react";
+import Head from "next/head";
+import ServiceModel from "@/models/Service";
+import ProductModel from "@/models/Product";
+import CommentModel from "@/models/Comment";
+import connectToDB from "@/database/dbConnection";
+import jsonDataParser from "@/utils/jsonDataParser";
+import Menu from "@/components/templates/index/Menu";
 import Intro from "@/components/templates/index/Intro";
 import About from "@/components/templates/index/About";
 import Services from "@/components/templates/index/Services";
 import Newsletter from "@/components/templates/index/Newsletter";
-import Menu from "@/components/templates/index/Menu";
 import Testimonial from "@/components/templates/index/Testimonial";
-import jsonDataParser from "@/utils/jsonDataParser";
-import connectToDB from "@/database/dbConnection";
-import ServiceModel from "@/models/Service";
-import ProductModel from "@/models/Product";
-import CommentModel from "@/models/Comment";
-import React, { useEffect } from "react";
 import { Comment, Product, Service } from "@/types";
 
 type IndexProps = {
@@ -19,24 +20,26 @@ type IndexProps = {
 };
 
 const Index = ({ services, products, comments }: IndexProps) => {
-  useEffect(() => {
-    document.title = "Coffee Craft";
-  }, []);
-
   return (
-    <main className="space-y-40 md:space-y-80">
-      <Intro />
+    <>
+      <Head>
+        <title>Coffee Craft</title>
+      </Head>
 
-      <About />
+      <main className="space-y-40 md:space-y-80">
+        <Intro />
 
-      <Services services={services} />
+        <About />
 
-      <Newsletter />
+        <Services services={services} />
 
-      <Menu menuItems={products} />
+        <Newsletter />
 
-      <Testimonial comments={comments} />
-    </main>
+        <Menu menuItems={products} />
+
+        <Testimonial comments={comments} />
+      </main>
+    </>
   );
 };
 

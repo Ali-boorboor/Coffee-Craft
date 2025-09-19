@@ -1,3 +1,5 @@
+import React from "react";
+import Head from "next/head";
 import ProductModel from "@/models/Product";
 import connectToDB from "@/database/dbConnection";
 import jsonDataParser from "@/utils/jsonDataParser";
@@ -5,7 +7,6 @@ import PageBreadcrumb from "@/components/ui/page-breadcrumb";
 import validationSchema from "@/validations/validationSchema";
 import validateInputValues from "@/validations/validateInputValues";
 import SearchResult from "@/features/search/components/SearchResult";
-import React, { useEffect } from "react";
 import { searchValidations } from "@/validations";
 import { NextPageContext } from "next";
 import { Product } from "@/types";
@@ -13,16 +14,18 @@ import { Product } from "@/types";
 type SearchProps = { matchedProducts: Product[] };
 
 const Search = ({ matchedProducts }: SearchProps) => {
-  useEffect(() => {
-    document.title = "Coffee Craft | Search";
-  }, []);
-
   return (
-    <main className="space-y-20 md:space-y-40">
-      <PageBreadcrumb title="search" />
+    <>
+      <Head>
+        <title>Coffee Craft | Search</title>
+      </Head>
 
-      <SearchResult matchedProducts={matchedProducts} />
-    </main>
+      <main className="space-y-20 md:space-y-40">
+        <PageBreadcrumb title="search" />
+
+        <SearchResult matchedProducts={matchedProducts} />
+      </main>
+    </>
   );
 };
 

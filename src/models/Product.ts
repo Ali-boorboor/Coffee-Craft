@@ -1,6 +1,14 @@
 import "@/models/Comment";
 import mongoose from "mongoose";
 
+export interface IProduct extends mongoose.Document {
+  title: string;
+  image: string;
+  type: "hot" | "cold";
+  price: number;
+  description: string;
+}
+
 const schema = new mongoose.Schema(
   {
     title: {
@@ -41,7 +49,7 @@ schema.virtual("comments", {
   foreignField: "product",
 });
 
-const ProductModel =
+const ProductModel: mongoose.Model<IProduct> =
   mongoose.models.Product || mongoose.model("Product", schema);
 
 export default ProductModel;
