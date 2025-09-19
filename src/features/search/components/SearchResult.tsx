@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Alert from "@/components/ui/alert/Alert";
 import SectionHeader from "@/components/ui/section-header";
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
@@ -49,10 +50,12 @@ const SearchResult = ({ matchedProducts }: SearchResultProps) => {
         ) : (
           <>
             <Alert title="no products found" />
-            <img
+            <Image
               className="w-60 h-60 md:w-80 md:h-80 object-cover object-center m-auto"
               src="/image/flying-coffee-cup.png"
-              alt="flying-coffee-cup-image"
+              alt="flying coffee cup"
+              width={1000}
+              height={400}
             />
           </>
         )}

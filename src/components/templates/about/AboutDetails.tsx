@@ -1,5 +1,6 @@
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
 import SectionHeader from "@/components/ui/section-header";
+import Image from "next/image";
 import React from "react";
 
 const AboutDetails = () => {
@@ -20,10 +21,12 @@ const AboutDetails = () => {
         isn&apos;t anything embarrassing hidden in the middle of text. All
       </p>
 
-      <img
+      <Image
         className="w-60 h-60 md:w-80 md:h-80 object-cover object-center"
         src="/image/flying-coffee-cup.png"
-        alt="flying-coffee-cup"
+        alt="flying coffee cup"
+        width={1000}
+        height={400}
       />
     </section>
   );

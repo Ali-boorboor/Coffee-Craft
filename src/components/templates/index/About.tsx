@@ -1,6 +1,7 @@
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
 import SectionHeader from "@/components/ui/section-header";
 import Button from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -28,10 +29,12 @@ const About = () => {
           <Button>learn more</Button>
         </Link>
 
-        <img
+        <Image
           className="w-60 h-60 md:w-80 md:h-80 object-cover object-center"
           src="/image/flying-coffee-cup.png"
-          alt="flying-coffee-cup"
+          alt="flying coffee cup"
+          width={1000}
+          height={400}
         />
       </div>
     </section>

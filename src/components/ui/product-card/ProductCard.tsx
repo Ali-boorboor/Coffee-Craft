@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Button from "@/components/ui/button";
 import { useAddProductToCart } from "@/features/cart";
 import { FaCartShopping } from "react-icons/fa6";
@@ -38,16 +39,18 @@ const ProductCard = ({
     >
       <div className="h-52 md:h-72 bg-primary-foreground overflow-hidden rounded-b-3xl">
         <Link href={`/product/${_id}`}>
-          <img
+          <Image
             className="w-full h-full object-contain object-center scale-95 transition-transform duration-300 ease-linear group-hover:scale-105"
-            alt="menu-card-image"
+            alt="menu card image"
             src={image}
+            width={1000}
+            height={400}
           />
         </Link>
       </div>
 
       <div className="absolute -right-6 top-1 rotate-45 inline-block w-20 bg-primary text-center text-lg font-bold">
-        <span className="-rotate-45">{price} $</span>
+        <span>{price} $</span>
       </div>
 
       <div className="p-4 flex flex-col gap-4 justify-between">

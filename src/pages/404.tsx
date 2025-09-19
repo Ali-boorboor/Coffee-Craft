@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Image from "next/image";
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
 import PageBreadcrumb from "@/components/ui/page-breadcrumb";
 import SectionHeader from "@/components/ui/section-header";
@@ -25,10 +26,12 @@ const NotFoundPage = () => {
             text="does not exist"
           />
 
-          <img
+          <Image
             className="w-60 h-60 md:w-96 md:h-96 object-cover object-center m-auto"
             src="/image/not-found.png"
-            alt="not-found-image"
+            alt="not found image"
+            width={1000}
+            height={400}
           />
         </section>
       </main>
