@@ -85,8 +85,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const cartID = user.cart._id;
 
         await CartModel.findByIdAndUpdate(cartID, {
-          $push: { products: product._id },
-          $inc: { totalQuantity: 1, totalPrice: product.price },
+          $push: { products: product?._id },
+          $inc: { totalQuantity: 1, totalPrice: product?.price },
         });
 
         const userCart = await CartModel.findById(
@@ -117,13 +117,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
         const product = await ProductModel.findById(productID);
 
+        if (!product) {
+          return res.status(404).json({ message: "Product not found!" });
+        }
+
         const cartID = user.cart._id;
 
         await CartModel.findByIdAndUpdate(cartID, {
-          $pull: { products: product._id },
+          $pull: { products: product?._id },
           $inc: {
             totalQuantity: -productQuantity,
-            totalPrice: -(productQuantity * product.price),
+            totalPrice: -(productQuantity * product?.price),
           },
         });
 
