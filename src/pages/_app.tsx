@@ -8,10 +8,16 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import apiRequest from "@/utils/axios/axiosInstance";
 import { ToastContainer, Slide } from "react-toastify";
 import { useAuthStore } from "@/features/auth";
-import { useEffect } from "react";
 import type { AppProps } from "next/app";
+import { Roboto } from "next/font/google";
+import { useEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["300", "400", "700", "900"],
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   const { setIsUserLogin } = useAuthStore();
@@ -28,7 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <>
+    <main className={roboto.className}>
       <Header />
 
       <Component {...pageProps} />
@@ -47,6 +53,6 @@ export default function App({ Component, pageProps }: AppProps) {
       />
 
       <Footer />
-    </>
+    </main>
   );
 }

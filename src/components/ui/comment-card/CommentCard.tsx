@@ -14,7 +14,6 @@ const CommentCard = ({ commenter, commentBody, image }: CommentCardProps) => {
           alt="client image"
           width={1000}
           height={400}
-          quality={100}
         />
         <p className="md:text-lg font-bold transform-gpu will-change-transform capitalize">
           {commenter?.username}
