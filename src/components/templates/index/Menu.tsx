@@ -36,7 +36,7 @@ const Menu = ({ menuItems }: MenuProps) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
           {menuFilterType === "all" &&
             menuItems
-              .slice(0, 10)
+              .slice(0, 4)
               .map((item) => (
                 <ProductCard
                   dataAnimate={ITEMS_DATA_ANIMATE}
@@ -48,7 +48,7 @@ const Menu = ({ menuItems }: MenuProps) => {
           {menuFilterType !== "all" &&
             menuItems
               .filter((item) => item.type === menuFilterType)
-              .slice(0, 10)
+              .slice(0, 4)
               .map((item) => (
                 <ProductCard
                   dataAnimate={ITEMS_DATA_ANIMATE}
