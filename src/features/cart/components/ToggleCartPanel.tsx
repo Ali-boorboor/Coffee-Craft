@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "@/components/ui/button";
+import Button from "@/components/ui/button/Button";
 import { useCartStore } from "@/features/cart/stores/cartStores";
 import { FaCartShopping } from "react-icons/fa6";
 

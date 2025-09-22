@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "@/components/ui/button";
+import Button from "@/components/ui/button/Button";
 import apiRequest from "@/utils/axios/axiosInstance";
 import { MdLogin, MdLogout } from "react-icons/md";
 import { useAuthStore } from "@/features/auth";

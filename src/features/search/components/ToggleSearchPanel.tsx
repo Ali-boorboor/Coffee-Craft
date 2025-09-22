@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "@/components/ui/button";
+import Button from "@/components/ui/button/Button";
 import { useSearchStore } from "@/features/search/stores/searchStores";
 import { IoSearchOutline } from "react-icons/io5";
 

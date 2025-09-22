@@ -1,6 +1,6 @@
+import SectionHeader from "@/components/ui/section-header/SectionHeader";
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
 import Contacts from "@/components/templates/contact/Contacts";
-import SectionHeader from "@/components/ui/section-header";
 import Form from "@/components/templates/contact/Form";
 import Map from "@/components/templates/contact/Map";
 import React from "react";

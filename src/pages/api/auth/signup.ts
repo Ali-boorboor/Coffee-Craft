@@ -1,8 +1,8 @@
 import UserModel from "@/models/User";
 import CartModel from "@/models/Cart";
 import connectToDB from "@/database/dbConnection";
-import validationSchema from "@/validations/validationSchema";
-import validateInputValues from "@/validations/validateInputValues";
+import validationSchema from "@/utils/validators/validationSchema";
+import validateInputValues from "@/utils/validators/validateInputValues";
 import { nameValidations, passwordValidations } from "@/validations";
 import { NextApiRequest, NextApiResponse } from "next";
 import { hashData } from "@/utils/bcryptUtils";

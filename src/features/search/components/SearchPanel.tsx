@@ -1,6 +1,6 @@
 import React from "react";
 import Input from "@/components/ui/input";
-import Button from "@/components/ui/button";
+import Button from "@/components/ui/button/Button";
 import usePanelAnimation from "@/animations/usePanelAnimation";
 import useSearchPanel from "@/features/search/hooks/useSearchPanel";
 import { IoSearchOutline } from "react-icons/io5";

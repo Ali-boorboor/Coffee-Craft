@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Button from "@/components/ui/button";
+import Button from "@/components/ui/button/Button";
 import useProductInfosAniamtion from "@/components/templates/single-product/animations/useProductInfosAniamtion";
 import { useAddProductToCart } from "@/features/cart";
 import { FaCartShopping } from "react-icons/fa6";

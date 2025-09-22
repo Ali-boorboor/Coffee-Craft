@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "@/components/ui/button";
+import Button from "@/components/ui/button/Button";
 import { useMobileMenuStore } from "@/components/ui/header/stores/headerStores";
 import { IoMdClose } from "react-icons/io";
 import { HiMenu } from "react-icons/hi";

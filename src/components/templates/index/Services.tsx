@@ -1,8 +1,8 @@
 import React from "react";
 import Slider from "@/features/slider";
 import iconLoader from "@/utils/dynamicIconLoader";
-import SectionHeader from "@/components/ui/section-header";
 import ServiceCard from "@/components/ui/service-card/ServiceCard";
+import SectionHeader from "@/components/ui/section-header/SectionHeader";
 import { useSliderAnimation } from "@/features/slider";
 import { SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";

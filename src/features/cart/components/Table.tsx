@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "@/components/ui/button";
+import Button from "@/components/ui/button/Button";
 import { FaTrashAlt } from "react-icons/fa";
-import { useRemoveProductFromCart, useUserCartStore } from "@/features/cart";
+import { useRemoveProductFromCart, useCartStore } from "@/features/cart";
 
 type TableProps = {
   dataAnimate?: string;
@@ -9,7 +9,7 @@ type TableProps = {
 
 const Table = ({ dataAnimate }: TableProps) => {
   const { removeProductFromCart } = useRemoveProductFromCart();
-  const { userCart } = useUserCartStore();
+  const { userCart } = useCartStore();
 
   return (
     <div

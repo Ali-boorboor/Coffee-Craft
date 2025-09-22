@@ -1,10 +1,10 @@
 import React from "react";
 import Form from "@/features/auth/components/Form";
 import apiRequest from "@/utils/axios/axiosInstance";
-import SectionHeader from "@/components/ui/section-header";
-import validationSchema from "@/validations/validationSchema";
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
-import validateInputValues from "@/validations/validateInputValues";
+import validationSchema from "@/utils/validators/validationSchema";
+import SectionHeader from "@/components/ui/section-header/SectionHeader";
+import validateInputValues from "@/utils/validators/validateInputValues";
 import { nameValidations, passwordValidations } from "@/validations";
 import { onSubmitHandlerProps } from "@/features/auth/types";
 import { useAuthStore } from "@/features/auth";

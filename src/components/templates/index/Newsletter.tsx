@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Input from "@/components/ui/input";
-import Button from "@/components/ui/button";
+import Button from "@/components/ui/button/Button";
 import apiRequest from "@/utils/axios/axiosInstance";
-import SectionHeader from "@/components/ui/section-header";
-import validationSchema from "@/validations/validationSchema";
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
-import validateInputValues from "@/validations/validateInputValues";
+import validationSchema from "@/utils/validators/validationSchema";
+import SectionHeader from "@/components/ui/section-header/SectionHeader";
+import validateInputValues from "@/utils/validators/validateInputValues";
 import React, { useState } from "react";
 import { emailValidations } from "@/validations";
 import { toast } from "react-toastify";

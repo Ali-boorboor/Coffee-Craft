@@ -1,6 +1,6 @@
 import FilterButtons from "@/features/menu-filter";
-import SectionHeader from "@/components/ui/section-header";
 import ProductCard from "@/components/ui/product-card/ProductCard";
+import SectionHeader from "@/components/ui/section-header/SectionHeader";
 import React, { useEffect } from "react";
 import { useMenuFilterStore, useMenuAnimations } from "@/features/menu-filter";
 import { Product } from "@/types";

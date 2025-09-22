@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "@/features/slider";
-import SectionHeader from "@/components/ui/section-header";
 import CommentCard from "@/components/ui/comment-card/CommentCard";
+import SectionHeader from "@/components/ui/section-header/SectionHeader";
 import { Pagination } from "swiper/modules";
 import { SwiperSlide } from "swiper/react";
 import {

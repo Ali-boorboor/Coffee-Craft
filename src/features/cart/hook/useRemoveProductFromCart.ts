@@ -1,5 +1,5 @@
 import apiRequest from "@/utils/axios/axiosInstance";
-import { useUserCartStore } from "@/features/cart";
+import { useCartStore } from "@/features/cart";
 import { CartData } from "@/features/cart/types";
 import { toast } from "react-toastify";
 
@@ -9,7 +9,7 @@ type removeProductFromCartProps = {
 };
 
 const useRemoveProductFromCart = () => {
-  const { setUserCart } = useUserCartStore();
+  const { setUserCart } = useCartStore();
 
   const removeProductFromCart = async ({
     productID,

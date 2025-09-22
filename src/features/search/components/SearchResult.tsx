@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import Alert from "@/components/ui/alert/Alert";
-import SectionHeader from "@/components/ui/section-header";
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
 import ProductCard from "@/components/ui/product-card/ProductCard";
+import SectionHeader from "@/components/ui/section-header/SectionHeader";
 import { useMenuAnimations, useMenuFilterStore } from "@/features/menu-filter";
 import { Product } from "@/types";
 

@@ -1,8 +1,8 @@
 import React from "react";
 import iconLoader from "@/utils/dynamicIconLoader";
-import SectionHeader from "@/components/ui/section-header";
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
 import ServiceCard from "@/components/ui/service-card/ServiceCard";
+import SectionHeader from "@/components/ui/section-header/SectionHeader";
 import { Service } from "@/types";
 
 type ServicesDetailsProps = {

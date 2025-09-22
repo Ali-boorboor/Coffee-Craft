@@ -1,7 +1,7 @@
 import ProductModel from "@/models/Product";
 import connectToDB from "@/database/dbConnection";
-import validationSchema from "@/validations/validationSchema";
-import validateInputValues from "@/validations/validateInputValues";
+import validationSchema from "@/utils/validators/validationSchema";
+import validateInputValues from "@/utils/validators/validateInputValues";
 import { NextApiRequest, NextApiResponse } from "next";
 import {
   imageValidations,

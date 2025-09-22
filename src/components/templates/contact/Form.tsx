@@ -1,7 +1,7 @@
-import Button from "@/components/ui/button";
+import Button from "@/components/ui/button/Button";
 import apiRequest from "@/utils/axios/axiosInstance";
-import validationSchema from "@/validations/validationSchema";
-import validateInputValues from "@/validations/validateInputValues";
+import validationSchema from "@/utils/validators/validationSchema";
+import validateInputValues from "@/utils/validators/validateInputValues";
 import React, { useReducer } from "react";
 import { toast } from "react-toastify";
 import { Input, Textarea } from "@/components/ui/input";

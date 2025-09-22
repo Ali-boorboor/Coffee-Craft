@@ -1,5 +1,5 @@
+import SectionHeader from "@/components/ui/section-header/SectionHeader";
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
-import SectionHeader from "@/components/ui/section-header";
 import Image from "next/image";
 import React from "react";
 

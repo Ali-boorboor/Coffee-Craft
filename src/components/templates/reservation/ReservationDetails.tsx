@@ -1,5 +1,5 @@
+import SectionHeader from "@/components/ui/section-header/SectionHeader";
 import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
-import SectionHeader from "@/components/ui/section-header";
 import Form from "@/components/templates/reservation/Form";
 import Off from "@/components/templates/reservation/Off";
 import React from "react";

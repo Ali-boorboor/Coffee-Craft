@@ -1,9 +1,9 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
-import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
 import PageBreadcrumb from "@/components/ui/page-breadcrumb";
-import SectionHeader from "@/components/ui/section-header";
+import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
+import SectionHeader from "@/components/ui/section-header/SectionHeader";
 
 const NotFoundPage = () => {
   const { containerRef } = useFadeUpAnimation();

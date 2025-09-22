@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "@/components/ui/button";
+import Button from "@/components/ui/button/Button";
 import { useMenuFilterStore } from "@/features/menu-filter";
 
 const FilterButtons = () => {
