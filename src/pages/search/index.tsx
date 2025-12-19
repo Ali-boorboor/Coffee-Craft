@@ -3,7 +3,7 @@ import Head from "next/head";
 import ProductModel from "@/models/Product";
 import connectToDB from "@/database/dbConnection";
 import jsonDataParser from "@/utils/jsonDataParser";
-import PageBreadcrumb from "@/components/ui/page-breadcrumb";
+// import PageBreadcrumb from "@/components/ui/page-breadcrumb";
 import validationSchema from "@/utils/validators/validationSchema";
 import SearchResult from "@/features/search/components/SearchResult";
 import validateInputValues from "@/utils/validators/validateInputValues";
@@ -21,7 +21,7 @@ const Search = ({ matchedProducts }: SearchProps) => {
       </Head>
 
       <main className="space-y-20 md:space-y-40">
-        <PageBreadcrumb title="search" />
+        {/* <PageBreadcrumb title="search" /> */}
 
         <SearchResult matchedProducts={matchedProducts} />
       </main>
