@@ -35,6 +35,10 @@
   .swiper-pagination-bullet-active {
     @apply !bg-primary;
   }
+
+  .leaflet-control-attribution {
+    @apply hidden;
+  }
 }
 
 @layer utilities {
