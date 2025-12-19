@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import Alert from "@/components/ui/alert/Alert";
-import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
+// import useFadeUpAnimation from "@/animations/useFadeUpAnimation";
 import ProductCard from "@/components/ui/product-card/ProductCard";
 import SectionHeader from "@/components/ui/section-header/SectionHeader";
-// import { useMenuAnimations, useMenuFilterStore } from "@/features/menu-filter";
+import { useMenuAnimations, useMenuFilterStore } from "@/features/menu-filter";
 import { Product } from "@/types";
 
 type SearchResultProps = {
@@ -14,24 +14,24 @@ type SearchResultProps = {
 const ITEMS_DATA_ANIMATE = "#search-result_items";
 
 const SearchResult = ({ matchedProducts }: SearchResultProps) => {
-  // const { menuFilterType } = useMenuFilterStore();
+  const { menuFilterType } = useMenuFilterStore();
 
-  const { containerRef: fadeUpContainerRef } = useFadeUpAnimation();
-  // const { containerRef } = useMenuAnimations({
-  //   itemsDataAnimate: ITEMS_DATA_ANIMATE,
-  //   menuFilterType,
-  // });
+  // const { containerRef: fadeUpContainerRef } = useFadeUpAnimation();
+  const { containerRef } = useMenuAnimations({
+    itemsDataAnimate: ITEMS_DATA_ANIMATE,
+    menuFilterType,
+  });
 
   const isProductsFound = matchedProducts.length;
 
   return (
     <section
       className="px-4 md:px-0 transform-gpu will-change-transform"
-      // ref={containerRef}
+      ref={containerRef}
     >
       <div
         className="container m-auto flex flex-col gap-6 md:gap-10"
-        ref={fadeUpContainerRef}
+        // ref={fadeUpContainerRef}
       >
         {isProductsFound ? (
           <>
