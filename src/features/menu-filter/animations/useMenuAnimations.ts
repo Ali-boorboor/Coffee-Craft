@@ -1,7 +1,5 @@
-import gsap from "gsap";
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
 import { MenuFilterTypes } from "@/features/menu-filter";
+import { useEffect, useRef } from "react";
 
 type useMenuAnimationsProps = {
   itemsDataAnimate: string;
@@ -14,29 +12,32 @@ const useMenuAnimations = ({
 }: useMenuAnimationsProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    const gsapTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top center",
-      },
-      defaults: { ease: "power4.inOut", duration: 1 },
-    });
+  useEffect(() => {
+    const init = async () => {
+      const gsap = (await import("gsap")).default;
+      const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
+      gsap.registerPlugin(ScrollTrigger);
 
-    gsapTimeline.fromTo(
-      `[data-animate='${itemsDataAnimate}']`,
-      {
-        clipPath: "circle(0% at 50% 50%)",
-      },
-      {
-        clipPath: "circle(100% at 50% 50%)",
-        stagger: {
-          each: 0.1,
-          from: "random",
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top center",
         },
-      }
-    );
-  }, [menuFilterType]);
+        defaults: { ease: "power4.inOut", duration: 1 },
+      });
+
+      timeline.fromTo(
+        `[data-animate='${itemsDataAnimate}']`,
+        { clipPath: "circle(0% at 50% 50%)" },
+        {
+          clipPath: "circle(100% at 50% 50%)",
+          stagger: { each: 0.1, from: "random" },
+        }
+      );
+    };
+
+    init();
+  }, [itemsDataAnimate, menuFilterType]);
 
   return { containerRef };
 };
