@@ -5,7 +5,7 @@ import connectToDB from "@/database/dbConnection";
 import jsonDataParser from "@/utils/jsonDataParser";
 // import PageBreadcrumb from "@/components/ui/page-breadcrumb";
 import validationSchema from "@/utils/validators/validationSchema";
-import SearchResult from "@/features/search/components/SearchResult";
+// import SearchResult from "@/features/search/components/SearchResult";
 import validateInputValues from "@/utils/validators/validateInputValues";
 import { searchValidations } from "@/validations";
 import { NextPageContext } from "next";
@@ -14,6 +14,8 @@ import { Product } from "@/types";
 type SearchProps = { matchedProducts: Product[] };
 
 const Search = ({ matchedProducts }: SearchProps) => {
+  console.log(matchedProducts);
+
   return (
     <>
       <Head>
@@ -23,7 +25,7 @@ const Search = ({ matchedProducts }: SearchProps) => {
       <main className="space-y-20 md:space-y-40">
         {/* <PageBreadcrumb title="search" /> */}
 
-        <SearchResult matchedProducts={matchedProducts} />
+        {/* <SearchResult matchedProducts={matchedProducts} /> */}
       </main>
     </>
   );
@@ -33,6 +35,8 @@ export const getServerSideProps = async (context: NextPageContext) => {
   await connectToDB();
 
   const { product_name } = context.query;
+
+  console.log(product_name);
 
   const schema = validationSchema({ searchQuery: searchValidations });
 
