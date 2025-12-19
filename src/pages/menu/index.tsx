@@ -26,7 +26,7 @@ const Menu = ({ products }: MenuProps) => {
 };
 
 export const getStaticProps = async () => {
-  connectToDB();
+  await connectToDB();
 
   const products = await ProductModel.find({}).lean();
   const parsedProducts = jsonDataParser(products);

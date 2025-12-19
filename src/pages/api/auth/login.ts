@@ -9,7 +9,7 @@ import { compareData } from "@/utils/bcryptUtils";
 import { generateToken } from "@/utils/jwtUtils";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  connectToDB();
+  await connectToDB();
 
   try {
     switch (req.method) {

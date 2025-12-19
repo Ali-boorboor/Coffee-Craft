@@ -44,7 +44,7 @@ const Index = ({ services, products, comments }: IndexProps) => {
 };
 
 export const getStaticProps = async () => {
-  connectToDB();
+  await connectToDB();
 
   const services = await ServiceModel.find({}).lean();
   const parsedServices = jsonDataParser(services);

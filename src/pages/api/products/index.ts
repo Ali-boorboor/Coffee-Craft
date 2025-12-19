@@ -11,7 +11,7 @@ import {
 } from "@/validations";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  connectToDB();
+  await connectToDB();
 
   try {
     switch (req.method) {

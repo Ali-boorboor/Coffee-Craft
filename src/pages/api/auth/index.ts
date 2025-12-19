@@ -5,7 +5,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    connectToDB();
+    await connectToDB();
 
     const tokenPayload = checkToken(req, res);
 

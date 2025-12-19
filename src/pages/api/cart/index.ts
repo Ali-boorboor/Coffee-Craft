@@ -20,7 +20,7 @@ interface CartLean {
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  connectToDB();
+  await connectToDB();
 
   try {
     const tokenPayload = checkToken(req, res);

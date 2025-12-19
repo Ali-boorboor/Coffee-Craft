@@ -26,7 +26,7 @@ const Services = ({ services }: ServicesProps) => {
 };
 
 export const getStaticProps = async () => {
-  connectToDB();
+  await connectToDB();
 
   const services = await ServiceModel.find({}).lean();
 

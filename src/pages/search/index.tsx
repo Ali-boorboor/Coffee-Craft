@@ -30,7 +30,7 @@ const Search = ({ matchedProducts }: SearchProps) => {
 };
 
 export const getServerSideProps = async (context: NextPageContext) => {
-  connectToDB();
+  await connectToDB();
 
   const { product_name } = context.query;
 

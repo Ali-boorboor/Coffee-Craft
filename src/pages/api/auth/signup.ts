@@ -8,7 +8,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { hashData } from "@/utils/bcryptUtils";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  connectToDB();
+  await connectToDB();
 
   try {
     switch (req.method) {

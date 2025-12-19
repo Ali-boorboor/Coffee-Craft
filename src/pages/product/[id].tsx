@@ -24,7 +24,7 @@ const SingleProduct = ({ head, product }: SingleProductProps) => {
 };
 
 export const getStaticPaths = async () => {
-  connectToDB();
+  await connectToDB();
 
   const products = await ProductModel.find({}).lean();
 
@@ -39,7 +39,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
-  connectToDB();
+  await connectToDB();
 
   const productID = context.params?.id;
 

@@ -7,7 +7,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { isValidObjectId } from "mongoose";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  connectToDB();
+  await connectToDB();
 
   try {
     switch (req.method) {
