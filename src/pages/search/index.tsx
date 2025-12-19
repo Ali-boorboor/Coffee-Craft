@@ -30,35 +30,40 @@ const Search = ({ matchedProducts }: SearchProps) => {
 };
 
 export const getServerSideProps = async (context: NextPageContext) => {
-  await connectToDB();
+  try {
+    await connectToDB();
 
-  const product_name =
-    typeof context.query.product_name === "string"
-      ? context.query.product_name
-      : "";
+    const product_name =
+      typeof context.query.product_name === "string"
+        ? context.query.product_name
+        : "";
 
-  const schema = validationSchema({ searchQuery: searchValidations });
+    const schema = validationSchema({ searchQuery: searchValidations });
 
-  const isValid = await validateInputValues({
-    values: { searchQuery: product_name },
-    schema,
-  });
+    const isValid = await validateInputValues({
+      values: { searchQuery: product_name },
+      schema,
+    });
 
-  if (!isValid) {
-    return {
-      props: { matchedProducts: [] },
-    };
+    if (!isValid) {
+      return {
+        props: { matchedProducts: [] },
+      };
+    }
+
+    const query = String(product_name).toLowerCase();
+
+    const matchedProducts = await ProductModel.find({
+      title: { $regex: query, $options: "i" },
+    }).lean();
+
+    const parsedMatchedProducts = jsonDataParser(matchedProducts);
+
+    return { props: { matchedProducts: parsedMatchedProducts } };
+  } catch (error) {
+    console.error("SSR error:", error);
+    return { props: { matchedProducts: [] } };
   }
-
-  const query = String(product_name).toLowerCase();
-
-  const matchedProducts = await ProductModel.find({
-    title: { $regex: query, $options: "i" },
-  }).lean();
-
-  const parsedMatchedProducts = jsonDataParser(matchedProducts);
-
-  return { props: { matchedProducts: parsedMatchedProducts } };
 };
 
 export default Search;
