@@ -1,17 +1,33 @@
 import mongoose from "mongoose";
 
-const connectToDB = async () => {
-  try {
-    const isConnectionReady = mongoose.connections[0].readyState;
+interface MongooseCache {
+  connection: typeof mongoose | null;
+  promise: Promise<typeof mongoose> | null;
+}
 
-    if (isConnectionReady) return false;
+declare global {
+  var mongooseCache: MongooseCache;
+}
 
-    await mongoose.connect(process.env.DB_CONNECTION_STRING!);
-
-    console.log("# Connected to db successfully !");
-  } catch (error) {
-    console.log("# Error in db connection =>", error);
-  }
+const cached: MongooseCache = global.mongooseCache || {
+  connection: null,
+  promise: null,
 };
 
-export default connectToDB;
+export default async function connectToDB() {
+  if (cached.connection) {
+    return cached.connection;
+  }
+
+  if (!cached.promise) {
+    cached.promise = mongoose
+      .connect(process.env.DB_CONNECTION_STRING!)
+      .then((mongoose) => mongoose);
+  }
+
+  cached.connection = await cached.promise;
+  global.mongooseCache = cached;
+
+  console.log("# Connected to DB successfully!");
+  return cached.connection;
+}
