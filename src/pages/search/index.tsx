@@ -32,7 +32,10 @@ const Search = ({ matchedProducts }: SearchProps) => {
 export const getServerSideProps = async (context: NextPageContext) => {
   await connectToDB();
 
-  const { product_name } = context.query;
+  const product_name =
+    typeof context.query.product_name === "string"
+      ? context.query.product_name
+      : "";
 
   const schema = validationSchema({ searchQuery: searchValidations });
 

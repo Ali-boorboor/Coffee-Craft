@@ -48,7 +48,8 @@ const Map = () => {
         style={{ height: "100%", width: "100%" }}
       >
         <TileLayer
-          url={`https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png`}
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution="&copy; OpenStreetMap contributors"
         />
 
         <Marker position={LOCATION_COORDINATES} icon={locationIcon}>
