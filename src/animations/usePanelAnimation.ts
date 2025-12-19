@@ -16,6 +16,7 @@ const usePanelAnimation = ({
   toClipPath = "polygon(0% 0%,100% 0%,100% 100%,0% 100%)",
 }: usePanelAnimationProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  
   const gsapTimelineRef = useRef<gsap.core.Timeline>(
     gsap.timeline({ defaults: { ease: "power4.inOut", duration: 1 } })
   );
