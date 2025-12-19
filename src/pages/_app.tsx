@@ -1,18 +1,14 @@
 import "@/styles/globals.css";
-import gsap from "gsap";
 import CartPanel from "@/features/cart";
 import Header from "@/components/ui/header";
 import Footer from "@/components/ui/footer";
 import SearchPanel from "@/features/search";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import apiRequest from "@/utils/axios/axiosInstance";
 import { ToastContainer, Slide } from "react-toastify";
 import { useAuthStore } from "@/features/auth";
 import type { AppProps } from "next/app";
 import { Roboto } from "next/font/google";
 import { useEffect } from "react";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -23,6 +19,12 @@ export default function App({ Component, pageProps }: AppProps) {
   const { setIsUserLogin } = useAuthStore();
 
   useEffect(() => {
+    import("gsap").then((gsapModule) => {
+      import("gsap/ScrollTrigger").then((ScrollTrigger) => {
+        gsapModule.default.registerPlugin(ScrollTrigger.default);
+      });
+    });
+
     apiRequest.get("/auth", { skipErrorHandler: true }).then((response) => {
       if (response.status === 200) {
         setIsUserLogin(true);

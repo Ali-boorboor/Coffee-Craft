@@ -1,21 +1,28 @@
 import React from "react";
 import Head from "next/head";
+import dynamic from "next/dynamic";
 import ProductModel from "@/models/Product";
 import connectToDB from "@/database/dbConnection";
 import jsonDataParser from "@/utils/jsonDataParser";
-// import PageBreadcrumb from "@/components/ui/page-breadcrumb";
 import validationSchema from "@/utils/validators/validationSchema";
-// import SearchResult from "@/features/search/components/SearchResult";
 import validateInputValues from "@/utils/validators/validateInputValues";
 import { searchValidations } from "@/validations";
 import { NextPageContext } from "next";
 import { Product } from "@/types";
 
+const PageBreadcrumb = dynamic(
+  () => import("@/components/ui/page-breadcrumb"),
+  { ssr: false }
+);
+
+const SearchResult = dynamic(
+  () => import("@/features/search/components/SearchResult"),
+  { ssr: false }
+);
+
 type SearchProps = { matchedProducts: Product[] };
 
 const Search = ({ matchedProducts }: SearchProps) => {
-  console.log(matchedProducts);
-
   return (
     <>
       <Head>
@@ -23,9 +30,9 @@ const Search = ({ matchedProducts }: SearchProps) => {
       </Head>
 
       <main className="space-y-20 md:space-y-40">
-        {/* <PageBreadcrumb title="search" /> */}
+        <PageBreadcrumb title="search" />
 
-        {/* <SearchResult matchedProducts={matchedProducts} /> */}
+        <SearchResult matchedProducts={matchedProducts} />
       </main>
     </>
   );
@@ -35,8 +42,6 @@ export const getServerSideProps = async (context: NextPageContext) => {
   await connectToDB();
 
   const { product_name } = context.query;
-
-  console.log(product_name);
 
   const schema = validationSchema({ searchQuery: searchValidations });
 
