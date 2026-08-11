@@ -7,6 +7,7 @@ import "@/styles/globals.css";
 import apiRequest from "@/utils/axios/axiosInstance";
 import type { AppProps } from "next/app";
 import { Roboto } from "next/font/google";
+import Head from "next/head";
 import { useEffect } from "react";
 import { Slide, ToastContainer } from "react-toastify";
 
@@ -36,29 +37,38 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <main
-      className={`${roboto.className} grid min-h-svh grid-rows-[auto_1fr_auto]`}
-    >
-      <Header />
+    <>
+      <Head>
+        <meta
+          name="description"
+          content="A modern, full-stack coffee shop web application."
+        />
+      </Head>
 
-      <div className="min-w-0">
-        <Component {...pageProps} />
-      </div>
+      <main
+        className={`${roboto.className} grid min-h-svh grid-rows-[auto_1fr_auto]`}
+      >
+        <Header />
 
-      <SearchPanel />
+        <div className="min-w-0">
+          <Component {...pageProps} />
+        </div>
 
-      <CartPanel />
+        <SearchPanel />
 
-      <ToastContainer
-        pauseOnFocusLoss={false}
-        position="top-right"
-        transition={Slide}
-        autoClose={3000}
-        theme="colored"
-        draggable
-      />
+        <CartPanel />
 
-      <Footer />
-    </main>
+        <ToastContainer
+          pauseOnFocusLoss={false}
+          position="top-right"
+          transition={Slide}
+          autoClose={3000}
+          theme="colored"
+          draggable
+        />
+
+        <Footer />
+      </main>
+    </>
   );
 }
