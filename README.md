@@ -1,5 +1,10 @@
 # ☕ Coffee Craft
 
+![total commits](https://img.shields.io/github/commit-activity/t/Ali-boorboor/Coffee-Craft)
+![createdAt](https://img.shields.io/github/created-at/ali-boorboor/Coffee-Craft?color=red)
+![version tag](https://img.shields.io/github/v/tag/ali-boorboor/Coffee-Craft?color=blue)
+![root files and folders count](https://img.shields.io/github/directory-file-count/ali-boorboor/Coffee-Craft?color=red)
+
 > A modern, full-stack coffee shop web application built with Next.js, React, TypeScript, MongoDB, and Tailwind CSS.
 
 Coffee Craft is a full-stack coffee shop platform designed to provide a complete online coffee-shop experience — from browsing products and filtering the menu to user authentication, shopping-cart management, table reservations, customer testimonials, newsletter subscriptions, and contact requests.
