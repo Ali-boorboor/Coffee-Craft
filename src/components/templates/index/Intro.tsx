@@ -1,18 +1,17 @@
-import React from "react";
 import Slider from "@/features/slider";
-import { SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
+import { SwiperSlide } from "swiper/react";
 
 const slides = [
   {
     id: 1,
     background:
-      "bg-[linear-gradient(rgba(51,33,29,0.7)),url('/image/index-slide-1.jpg')]",
+      "bg-[linear-gradient(rgba(51,33,29,0.7)),url('/image/index-slide-1.webp')]",
   },
   {
     id: 2,
     background:
-      "bg-[linear-gradient(rgba(51,33,29,0.7)),url('/image/index-slide-2.jpg')]",
+      "bg-[linear-gradient(rgba(51,33,29,0.7)),url('/image/index-slide-2.webp')]",
   },
 ];
 
