@@ -1,14 +1,14 @@
-import "@/styles/globals.css";
-import CartPanel from "@/features/cart";
-import Header from "@/components/ui/header";
 import Footer from "@/components/ui/footer";
-import SearchPanel from "@/features/search";
-import apiRequest from "@/utils/axios/axiosInstance";
-import { ToastContainer, Slide } from "react-toastify";
+import Header from "@/components/ui/header";
 import { useAuthStore } from "@/features/auth";
+import CartPanel from "@/features/cart";
+import SearchPanel from "@/features/search";
+import "@/styles/globals.css";
+import apiRequest from "@/utils/axios/axiosInstance";
 import type { AppProps } from "next/app";
 import { Roboto } from "next/font/google";
 import { useEffect } from "react";
+import { Slide, ToastContainer } from "react-toastify";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -36,10 +36,14 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <main className={roboto.className}>
+    <main
+      className={`${roboto.className} grid min-h-svh grid-rows-[auto_1fr_auto]`}
+    >
       <Header />
 
-      <Component {...pageProps} />
+      <div className="min-w-0">
+        <Component {...pageProps} />
+      </div>
 
       <SearchPanel />
 
