@@ -261,12 +261,6 @@ The database connection is centralized in:
 src/database/dbConnection.ts
 ```
 
-The application reads its database connection string from:
-
-```text
-DB_CONNECTION_STRING
-```
-
 The project uses Mongoose models for several application entities:
 
 ```text
