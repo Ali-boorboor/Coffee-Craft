@@ -4,6 +4,7 @@
 ![createdAt](https://img.shields.io/github/created-at/ali-boorboor/Coffee-Craft?color=red)
 ![version tag](https://img.shields.io/github/v/tag/ali-boorboor/Coffee-Craft?color=blue)
 ![root files and folders count](https://img.shields.io/github/directory-file-count/ali-boorboor/Coffee-Craft?color=red)
+![Vercel](https://img.shields.io/badge/deployed-Vercel-black?logo=vercel)
 
 > A modern, full-stack coffee shop web application built with Next.js, React, TypeScript, MongoDB, and Tailwind CSS.
 
@@ -599,3 +600,5 @@ The application is deployed with Vercel and is connected to its production confi
 ---
 
 Made with ❤️ and ☕ by **Ali Boorboor**
+
+⭐ If you found the project useful or interesting, consider giving the repository a star.
