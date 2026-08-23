@@ -1,19 +1,19 @@
+import type { Icon, LatLngTuple } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import dynamic from "next/dynamic";
-import React, { useEffect, useState } from "react";
-import type { LatLngTuple, Icon } from "leaflet";
+import { useEffect, useState } from "react";
 
 const MapContainer = dynamic(
   () => import("react-leaflet").then((mod) => mod.MapContainer),
-  { ssr: false }
+  { ssr: false },
 );
 const TileLayer = dynamic(
   () => import("react-leaflet").then((mod) => mod.TileLayer),
-  { ssr: false }
+  { ssr: false },
 );
 const Marker = dynamic(
   () => import("react-leaflet").then((mod) => mod.Marker),
-  { ssr: false }
+  { ssr: false },
 );
 const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
   ssr: false,
@@ -30,9 +30,9 @@ const Map = () => {
     import("leaflet").then((leaflet) => {
       setLocationIcon(
         leaflet.icon({
-          iconUrl: "/image/location-icon.png",
+          iconUrl: "/image/location-icon.webp",
           iconSize: [50, 50],
-        })
+        }),
       );
     });
   }, []);

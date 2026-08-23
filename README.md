@@ -511,12 +511,12 @@ Coffee-Craft/
 │       ├── services/
 │       ├── about-background.jpg
 │       ├── coffee-background.webp
-│       ├── coffee-beans.png
+│       ├── coffee-beans.webp
 │       ├── coffeeBean-bag.png
 │       ├── flying-coffee-cup.png
 │       ├── index-slide-1.webp
 │       ├── index-slide-2.webp
-│       ├── location-icon.png
+│       ├── location-icon.webp
 │       ├── not-found.png
 │       ├── paper-torn-piece-bottom.webp
 │       ├── paper-torn-piece-top.webp

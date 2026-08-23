@@ -63,7 +63,7 @@ const ProductInfos = ({ _id, title, price, image }: Product) => {
 
         <Image
           className="w-40 h-40 md:w-72 md:h-72 object-cover object-center absolute right-0 top-0 z-10 transform-gpu will-change-transform"
-          src="/image/coffee-beans.png"
+          src="/image/coffee-beans.webp"
           ref={coffeeBeanImageRef}
           alt="product image"
           width={1000}
